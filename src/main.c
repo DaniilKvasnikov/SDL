@@ -6,7 +6,7 @@
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 13:07:24 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/07/19 13:13:25 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int main(int argc, char **argv)
 	t_mydata	*mydata;
 	int			i;
 
+	if (argc == 1)
+		return (0);
 	if((mydata = (t_mydata *)malloc(sizeof(t_mydata))) == NULL)
 		exit(1);
 	mydata->win_count = 0;
@@ -43,14 +45,13 @@ int main(int argc, char **argv)
 			// SDL_RenderClear(mydata->wins->ren);
 			// SDL_RenderCopy(mydata->ren, mydata->tex, NULL, NULL);
 			// SDL_RenderPresent(mydata->wins->ren);
-			SDL_Delay(100);
+			SDL_Delay(1000);
 	}
 
-	// free(mydata);
+	free(mydata);
 	// // SDL_DestroyTexture(mydata->tex);
-	// SDL_DestroyRenderer(mydata->wins->ren);
-	// SDL_DestroyWindow(mydata->wins->win);
-	// SDL_Quit();
+	ft_destroy_win(mydata);
+	SDL_Quit();
 
 	return EXIT_SUCCESS;
 }

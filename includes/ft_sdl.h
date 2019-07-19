@@ -6,7 +6,7 @@
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 13:05:17 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/07/19 13:12:53 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ SDL_Window		*ft_createwin(char *name, t_point pos, t_point size, Uint32 flags);
 SDL_Renderer	*ft_create_rend(SDL_Window *win);
 t_win			*ft_init_win(char *name, t_point pos, t_point size, Uint32 flags);
 void			ft_add_win(t_mydata *mydata, t_win *new_win);
+void			ft_destroy_win(t_mydata *mydata);
 
 #endif
