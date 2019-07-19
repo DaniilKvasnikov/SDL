@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_win.c                                      :+:      :+:    :+:   */
+/*   ft_mouse_muve.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/19 12:38:48 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 18:37:48 by gamerd           ###   ########.fr       */
+/*   Created: 2019/07/19 18:23:01 by gamerd            #+#    #+#             */
+/*   Updated: 2019/07/19 18:41:51 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-t_win
-	*ft_init_win(char *name, t_point pos, t_point size, Uint32 flags)
+void
+	ft_mouse_muve(void *mydata, void *win)
 {
-	t_win *win;
-
-	win = (t_win *)malloc(sizeof(t_win));
-	if ((win->win = ft_createwin(name, pos, size, flags)) == NULL)
-		return (NULL);
-	if ((win->ren = ft_create_rend(win->win)) == NULL)
-		return (NULL);
-	win->window_id = SDL_GetWindowID(win->win);
-	win->button_press = &ft_button_press;
-	win->mouse_muve = &ft_mouse_muve;
-	return (win);
+	if (SDL_GetMouseState(&((t_mydata *)mydata)->mouse.x, &((t_mydata *)mydata)->mouse.y) & SDL_BUTTON(SDL_BUTTON_LEFT))
+	{
+		ft_printf("x=%d y=%d id=%d\n", ((t_mydata *)mydata)->mouse.x, ((t_mydata *)mydata)->mouse.y, ((t_win *)win)->window_id);
+	}
 }

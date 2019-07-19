@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_win.c                                      :+:      :+:    :+:   */
+/*   ft_run_mouse_fun.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/19 12:38:48 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 18:37:48 by gamerd           ###   ########.fr       */
+/*   Created: 2019/07/19 18:31:03 by gamerd            #+#    #+#             */
+/*   Updated: 2019/07/19 18:40:29 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-t_win
-	*ft_init_win(char *name, t_point pos, t_point size, Uint32 flags)
+void
+	ft_run_mouse_fun(t_mydata *mydata,SDL_Event ev)
 {
 	t_win *win;
 
-	win = (t_win *)malloc(sizeof(t_win));
-	if ((win->win = ft_createwin(name, pos, size, flags)) == NULL)
-		return (NULL);
-	if ((win->ren = ft_create_rend(win->win)) == NULL)
-		return (NULL);
-	win->window_id = SDL_GetWindowID(win->win);
-	win->button_press = &ft_button_press;
-	win->mouse_muve = &ft_mouse_muve;
-	return (win);
+	win = ft_get_win_from_id(mydata, ev.window.windowID);
+	if (win == NULL)
+		return ;
+	if (win->mouse_muve != NULL)
+		win->mouse_muve(mydata, win);
 }

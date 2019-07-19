@@ -6,7 +6,7 @@
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 17:41:13 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/07/19 18:41:09 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,11 @@ int main(int argc, char **argv)
 	{
 		while (SDL_PollEvent(&ev) != 0)
 		{
+			SDL_PumpEvents();
+			ft_run_mouse_fun(mydata, ev);
 			ft_run_keyboard_fun(mydata, ev);
 			if (mydata->win_count == 0)
 				run = 0;
-			SDL_PumpEvents();
 		}
 		ft_update_win_surface(mydata);
 	}
