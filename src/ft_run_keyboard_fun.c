@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_win.c                                      :+:      :+:    :+:   */
+/*   ft_run_keyboard_fun.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/19 12:38:48 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 17:24:25 by gamerd           ###   ########.fr       */
+/*   Created: 2019/07/19 16:41:40 by gamerd            #+#    #+#             */
+/*   Updated: 2019/07/19 17:35:44 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-t_win
-	*ft_init_win(char *name, t_point pos, t_point size, Uint32 flags)
+void
+	ft_run_keyboard_fun(t_mydata *mydata, SDL_Event ev)
 {
 	t_win *win;
 
-	win = (t_win *)malloc(sizeof(t_win));
-	if ((win->win = ft_createwin(name, pos, size, flags)) == NULL)
-		return (NULL);
-	if ((win->ren = ft_create_rend(win->win)) == NULL)
-		return (NULL);
-	win->window_id = SDL_GetWindowID(win->win);
-	win->button_press = &ft_button_press;
-	return (win);
+	win = ft_get_win_from_id(mydata, ev.window.windowID);
+	if (win == NULL)
+		return ;
+	if (win->button_press != NULL)
+		win->button_press(mydata, win);
 }

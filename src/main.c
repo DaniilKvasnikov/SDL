@@ -6,7 +6,7 @@
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 16:36:40 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/07/19 17:31:50 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int main(int argc, char **argv)
 {
-	const Uint8 *keyboardState = SDL_GetKeyboardState(NULL);
 	t_mydata	*mydata;
 	int			i;
 
@@ -23,6 +22,7 @@ int main(int argc, char **argv)
 	if((mydata = (t_mydata *)malloc(sizeof(t_mydata))) == NULL)
 		exit(1);
 	mydata->win_count = 0;
+	mydata->keyboardState = SDL_GetKeyboardState(NULL);
 	if (ft_sdl_init() != 0)
 		exit(1);
 	i = 0;
@@ -49,15 +49,10 @@ int main(int argc, char **argv)
 	{
 		while (SDL_PollEvent(&ev) != 0)
 		{
-			SDL_PumpEvents();
-			if(keyboardState[SDL_SCANCODE_ESCAPE])
-			{
-				while (keyboardState[SDL_SCANCODE_ESCAPE])
-					SDL_PumpEvents();
-				ft_run_fun(mydata, ev.window.windowID, &ft_delete_win);
-			}
+			ft_run_keyboard_fun(mydata, ev);
 			if (mydata->win_count == 0)
 				run = 0;
+			SDL_PumpEvents();
 		}
 
 		ft_update_win_surface(mydata);

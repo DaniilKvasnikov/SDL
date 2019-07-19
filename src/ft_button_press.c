@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_win.c                                      :+:      :+:    :+:   */
+/*   ft_button_press.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/19 12:38:48 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 17:24:25 by gamerd           ###   ########.fr       */
+/*   Created: 2019/07/19 17:01:14 by gamerd            #+#    #+#             */
+/*   Updated: 2019/07/19 17:35:09 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-t_win
-	*ft_init_win(char *name, t_point pos, t_point size, Uint32 flags)
+void
+	ft_button_press(void *mydata, void *win)
 {
-	t_win *win;
-
-	win = (t_win *)malloc(sizeof(t_win));
-	if ((win->win = ft_createwin(name, pos, size, flags)) == NULL)
-		return (NULL);
-	if ((win->ren = ft_create_rend(win->win)) == NULL)
-		return (NULL);
-	win->window_id = SDL_GetWindowID(win->win);
-	win->button_press = &ft_button_press;
-	return (win);
+	if(((t_mydata *)mydata)->keyboardState[SDL_SCANCODE_ESCAPE])
+	{
+		while (((t_mydata *)mydata)->keyboardState[SDL_SCANCODE_ESCAPE])
+			SDL_PumpEvents();
+		ft_delete_win((t_mydata *)mydata, ((t_win *)win)->window_id);
+	}
 }

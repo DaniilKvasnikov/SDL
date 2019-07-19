@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_win.c                                      :+:      :+:    :+:   */
+/*   ft_get_win_from_id.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/19 12:38:48 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 17:24:25 by gamerd           ###   ########.fr       */
+/*   Created: 2019/07/19 17:14:51 by gamerd            #+#    #+#             */
+/*   Updated: 2019/07/19 17:16:28 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 t_win
-	*ft_init_win(char *name, t_point pos, t_point size, Uint32 flags)
+	*ft_get_win_from_id(t_mydata *mydata, int id)
 {
-	t_win *win;
+	int	i;
 
-	win = (t_win *)malloc(sizeof(t_win));
-	if ((win->win = ft_createwin(name, pos, size, flags)) == NULL)
-		return (NULL);
-	if ((win->ren = ft_create_rend(win->win)) == NULL)
-		return (NULL);
-	win->window_id = SDL_GetWindowID(win->win);
-	win->button_press = &ft_button_press;
-	return (win);
+	i = -1;
+	while (++i < mydata->win_count)
+		if (mydata->wins[i]->window_id == id)
+			return (mydata->wins[i]);
+	return (0);
 }

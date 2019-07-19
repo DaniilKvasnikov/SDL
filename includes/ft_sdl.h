@@ -6,7 +6,7 @@
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 16:22:15 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/07/19 17:35:27 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct	s_win
 	SDL_Window		*win;
 	SDL_Renderer	*ren;
 	int				window_id;
+	void			(*button_press)(void *mydata, void *win);
 }				t_win;
 
 typedef struct	s_mydata
@@ -37,6 +38,7 @@ typedef struct	s_mydata
 	int				win_count;
 	SDL_Surface		*bmp;
 	SDL_Texture		*tex;
+	const Uint8		*keyboardState;
 }				t_mydata;
 
 int		ft_sdl_init();
@@ -52,5 +54,9 @@ void			ft_destroy_win(t_win *win);
 void			ft_destroy_wins(t_mydata *mydata);
 
 void			ft_run_fun(t_mydata *mydata, int id, void (*fun)(t_mydata *mydata, int id));
+
+t_win			*ft_get_win_from_id(t_mydata *mydata, int id);
+void			ft_button_press(void *mydata, void *win);
+void			ft_run_keyboard_fun(t_mydata *mydata, SDL_Event ev);
 
 #endif
