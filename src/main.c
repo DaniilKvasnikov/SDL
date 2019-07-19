@@ -6,7 +6,7 @@
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 18:52:59 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/07/19 19:15:58 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,6 @@ int main(int argc, char **argv)
 	// }
 	// SDL_FreeSurface(mydata->bmp);
 
-	// SDL_Texture * texture = SDL_CreateTexture(mydata->wins[0]->ren,
-	// 	SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STATIC, 640, 480);
-	// Uint32 *pixels = (Uint32 *)malloc(sizeof(Uint32) * 640 * 480);
-	// SDL_UpdateTexture(texture, NULL, pixels, 640 * sizeof(Uint32));
-
 	SDL_Event	ev;
 	int			run;
 	
@@ -57,12 +52,6 @@ int main(int argc, char **argv)
 		{
 			SDL_PumpEvents();
 			ft_run_mouse_fun(mydata, ev);
-			// if (SDL_BUTTON(SDL_BUTTON_LEFT))
-			// {
-			// 	int mouseX = ev.motion.x;
-			// 	int mouseY = ev.motion.y;
-			// 	pixels[mouseY * 640 + mouseX] = 0xff;
-			// }
 			ft_run_keyboard_fun(mydata, ev);
 			if (mydata->win_count == 0)
 				run = 0;

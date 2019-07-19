@@ -6,7 +6,7 @@
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 18:38:29 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/07/19 19:13:24 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,16 @@ typedef struct	s_win
 	void			(*mouse_muve)(void *mydata, void *win);
 }				t_win;
 
+typedef struct	s_texture
+{
+	SDL_Texture	*tex;
+	char		*name;
+}				t_texture;
+
 typedef struct	s_mydata
 {
 	t_win			**wins;
 	int				win_count;
-	SDL_Surface		*bmp;
-	SDL_Texture		*tex;
 	const Uint8		*keyboardState;
 	t_point_int		mouse;
 }				t_mydata;
@@ -65,6 +69,9 @@ t_win			*ft_get_win_from_id(t_mydata *mydata, int id);
 void			ft_run_keyboard_fun(t_mydata *mydata, SDL_Event ev);
 
 void			ft_run_mouse_fun(t_mydata *mydata,SDL_Event ev);
+
+
+void			ft_init_texture(t_win *win, char *path);
 
 void			ft_button_press(void *mydata, void *win);
 void			ft_mouse_muve(void *mydata, void *win);

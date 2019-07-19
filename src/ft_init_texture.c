@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_button_press.c                                  :+:      :+:    :+:   */
+/*   ft_init_texture.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/19 17:01:14 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 19:16:41 by gamerd           ###   ########.fr       */
+/*   Created: 2019/07/19 19:04:52 by gamerd            #+#    #+#             */
+/*   Updated: 2019/07/19 19:18:01 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 void
-	ft_button_press(void *mydata, void *win)
+	ft_init_texture(t_win *win, char *path)
 {
-	if(((t_mydata *)mydata)->keyboardState[SDL_SCANCODE_ESCAPE])
+	SDL_Surface	*bmp;
+	SDL_Texture	*tex;
+
+	bmp = SDL_LoadBMP(path);
+	if (bmp == NULL)
 	{
-		while (((t_mydata *)mydata)->keyboardState[SDL_SCANCODE_ESCAPE])
-			SDL_PumpEvents();
-		ft_delete_win((t_mydata *)mydata, ((t_win *)win)->window_id);
+		fprintf(stderr, "SDL_LoadBMP Error: %s\n", SDL_GetError());
+		return ;
 	}
-	else if(((t_mydata *)mydata)->keyboardState[SDL_SCANCODE_W])
+	tex = SDL_CreateTextureFromSurface(win->ren, bmp);
+	if (tex == NULL)
 	{
-		ft_init_texture((t_win *)win, "./img/cat.bmp");
+		fprintf(stderr, "SDL_CreateTextureFromSurface Error: %s\n", SDL_GetError());
+		return ;
 	}
+	SDL_FreeSurface(bmp);
 }
