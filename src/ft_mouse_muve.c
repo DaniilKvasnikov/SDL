@@ -6,7 +6,7 @@
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 18:23:01 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 18:41:51 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/07/19 18:59:02 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,16 @@
 void
 	ft_mouse_muve(void *mydata, void *win)
 {
+	int	x;
+	int	y;
+
 	if (SDL_GetMouseState(&((t_mydata *)mydata)->mouse.x, &((t_mydata *)mydata)->mouse.y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 	{
-		ft_printf("x=%d y=%d id=%d\n", ((t_mydata *)mydata)->mouse.x, ((t_mydata *)mydata)->mouse.y, ((t_win *)win)->window_id);
+		SDL_SetRenderDrawColor(((t_win *)win)->ren, 255, 0, 0, 255);
+		x = ((t_mydata *)mydata)->mouse.x;
+		y = ((t_mydata *)mydata)->mouse.y;
+		SDL_RenderDrawPoint(((t_win *)win)->ren, x, y);
+		ft_printf("x=%d y=%d id=%d\n", x, y, ((t_win *)win)->window_id);
+		SDL_RenderPresent(((t_win *)win)->ren);
 	}
 }
