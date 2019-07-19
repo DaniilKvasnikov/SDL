@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_createwin.c                                     :+:      :+:    :+:   */
+/*   ft_run_fun.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/19 12:16:14 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 12:46:46 by gamerd           ###   ########.fr       */
+/*   Created: 2019/07/19 15:58:11 by gamerd            #+#    #+#             */
+/*   Updated: 2019/07/19 16:19:56 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-SDL_Window
-	*ft_createwin(char *name, t_point pos, t_point size, Uint32 flags)
+void
+	ft_run_fun(t_mydata *mydata, int id, void (*fun)(t_mydata *mydata, int id))
 {
-	SDL_Window	*win;
+	int	i;
 
-	win = SDL_CreateWindow(name, pos.x, pos.y, size.x, size.y, flags);
-	if (win == NULL) {
-		fprintf(stderr, "SDL_CreateWindow Error: %s\n", SDL_GetError());
-		return (NULL);
-	}
-	return (win);
+	i = -1;
+	while (++i < mydata->win_count)
+		if (mydata->wins[i]->window_id == id)
+			fun(mydata, id);
 }

@@ -6,7 +6,7 @@
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 13:12:53 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/07/19 16:22:15 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct	s_win
 {
 	SDL_Window		*win;
 	SDL_Renderer	*ren;
+	int				window_id;
 }				t_win;
 
 typedef struct	s_mydata
@@ -44,6 +45,12 @@ SDL_Window		*ft_createwin(char *name, t_point pos, t_point size, Uint32 flags);
 SDL_Renderer	*ft_create_rend(SDL_Window *win);
 t_win			*ft_init_win(char *name, t_point pos, t_point size, Uint32 flags);
 void			ft_add_win(t_mydata *mydata, t_win *new_win);
-void			ft_destroy_win(t_mydata *mydata);
+void			ft_update_win_surface(t_mydata *mydata);
+
+void			ft_delete_win(t_mydata *mydata, int id);
+void			ft_destroy_win(t_win *win);
+void			ft_destroy_wins(t_mydata *mydata);
+
+void			ft_run_fun(t_mydata *mydata, int id, void (*fun)(t_mydata *mydata, int id));
 
 #endif

@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_destroy_wins.c                                  :+:      :+:    :+:   */
+/*   ft_delete_win.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/19 13:10:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 16:05:20 by gamerd           ###   ########.fr       */
+/*   Created: 2019/07/19 16:09:55 by gamerd            #+#    #+#             */
+/*   Updated: 2019/07/19 16:22:01 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 void
-	ft_destroy_win(t_win *win)
+	ft_delete_win(t_mydata *mydata, int id)
 {
-	SDL_DestroyRenderer(win->ren);
-	SDL_DestroyWindow(win->win);
-	free(win);
-}
+	int		i;
+	int		j;
 
-void
-	ft_destroy_wins(t_mydata *mydata)
-{
-	int	i;
-
+	if (mydata->wins[0]->window_id == id)
+	{
+		ft_destroy_win(mydata->wins[0]);
+		mydata->win_count--;
+		mydata->wins++;
+		return ;
+	}
 	i = -1;
 	while (++i < mydata->win_count)
-		ft_destroy_win(mydata->wins[i]);
+	{
+		if (mydata->wins[i]->window_id == id)
+		{
+			ft_destroy_win(mydata->wins[i]);
+			j = i;
+			while (++j < mydata->win_count)
+				mydata->wins[j - 1] = mydata->wins[j];
+			mydata->win_count--;
+			return ;
+		}
+	}
 }

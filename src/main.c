@@ -6,7 +6,7 @@
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 13:13:25 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/07/19 16:36:40 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int main(int argc, char **argv)
 {
+	const Uint8 *keyboardState = SDL_GetKeyboardState(NULL);
 	t_mydata	*mydata;
 	int			i;
 
@@ -40,17 +41,31 @@ int main(int argc, char **argv)
 	// 	return EXIT_FAILURE;
 	// }
 	// SDL_FreeSurface(mydata->bmp);
+	SDL_Event	ev;
+	int			run;
+	
+	run = 1;
+	while (run == 1)
+	{
+		while (SDL_PollEvent(&ev) != 0)
+		{
+			SDL_PumpEvents();
+			if(keyboardState[SDL_SCANCODE_ESCAPE])
+			{
+				while (keyboardState[SDL_SCANCODE_ESCAPE])
+					SDL_PumpEvents();
+				ft_run_fun(mydata, ev.window.windowID, &ft_delete_win);
+			}
+			if (mydata->win_count == 0)
+				run = 0;
+		}
 
-	for (int i=0; i < 20; i++) {
-			// SDL_RenderClear(mydata->wins->ren);
-			// SDL_RenderCopy(mydata->ren, mydata->tex, NULL, NULL);
-			// SDL_RenderPresent(mydata->wins->ren);
-			SDL_Delay(1000);
+		ft_update_win_surface(mydata);
 	}
 
-	free(mydata);
 	// // SDL_DestroyTexture(mydata->tex);
-	ft_destroy_win(mydata);
+	ft_destroy_wins(mydata);
+	free(mydata);
 	SDL_Quit();
 
 	return EXIT_SUCCESS;
