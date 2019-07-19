@@ -21,7 +21,7 @@ OBJ_PATH  = obj/
 LIBFT_PATH = libft/
 
 FLAGS = #-Wall -Werror -Wextra
-INC = -lSDL -I ./includes/ -I ./$(LIBFT_PATH)includes/
+INC = -lSDL2 -I ./includes/ -I ./$(LIBFT_PATH)includes/
 
 SRCS_NAME = $(shell ls src | grep -E ".+\.c")
 
@@ -33,12 +33,12 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@make -w -C $(LIBFT_PATH)
 	@echo "\033[92m$(LIBFT_PATH)\033[0m compiled."
-	@gcc $(FLAGS) $(OBJ) $(INC) -L $(LIBFT_PATH) -lft -o $(NAME)
+	@gcc -g $(FLAGS) $(OBJ) $(INC) -L $(LIBFT_PATH) -lft -o $(NAME)
 	@echo "\033[35m$(NAME)\033[0m created."
 
 $(OBJ_PATH)%.o: $(SRCS_PATH)%.c
 	@mkdir -p obj
-	@gcc -c $(FLAGS) $(INC) $< -o $@
+	@gcc -c -g $(FLAGS) $(INC) $< -o $@
 	@echo "\033[33m$<\033[0m compiled."
 	
 clean:
