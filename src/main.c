@@ -6,7 +6,7 @@
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 17:31:50 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/07/19 17:41:13 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int main(int argc, char **argv)
 				run = 0;
 			SDL_PumpEvents();
 		}
-
 		ft_update_win_surface(mydata);
 	}
 

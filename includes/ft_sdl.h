@@ -6,7 +6,7 @@
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 17:35:27 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/07/19 17:40:32 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ void			ft_update_win_surface(t_mydata *mydata);
 void			ft_delete_win(t_mydata *mydata, int id);
 void			ft_destroy_win(t_win *win);
 void			ft_destroy_wins(t_mydata *mydata);
-
-void			ft_run_fun(t_mydata *mydata, int id, void (*fun)(t_mydata *mydata, int id));
 
 t_win			*ft_get_win_from_id(t_mydata *mydata, int id);
 void			ft_button_press(void *mydata, void *win);

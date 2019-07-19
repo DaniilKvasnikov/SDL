@@ -6,7 +6,7 @@
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 13:10:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 16:05:20 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/07/19 17:39:16 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ void
 	i = -1;
 	while (++i < mydata->win_count)
 		ft_destroy_win(mydata->wins[i]);
+	mydata->win_count = 0;
 }
