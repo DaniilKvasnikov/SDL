@@ -6,7 +6,7 @@
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/20 11:21:06 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/07/20 13:28:21 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct	s_win
 	SDL_Window		*win;
 	SDL_Renderer	*ren;
 	int				window_id;
-	void			(*button_press)(void *mydata, void *win);
-	void			(*mouse_muve)(void *mydata, void *win);
+	void			(*button_press)(void *mydata, void *win, SDL_Event *ev);
+	void			(*mouse_muve)(void *mydata, void *win, SDL_Event *ev);
 }				t_win;
 
 typedef struct	s_texture
@@ -73,6 +73,7 @@ void			ft_run_mouse_fun(t_mydata *mydata,SDL_Event ev);
 
 void			ft_init_texture(t_win *win, char *path, t_point_int pos);
 
-void			ft_button_press(void *mydata, void *win);
-void			ft_mouse_muve(void *mydata, void *win);
+void			ft_button_press(void *mydata, void *win, SDL_Event *ev);
+void			ft_mouse_muve(void *mydata, void *win, SDL_Event *ev);
+
 #endif

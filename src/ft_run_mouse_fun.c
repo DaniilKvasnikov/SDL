@@ -6,7 +6,7 @@
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 18:31:03 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 18:40:29 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/07/20 13:01:39 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ void
 	if (win == NULL)
 		return ;
 	if (win->mouse_muve != NULL)
-		win->mouse_muve(mydata, win);
+		win->mouse_muve(mydata, win, &ev);
 }
