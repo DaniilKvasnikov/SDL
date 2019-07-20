@@ -6,7 +6,7 @@
 /*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 19:13:24 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/07/20 11:21:06 by gamerd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct	s_mydata
 	t_point_int		mouse;
 }				t_mydata;
 
-int		ft_sdl_init();
+int				ft_sdl_init();
 
 SDL_Window		*ft_createwin(char *name, t_point pos, t_point size, Uint32 flags);
 SDL_Renderer	*ft_create_rend(SDL_Window *win);
@@ -71,7 +71,7 @@ void			ft_run_keyboard_fun(t_mydata *mydata, SDL_Event ev);
 void			ft_run_mouse_fun(t_mydata *mydata,SDL_Event ev);
 
 
-void			ft_init_texture(t_win *win, char *path);
+void			ft_init_texture(t_win *win, char *path, t_point_int pos);
 
 void			ft_button_press(void *mydata, void *win);
 void			ft_mouse_muve(void *mydata, void *win);
