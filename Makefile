@@ -21,7 +21,16 @@ OBJ_PATH  = obj/
 LIBFT_PATH = libft/
 
 FLAGS = #-Wall -Werror -Wextra
-INC = -lSDL2 -I ./includes/ -I ./$(LIBFT_PATH)includes/
+# INC = -lSDL2 -I ./includes/ -I ./$(LIBFT_PATH)includes/
+SDL =  -F ./includes/frameworks/ -framework SDL2 \
+								-framework SDL2_image \
+								-framework SDL2_ttf \
+								-framework SDL2_mixer
+INCLUDES = -I includes -I libft -I kiss_sdl -I includes/frameworks/SDL2.framework/Headers \
+			-I includes/frameworks/SDL2_image.framework/Versions/A/Headers \
+			-I includes/frameworks/SDL2_ttf.framework/Versions/A/Headers \
+			-I includes/frameworks/SDL2_mixer.framework/Versions/A/Headers
+INC = -I ./includes/ -I ./$(LIBFT_PATH)includes/
 
 SRCS_NAME = $(shell ls src | grep -E ".+\.c")
 
@@ -33,12 +42,12 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@make -w -C $(LIBFT_PATH)
 	@echo "\033[92m$(LIBFT_PATH)\033[0m compiled."
-	@gcc -g $(FLAGS) $(OBJ) $(INC) -L $(LIBFT_PATH) -lft -o $(NAME)
+	@gcc -g $(FLAGS) $(OBJ) $(SDL) $(INCLUDES) $(INC) -L $(LIBFT_PATH) -lft -o $(NAME) -F includes/frameworks/
 	@echo "\033[35m$(NAME)\033[0m created."
 
 $(OBJ_PATH)%.o: $(SRCS_PATH)%.c
 	@mkdir -p obj
-	@gcc -c -g $(FLAGS) $(INC) $< -o $@
+	@gcc -c -g $(FLAGS) $(INC) $< -o $@ -F includes/frameworks/
 	@echo "\033[33m$<\033[0m compiled."
 	
 clean:
