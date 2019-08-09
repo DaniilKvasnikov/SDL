@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 18:23:01 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/06 18:48:30 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/09 16:06:27 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void
 	int	x;
 	int	y;
 
-	if (ev->type == SDL_MOUSEBUTTONDOWN)
-		ft_printf("%d mouse down\n", ((t_win *)win)->window_id);
+	// if (ev->type == SDL_MOUSEBUTTONDOWN)
+	// 	ft_printf("%d mouse down\n", ((t_win *)win)->window_id);
 	if (SDL_GetMouseState(&((t_mydata *)mydata)->mouse.x, &((t_mydata *)mydata)->mouse.y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 	{
 		// SDL_SetRenderDrawColor(((t_win *)win)->ren, 255, 0, 0, 255);

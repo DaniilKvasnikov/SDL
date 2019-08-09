@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/06 19:41:46 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/09 16:18:36 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int main(int argc, char **argv)
 	while (++i < argc)
 		ft_add_win(mydata, ft_init_win(argv[i], (t_point){100, 100}, (t_point){640, 480}, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE));
 
-	add_button_to_win((SDL_Rect){0, 0, 100, 50}, "./img/cat.bmp", mydata->wins[0]);
-	add_button_to_win((SDL_Rect){100, 100, 50, 100}, "./img/cat.bmp", mydata->wins[0]);
+	add_button_to_win((SDL_Rect){0, 0, 100, 50}, "./img/cat.bmp", mydata->wins[0], &button_pressed);
+	add_button_to_win((SDL_Rect){100, 100, 50, 100}, "./img/cat.bmp", mydata->wins[0], &button_pressed);
 
 	SDL_Event	ev;
 	int			run;
@@ -42,8 +42,8 @@ int main(int argc, char **argv)
 		while (SDL_PollEvent(&ev) != 0)
 		{
 			SDL_PumpEvents();
-			ft_printf("%d\n", ev.type);
-			ft_run_mouse_fun(mydata, ev);
+			// ft_printf("%d\n", ev.type);
+			ft_run_mouse_fun(mydata, &ev);
 			ft_run_keyboard_fun(mydata, ev);
 			if (mydata->win_count == 0 || ev.type == 256)
 				run = 0;

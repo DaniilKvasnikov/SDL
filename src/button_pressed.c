@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_run_mouse_fun.c                                 :+:      :+:    :+:   */
+/*   button_pressed.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/19 18:31:03 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/09 16:16:47 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/09 15:23:53 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/09 16:20:16 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-void
-	ft_run_mouse_fun(t_mydata *mydata,SDL_Event *ev)
+int
+	button_pressed(void *but, SDL_Event *ev)
 {
-	t_win *win;
+	int			mx;
+	int			my;
+	t_point		*pos;
+	t_point		*size;
 
-	win = ft_get_win_from_id(mydata, ev->window.windowID);
-	if (win == NULL)
-		return ;
-	if (ev->type == SDL_MOUSEBUTTONDOWN)
-		win_press_button(win, ev);
-	if (win->mouse_muve != NULL)
-		win->mouse_muve(mydata, win, ev);
+	pos = &((t_button *)but)->pos;
+	size = &((t_button *)but)->size;
+	if (SDL_GetMouseState(&mx, &my))
+	{
+		if (mx >= pos->x && mx <= (pos->x + size->x)
+			&& my >= pos->y && my <= (pos->y + size->y))
+		{
+			ft_putendl("Button presed");
+			return (1);
+		}
+	}
+	return (0);
 }
