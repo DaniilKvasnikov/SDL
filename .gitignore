@@ -1,4 +1,5 @@
 sdl
+*.json
 
 # Prerequisites
 *.d
