@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/09 16:25:06 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/09 16:58:23 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@
 # include "ft_struct.h"
 int				ft_sdl_init();
 
-SDL_Window		*ft_createwin(char *name, t_point pos, t_point size, Uint32 flags);
+t_mydata		*init_mydata(void);
+SDL_Window		*ft_createwin(char *name, t_rect rect, Uint32 flags);
 SDL_Renderer	*ft_create_rend(SDL_Window *win);
-t_win			*ft_init_win(char *name, t_point pos, t_point size, Uint32 flags);
+t_win			*ft_init_win(t_mydata *mydata, char *name, t_rect rect, Uint32 flags);
 void			ft_add_win(t_mydata *mydata, t_win *new_win);
 void			ft_update_win_surface(t_mydata *mydata);
-void			add_button_to_win(SDL_Rect rect, char *path_tex, t_win *win,
+void			add_button_to_win(t_rect rect, char *path_tex, t_win *win,
 					int (*button_pressed)(void *win, void *but, SDL_Event *ev));
 
 void			ft_delete_win(t_mydata *mydata, int id);

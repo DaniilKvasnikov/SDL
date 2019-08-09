@@ -6,14 +6,14 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:59:08 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/09 16:25:32 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/09 16:40:59 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 t_button
-	*init_button(SDL_Rect rect, char *path_tex, t_win *win,
+	*init_button(t_rect rect, char *path_tex, t_win *win,
 					int (*button_pressed)(void *win, void *but, SDL_Event *ev))
 {
 	t_button	*button;
@@ -31,7 +31,7 @@ t_button
 }
 
 void
-	add_button_to_win(SDL_Rect rect, char *path_tex, t_win *win,
+	add_button_to_win(t_rect rect, char *path_tex, t_win *win,
 		int (*button_pressed)(void *win, void *but, SDL_Event *ev))
 {
 	t_button	**ptr;

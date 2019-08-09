@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/09 16:18:36 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/09 16:58:43 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,16 @@ int main(int argc, char **argv)
 
 	if (argc == 1)
 		return (0);
-	if((mydata = (t_mydata *)malloc(sizeof(t_mydata))) == NULL)
+	if((mydata = init_mydata()) == NULL)
 		exit(1);
-	mydata->win_count = 0;
-	mydata->keyboardState = SDL_GetKeyboardState(NULL);
 	if (ft_sdl_init() != 0)
 		exit(1);
 	i = 0;
 	while (++i < argc)
-		ft_add_win(mydata, ft_init_win(argv[i], (t_point){100, 100}, (t_point){640, 480}, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE));
+		ft_add_win(mydata, ft_init_win(mydata, argv[i], (t_rect){100, 100, 640, 480}, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE));
 
-	add_button_to_win((SDL_Rect){0, 0, 100, 50}, "./img/cat.bmp", mydata->wins[0], &button_pressed);
-	add_button_to_win((SDL_Rect){100, 100, 50, 100}, "./img/cat.bmp", mydata->wins[0], &button_pressed);
+	add_button_to_win((t_rect){0, 0, 100, 50}, "./img/cat.bmp", mydata->wins[0], &button_pressed);
+	add_button_to_win((t_rect){100, 100, 50, 100}, "./img/cat.bmp", mydata->wins[0], &button_pressed);
 
 	SDL_Event	ev;
 	int			run;
@@ -42,7 +40,6 @@ int main(int argc, char **argv)
 		while (SDL_PollEvent(&ev) != 0)
 		{
 			SDL_PumpEvents();
-			// ft_printf("%d\n", ev.type);
 			ft_run_mouse_fun(mydata, &ev);
 			ft_run_keyboard_fun(mydata, ev);
 			if (mydata->win_count == 0 || ev.type == 256)
@@ -51,7 +48,6 @@ int main(int argc, char **argv)
 		ft_update_win_surface(mydata);
 	}
 
-	// SDL_DestroyTexture(mydata->tex);
 	ft_destroy_wins(mydata);
 	free(mydata);
 	SDL_Quit();

@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/09 16:26:05 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/09 16:55:01 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ typedef struct	s_point
 	float		x;
 	float		y;
 }				t_point;
+
+typedef struct	s_rect
+{
+	int			x;
+	int			y;
+	int			w;
+	int			h;
+}				t_rect;
 
 typedef struct	s_point_int
 {
@@ -52,6 +60,7 @@ typedef struct	s_win
 	int				buttons_count;
 	t_texture		*textures;
 	int				textures_count;
+	void			*mydata;
 }				t_win;
 
 typedef struct	s_mydata
