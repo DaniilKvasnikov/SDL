@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/26 21:19:43 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/06 19:16:41 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,42 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include "ft_printf.h"
-
-typedef struct	s_point
-{
-	float		x;
-	float		y;
-}				t_point;
-
-typedef struct	s_point_int
-{
-	int			x;
-	int			y;
-}				t_point_int;
-
-typedef struct	s_win
-{
-	SDL_Window		*win;
-	SDL_Renderer	*ren;
-	int				window_id;
-	void			(*button_press)(void *mydata, void *win, SDL_Event *ev);
-	void			(*mouse_muve)(void *mydata, void *win, SDL_Event *ev);
-}				t_win;
-
-typedef struct	s_texture
-{
-	SDL_Texture	*tex;
-	char		*name;
-}				t_texture;
-
-typedef struct	s_mydata
-{
-	t_win			**wins;
-	int				win_count;
-	const Uint8		*keyboardState;
-	t_point_int		mouse;
-}				t_mydata;
-
+# include "ft_struct.h"
 int				ft_sdl_init();
 
 SDL_Window		*ft_createwin(char *name, t_point pos, t_point size, Uint32 flags);
@@ -60,6 +25,7 @@ SDL_Renderer	*ft_create_rend(SDL_Window *win);
 t_win			*ft_init_win(char *name, t_point pos, t_point size, Uint32 flags);
 void			ft_add_win(t_mydata *mydata, t_win *new_win);
 void			ft_update_win_surface(t_mydata *mydata);
+void			add_button_to_win(SDL_Rect rect, char *path_tex, t_win *win);
 
 void			ft_delete_win(t_mydata *mydata, int id);
 void			ft_destroy_win(t_win *win);
@@ -70,7 +36,9 @@ void			ft_run_keyboard_fun(t_mydata *mydata, SDL_Event ev);
 
 void			ft_run_mouse_fun(t_mydata *mydata,SDL_Event ev);
 
+void			render_wins(t_mydata *mydata);
 
+SDL_Texture*	loadTexture(char *path, t_win *win);
 void			ft_init_texture(t_win *win, char *path, t_point_int pos);
 
 void			ft_button_press(void *mydata, void *win, SDL_Event *ev);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/20 14:05:46 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/08/06 19:41:46 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,40 +27,31 @@ int main(int argc, char **argv)
 		exit(1);
 	i = 0;
 	while (++i < argc)
-		ft_add_win(mydata, ft_init_win(argv[i], (t_point){100, 100}, (t_point){640, 480}, SDL_WINDOW_SHOWN));
+		ft_add_win(mydata, ft_init_win(argv[i], (t_point){100, 100}, (t_point){640, 480}, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE));
 
-	// mydata->bmp = SDL_LoadBMP("./img/cat.bmp");
-	// if (mydata->bmp == NULL) {
-	// 	fprintf(stderr, "SDL_LoadBMP Error: %s\n", SDL_GetError());
-	// 	return EXIT_FAILURE;
-	// }
-
-	// mydata->tex = SDL_CreateTextureFromSurface(mydata->ren, mydata->bmp);
-	// if (mydata->tex == NULL) {
-	// 	fprintf(stderr, "SDL_CreateTextureFromSurface Error: %s\n", SDL_GetError());
-	// 	return EXIT_FAILURE;
-	// }
-	// SDL_FreeSurface(mydata->bmp);
+	add_button_to_win((SDL_Rect){0, 0, 100, 50}, "./img/cat.bmp", mydata->wins[0]);
+	add_button_to_win((SDL_Rect){100, 100, 50, 100}, "./img/cat.bmp", mydata->wins[0]);
 
 	SDL_Event	ev;
 	int			run;
-	
+
 	run = 1;
 	while (run == 1)
 	{
+		render_wins(mydata);
 		while (SDL_PollEvent(&ev) != 0)
 		{
 			SDL_PumpEvents();
 			ft_printf("%d\n", ev.type);
 			ft_run_mouse_fun(mydata, ev);
 			ft_run_keyboard_fun(mydata, ev);
-			if (mydata->win_count == 0)
+			if (mydata->win_count == 0 || ev.type == 256)
 				run = 0;
 		}
 		ft_update_win_surface(mydata);
 	}
 
-	// // SDL_DestroyTexture(mydata->tex);
+	// SDL_DestroyTexture(mydata->tex);
 	ft_destroy_wins(mydata);
 	free(mydata);
 	SDL_Quit();

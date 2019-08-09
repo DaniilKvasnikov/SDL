@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_texture.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 19:04:52 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/20 12:28:27 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/08/06 19:25:54 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,15 @@ void
 	ft_init_texture(t_win *win, char *path, t_point_int pos)
 {
 	SDL_Texture	*tex;
+	int			size;
+
+	size = 200;
 
 	tex = loadTexture(path, win);
 
 	//Clear screen
-	SDL_RenderClear( win->ren );
 
-	SDL_Rect dstrect = (SDL_Rect){pos.x - 50, pos.y - 50, 100, 100};
+	SDL_Rect dstrect = (SDL_Rect){pos.x - size / 2, pos.y - size / 2, size, size};
 	// SDL_Rect srcrect = (SDL_Rect){0,0, 100, 100};
 	//Render texture to screen
 	SDL_RenderCopy( win->ren, tex, NULL, &dstrect );

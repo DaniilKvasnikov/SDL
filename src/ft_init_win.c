@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_win.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:38:48 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 18:37:48 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/08/06 19:19:36 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ t_win
 	win->window_id = SDL_GetWindowID(win->win);
 	win->button_press = &ft_button_press;
 	win->mouse_muve = &ft_mouse_muve;
+	win->buttons = NULL;
+	win->buttons_count = 0;
 	return (win);
 }
