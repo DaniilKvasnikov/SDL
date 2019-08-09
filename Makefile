@@ -72,4 +72,10 @@ fclean: clean
 	
 re: fclean all
 
-.PHONY: all, clean, fclean, re
+delete:
+	@/bin/rm -rf $(NAME)
+	@/bin/rm -rf $(OBJ_PATH)
+
+rl: delete all
+
+.PHONY: all, clean, fclean, re, rl, delete
