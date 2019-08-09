@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 15:20:16 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/09 16:19:39 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/09 16:26:39 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void
 	i = -1;
 	while (++i < win->buttons_count)
 	{
-		if (win->buttons[i]->button_pressed(win->buttons[i], ev) == 1)
+		if (win->buttons[i]->button_pressed(win, win->buttons[i], ev) == 1)
 			return ;
 	}
 }

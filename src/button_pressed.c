@@ -6,14 +6,14 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 15:23:53 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/09 16:20:16 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/09 16:24:26 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 int
-	button_pressed(void *but, SDL_Event *ev)
+	button_pressed(void *win, void *but, SDL_Event *ev)
 {
 	int			mx;
 	int			my;

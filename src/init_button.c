@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:59:08 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/09 16:13:17 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/09 16:25:32 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_button
 	*init_button(SDL_Rect rect, char *path_tex, t_win *win,
-					int (*button_pressed)(void *win, SDL_Event *ev))
+					int (*button_pressed)(void *win, void *but, SDL_Event *ev))
 {
 	t_button	*button;
 	t_texture	*texture;
@@ -32,7 +32,7 @@ t_button
 
 void
 	add_button_to_win(SDL_Rect rect, char *path_tex, t_win *win,
-		int (*button_pressed)(void *win, SDL_Event *ev))
+		int (*button_pressed)(void *win, void *but, SDL_Event *ev))
 {
 	t_button	**ptr;
 	int			i;

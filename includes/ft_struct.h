@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/09 16:10:42 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/09 16:26:05 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct	s_button
 	t_point		pos;
 	t_point		size;
 	SDL_Texture	*texture;
-	int			(*button_pressed)(void *win, SDL_Event *ev);
+	int			(*button_pressed)(void *win, void *but, SDL_Event *ev);
 }				t_button;
 
 typedef struct	s_win
