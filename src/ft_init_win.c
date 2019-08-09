@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:38:48 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/06 19:19:36 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/09 14:19:15 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ t_win
 	win->mouse_muve = &ft_mouse_muve;
 	win->buttons = NULL;
 	win->buttons_count = 0;
+	win->textures_count = 0;
 	return (win);
 }

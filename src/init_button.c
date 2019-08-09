@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:59:08 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/06 19:31:15 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/09 14:23:56 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@ t_button
 	*init_button(SDL_Rect rect, char *path_tex, t_win *win)
 {
 	t_button	*button;
+	t_texture	*texture;
 
 	if ((button = (t_button *)malloc(sizeof(t_button))) == NULL)
 		return NULL;
 	button->rect = rect;
-	button->texture = loadTexture(path_tex, win);
+	if ((texture = get_texture_to_win(win, path_tex)) == NULL)
+		exit(1);
+	button->texture = texture->tex;
 	return (button);
 }
 

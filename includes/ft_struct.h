@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/06 19:20:55 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/09 14:09:32 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct	s_win
 	void			(*mouse_muve)(void *mydata, void *win, SDL_Event *ev);
 	t_button		**buttons;
 	int				buttons_count;
+	t_texture		*textures;
+	int				textures_count;
 }				t_win;
 
 typedef struct	s_mydata

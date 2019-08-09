@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/06 19:16:41 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/09 14:14:01 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,6 @@ void			ft_init_texture(t_win *win, char *path, t_point_int pos);
 void			ft_button_press(void *mydata, void *win, SDL_Event *ev);
 void			ft_mouse_muve(void *mydata, void *win, SDL_Event *ev);
 
+void			add_texture_to_win(t_win *win, char *path);
+t_texture		*get_texture_to_win(t_win *win, char *path);
 #endif
