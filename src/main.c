@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 		exit(1);
 	i = 0;
 	while (++i < argc)
-		ft_add_win(mydata, ft_init_win(mydata, argv[i], (t_rect){100, 100, 640, 480}, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE));
+		ft_add_win(mydata, ft_init_win(mydata, argv[i], (t_rect){100, 100, 640, 480}, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_INIT_TIMER | SDL_INIT_VIDEO));
 
 	add_button_to_win((t_rect){0, 0, 100, 50}, "./img/cat.bmp", mydata->wins[0], &button_pressed);
 	add_button_to_win((t_rect){100, 100, 50, 100}, "./img/cat.bmp", mydata->wins[0], &button_pressed);

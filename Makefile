@@ -33,7 +33,7 @@ OBJ = $(addprefix $(OBJ_PATH), $(SRCS_NAME:.c=.o))
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
 	CCFLAGS = LINUX
-	INC = -lSDL2 -I ./includes/ -I ./$(LIBFT_PATH)includes/
+	INC = -lSDL2 -lSDL2_ttf -I ./includes/ -I ./$(LIBFT_PATH)includes/
 endif
 ifeq ($(UNAME_S),Darwin)
 	CCFLAGS = OSX
@@ -76,6 +76,11 @@ delete:
 	@/bin/rm -rf $(NAME)
 	@/bin/rm -rf $(OBJ_PATH)
 
+install_ubuntu:
+	sudo apt-get install libsdl2-ttf-dev -y
+	sudo apt-get install libsdl2-dev -y
+	sudo apt-get install libsdl2-2.0 -y
+
 rl: delete all
 
-.PHONY: all, clean, fclean, re, rl, delete
+.PHONY: all, clean, fclean, re, rl, delete, install_ubuntu
