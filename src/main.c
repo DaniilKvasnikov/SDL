@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/09 16:58:43 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/11 16:26:42 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ int main(int argc, char **argv)
 		return (0);
 	if((mydata = init_mydata()) == NULL)
 		exit(1);
-	if (ft_sdl_init() != 0)
+	if (ft_sdl_init(SDL_INIT_EVERYTHING) != 0)
 		exit(1);
 	i = 0;
 	while (++i < argc)
-		ft_add_win(mydata, ft_init_win(mydata, argv[i], (t_rect){100, 100, 640, 480}, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_INIT_TIMER | SDL_INIT_VIDEO));
+		ft_add_win(mydata, ft_init_win(mydata, argv[i], (t_rect){100, 100, 640, 480},
+			SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_SWSURFACE));
 
 	add_button_to_win((t_rect){0, 0, 100, 50}, "./img/cat.bmp", mydata->wins[0], &button_pressed);
 	add_button_to_win((t_rect){100, 100, 50, 100}, "./img/cat.bmp", mydata->wins[0], &button_pressed);

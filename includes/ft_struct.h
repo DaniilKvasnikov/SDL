@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/09 16:55:01 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/11 18:06:17 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_STRUCT_H
 
 # include <SDL2/SDL.h>
+# include <SDL2/SDL_ttf.h>
 
 typedef struct	s_point
 {
@@ -53,6 +54,7 @@ typedef struct	s_win
 {
 	SDL_Window		*win;
 	SDL_Renderer	*ren;
+	SDL_Surface		*screen;
 	int				window_id;
 	void			(*button_press)(void *mydata, void *win, SDL_Event *ev);
 	void			(*mouse_muve)(void *mydata, void *win, SDL_Event *ev);
@@ -69,6 +71,7 @@ typedef struct	s_mydata
 	int				win_count;
 	const Uint8		*keyboardState;
 	t_point_int		mouse;
+	TTF_Font		*font;
 }				t_mydata;
 
 #endif
