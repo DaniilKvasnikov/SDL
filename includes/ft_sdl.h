@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/09 16:58:23 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/11 18:58:21 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ SDL_Renderer	*ft_create_rend(SDL_Window *win);
 t_win			*ft_init_win(t_mydata *mydata, char *name, t_rect rect, Uint32 flags);
 void			ft_add_win(t_mydata *mydata, t_win *new_win);
 void			ft_update_win_surface(t_mydata *mydata);
-void			add_button_to_win(t_rect rect, char *path_tex, t_win *win,
+void			add_button_to_win(t_rect rect, char *path_tex, t_win *win, char *str,
 					int (*button_pressed)(void *win, void *but, SDL_Event *ev));
 
 void			ft_delete_win(t_mydata *mydata, int id);
@@ -44,12 +44,11 @@ SDL_Texture*	loadTexture(char *path, t_win *win);
 void			ft_init_texture(t_win *win, char *path, t_point_int pos);
 
 void			ft_button_press(void *mydata, void *win, SDL_Event *ev);
-void			ft_mouse_muve(void *mydata, void *win, SDL_Event *ev);
 
 void			add_texture_to_win(t_win *win, char *path);
 t_texture		*get_texture_to_win(t_win *win, char *path);
 
 
-void			win_press_button(t_win *win, SDL_Event *ev);
+void			win_press_button(t_win *win, SDL_Event *ev, int x, int y);
 int				button_pressed(void *win, void *but, SDL_Event *ev);
 #endif

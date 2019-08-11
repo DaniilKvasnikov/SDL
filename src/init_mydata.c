@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 16:56:35 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/11 17:59:43 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/11 18:35:15 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ t_mydata
 		printf("TTF_Init: %s\n", TTF_GetError());
 		exit(1);
 	}
-	mydata->font = TTF_OpenFont("/usr/share/fonts/truetype/freefont/FreeMonoOblique.ttf", 24);
+	mydata->font =
+		TTF_OpenFont("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 12);
 	if(mydata->font == NULL)
 	{
 		printf("TTF_OpenFont: %s\n", TTF_GetError());
