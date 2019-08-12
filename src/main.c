@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/12 09:53:19 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/12 10:20:51 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 
 	add_button_to_win((t_rect){0, 0, 100, 50}, "./img/button_1.bmp", mydata->wins[0], "butt1", &button_pressed);
 	add_image_to_win((t_rect){50, 25, 50, 100}, "./img/cat.bmp", mydata->wins[0]);
-	add_checkbox_to_win((t_rect){200, 200, 100, 100}, "img/unchecked_checkbox.bmp", "/home/rrhaenys/school/SDL/img/checked_checkbox.bmp", mydata->wins[0], NULL, &checkbox_press);
+	add_checkbox_to_win((t_rect){200, 200, 100, 100}, "img/unchecked_checkbox.bmp", "img/checked_checkbox.bmp", mydata->wins[0], NULL, &checkbox_press);
 
 	SDL_Event	ev;
 	int			run;
