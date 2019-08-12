@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 18:31:03 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/11 19:00:33 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/12 14:58:42 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,10 @@ void
 	{
 		if (ev->type == SDL_MOUSEBUTTONDOWN)
 			win_press_button(win, ev, x, y);
+		if (ev->type == SDL_MOUSEBUTTONUP)
+			win->active_element = NULL;
+		if (win->active_element != NULL
+			&& win->active_element->element_pressed != NULL)
+			win->active_element->element_pressed(win, win->active_element, ev);
 	}
 }

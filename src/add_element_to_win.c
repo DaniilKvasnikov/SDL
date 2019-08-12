@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   button_pressed.c                                   :+:      :+:    :+:   */
+/*   add_element_to_win.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/09 15:23:53 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/12 09:50:48 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/12 15:17:18 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/12 15:18:21 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-int
-	button_pressed(void *win, void *but, SDL_Event *ev)
+t_element
+	*add_element_to_win(t_win *win, t_element *element)
 {
-	ft_putendl("Button presed");
+	t_element	**ptr;
+	int			i;
+
+	ptr = win->elements;
+	win->element_count++;
+	win->elements = (t_element **)malloc(sizeof(t_element *) * win->element_count);
+	i = -1;
+	while (++i < (win->element_count - 1))
+		win->elements[i] = ptr[i];
+	win->elements[win->element_count - 1] = element;
+	if (ptr != NULL)
+		free(ptr);
+	return (element);
 }

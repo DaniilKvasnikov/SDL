@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/12 09:53:57 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/12 14:45:40 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct	s_element
 	SDL_Texture	*texture2;
 	int			num_tex;
 	char		*str;
+	int			(*element_touch)(void *win, void *but, SDL_Event *ev);
 	int			(*element_pressed)(void *win, void *but, SDL_Event *ev);
 }				t_element;
 
@@ -61,6 +62,7 @@ typedef struct	s_win
 	void			(*button_press)(void *mydata, void *win, SDL_Event *ev);
 	t_element		**elements;
 	int				element_count;
+	t_element		*active_element;
 	t_texture		*textures;
 	int				textures_count;
 	void			*mydata;

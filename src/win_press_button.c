@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 15:20:16 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/12 09:14:47 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/12 14:57:08 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ void
 		if (x >= pos->x && x <= (pos->x + size->x)
 			&& y >= pos->y && y <= (pos->y + size->y))
 		{
-			if (win->elements[i]->element_pressed != NULL)
-				win->elements[i]->element_pressed(win, win->elements[i], ev);
+			if (win->elements[i]->element_touch != NULL)
+				win->elements[i]->element_touch(win, win->elements[i], ev);
+			win->active_element = win->elements[i];
 			return ;
 		}
 	}

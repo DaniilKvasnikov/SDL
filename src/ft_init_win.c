@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:38:48 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/12 09:11:51 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/12 14:04:02 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_win
 	win->elements = NULL;
 	win->element_count = 0;
 	win->textures_count = 0;
+	win->active_element = NULL;
 	win->mydata = mydata;
 	return (win);
 }
