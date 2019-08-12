@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 16:11:35 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/12 17:11:20 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/12 20:57:34 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int
 	t_mydata	*mydata;
 	SDL_Rect	Message_rect;
 
-	Message_rect = (SDL_Rect){elem->pos.x, elem->pos.y, elem->size.x, elem->size.y};
 	mydata = (t_mydata *)win->mydata;
 	SDL_Surface* message = TTF_RenderText_Solid(mydata->font, str, textColor);
 	if( message == NULL )
@@ -30,6 +29,12 @@ int
 		exit(1);
     }
 	SDL_Texture* MessageTex = SDL_CreateTextureFromSurface(win->ren, message);
+	int w, h;
+	SDL_QueryTexture(MessageTex, NULL, NULL, &w, &h);
+	Message_rect = (SDL_Rect){
+		elem->pos.x + elem->size.x / 2 - w / 2,
+		elem->pos.y + elem->size.y / 2 - h / 2,
+		w, h};
 	SDL_RenderCopy(win->ren, MessageTex, NULL, &Message_rect);
 	return (0);
 }

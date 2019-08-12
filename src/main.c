@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/12 20:18:38 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/12 20:43:52 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int main(int argc, char **argv)
 			SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_SWSURFACE));
 
 	add_button_to_win((t_rect){0, 0, 100, 50}, "./img/button_1.bmp", mydata->wins[0], "butt1", &element_touch, &button_render);
-	add_image_to_win((t_rect){50, 25, 50, 100}, "./img/cat.bmp", mydata->wins[0], &button_render);
 	add_button_to_win((t_rect){0, 50, 100, 50}, "./img/button_1.bmp", mydata->wins[0], "butt2", &element_touch, &button_render);
+	add_image_to_win((t_rect){50, 25, 100, 100}, "./img/cat.bmp", mydata->wins[0], &button_render);
 	add_checkbox_to_win((t_rect){200, 200, 100, 100}, "img/unchecked_checkbox.bmp", "img/checked_checkbox.bmp", mydata->wins[0], &checkbox_touch, &checkbox_render);
 	add_sliders_to_win((t_rect){100, 400, 100, 50}, "./img/button_1.bmp", "img/unchecked_checkbox.bmp", mydata->wins[0], &element_touch, &sliders_pressed, &sliders_render);
 
