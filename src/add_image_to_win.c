@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 08:59:19 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/12 09:02:12 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/12 09:26:52 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,23 @@
 void
 	add_image_to_win(t_rect rect, char *path_tex, t_win *win)
 {
-	t_button	**ptr;
+	t_element	**ptr;
 	int			i;
 
-	win->buttons_count++;
-	if (win->buttons_count == 1)
+	win->element_count++;
+	if (win->element_count == 1)
 	{
-		win->buttons = (t_button **)malloc(sizeof(t_button *));
-		win->buttons[0] = init_button(rect, path_tex, win, NULL, NULL);
+		win->elements = (t_element **)malloc(sizeof(t_element *));
+		win->elements[0] = init_element(rect, path_tex, NULL, win, NULL, NULL);
 	}
 	else
 	{
-		ptr = win->buttons;
-		win->buttons = (t_button **)malloc(sizeof(t_button *) * win->buttons_count);
+		ptr = win->elements;
+		win->elements = (t_element **)malloc(sizeof(t_element *) * win->element_count);
 		i = -1;
-		while (++i < (win->buttons_count - 1))
-			win->buttons[i] = ptr[i];
-		win->buttons[i] = init_button(rect, path_tex, win, NULL, NULL);
+		while (++i < (win->element_count - 1))
+			win->elements[i] = ptr[i];
+		win->elements[i] = init_element(rect, path_tex, NULL, win, NULL, NULL);
 		free(ptr);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 19:10:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/12 09:01:18 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/12 09:55:46 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,16 @@ void
 	{
 		SDL_RenderClear( mydata->wins[i]->ren );
 		j = -1;
-		while (++j < mydata->wins[i]->buttons_count)
+		while (++j < mydata->wins[i]->element_count)
 		{
-			rect = (SDL_Rect){mydata->wins[i]->buttons[j]->pos.x, mydata->wins[i]->buttons[j]->pos.y,
-				mydata->wins[i]->buttons[j]->size.x, mydata->wins[i]->buttons[j]->size.y};
-			SDL_RenderCopy( mydata->wins[i]->ren, mydata->wins[i]->buttons[j]->texture, NULL, &rect );
-			if (mydata->wins[i]->buttons[j]->str != NULL)
-				draw_text(mydata->wins[i], &rect, mydata->wins[i]->buttons[j]->str);
+			rect = (SDL_Rect){mydata->wins[i]->elements[j]->pos.x, mydata->wins[i]->elements[j]->pos.y,
+				mydata->wins[i]->elements[j]->size.x, mydata->wins[i]->elements[j]->size.y};
+			if (mydata->wins[i]->elements[j]->num_tex == 0)
+				SDL_RenderCopy( mydata->wins[i]->ren, mydata->wins[i]->elements[j]->texture1, NULL, &rect );
+			else if (mydata->wins[i]->elements[j]->num_tex == 1)
+				SDL_RenderCopy( mydata->wins[i]->ren, mydata->wins[i]->elements[j]->texture2, NULL, &rect );
+			if (mydata->wins[i]->elements[j]->str != NULL)
+				draw_text(mydata->wins[i], &rect, mydata->wins[i]->elements[j]->str);
 		}
 		SDL_RenderPresent( mydata->wins[i]->ren );
 	}

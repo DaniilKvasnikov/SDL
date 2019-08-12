@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:38:48 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/11 18:53:29 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/12 09:11:51 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ t_win
 		return (NULL);
 	win->window_id = SDL_GetWindowID(win->win);
 	win->button_press = &ft_button_press;
-	win->buttons = NULL;
-	win->buttons_count = 0;
+	win->elements = NULL;
+	win->element_count = 0;
 	win->textures_count = 0;
 	win->mydata = mydata;
 	return (win);

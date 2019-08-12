@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/11 18:53:34 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/12 09:53:57 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,16 @@ typedef struct	s_texture
 	char		*name;
 }				t_texture;
 
-typedef struct	s_button
+typedef struct	s_element
 {
 	t_point		pos;
 	t_point		size;
-	SDL_Texture	*texture;
+	SDL_Texture	*texture1;
+	SDL_Texture	*texture2;
+	int			num_tex;
 	char		*str;
-	int			(*button_pressed)(void *win, void *but, SDL_Event *ev);
-}				t_button;
+	int			(*element_pressed)(void *win, void *but, SDL_Event *ev);
+}				t_element;
 
 typedef struct	s_win
 {
@@ -57,8 +59,8 @@ typedef struct	s_win
 	SDL_Renderer	*ren;
 	int				window_id;
 	void			(*button_press)(void *mydata, void *win, SDL_Event *ev);
-	t_button		**buttons;
-	int				buttons_count;
+	t_element		**elements;
+	int				element_count;
 	t_texture		*textures;
 	int				textures_count;
 	void			*mydata;
