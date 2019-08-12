@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:59:08 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/12 14:47:15 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/12 17:14:34 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 t_element
 	*init_element(t_rect rect, char *path_tex1, char *path_tex2, t_win *win, char *str,
 					int (*element_touch)(void *win, void *but, SDL_Event *ev),
-					int (*element_pressed)(void *win, void *but, SDL_Event *ev))
+					int (*element_pressed)(void *win, void *but, SDL_Event *ev),
+					int (*draw)(void *win, void *elem))
 {
 	t_element	*button;
 	t_texture	*texture1;
@@ -45,5 +46,6 @@ t_element
 	button->element_touch = element_touch;
 	button->element_pressed = element_pressed;
 	button->str = str;
+	button->draw = draw;
 	return (button);
 }
