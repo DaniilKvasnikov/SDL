@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/12 15:18:41 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/12 15:58:21 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ t_element		*add_element_to_win(t_win *win, t_element *element);
 t_element		*add_button_to_win(t_rect rect, char *path_tex, t_win *win, char *str,
 					int (*button_pressed)(void *win, void *but, SDL_Event *ev));
 t_element		*add_image_to_win(t_rect rect, char *path_tex, t_win *win);
-t_element		*add_checkbox_to_win(t_rect rect, char *path_tex1, char *path_tex2, t_win *win, char *str,
+t_element		*add_checkbox_to_win(t_rect rect, char *path_tex1, char *path_tex2, t_win *win,
 					int (*button_pressed)(void *win, void *but, SDL_Event *ev));
 
 void			win_press_button(t_win *win, SDL_Event *ev, int x, int y);
 int				element_pressed(void *win, void *but, SDL_Event *ev);
 int				element_touch(void *win, void *but, SDL_Event *ev);
-int				checkbox_press(void *win, void *but, SDL_Event *ev);
+int				checkbox_touch(void *win, void *but, SDL_Event *ev);
 #endif

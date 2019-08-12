@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkbox_press.c                                   :+:      :+:    :+:   */
+/*   checkbox_touch.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 09:51:39 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/12 09:55:02 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/12 15:28:11 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 int
-	checkbox_press(void *win, void *but, SDL_Event *ev)
+	checkbox_touch(void *win, void *but, SDL_Event *ev)
 {
 	t_element	*elem;
 
