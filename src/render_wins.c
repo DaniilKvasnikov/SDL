@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 19:10:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/11 18:39:14 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/12 09:01:18 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void
 			rect = (SDL_Rect){mydata->wins[i]->buttons[j]->pos.x, mydata->wins[i]->buttons[j]->pos.y,
 				mydata->wins[i]->buttons[j]->size.x, mydata->wins[i]->buttons[j]->size.y};
 			SDL_RenderCopy( mydata->wins[i]->ren, mydata->wins[i]->buttons[j]->texture, NULL, &rect );
-			draw_text(mydata->wins[i], &rect, mydata->wins[i]->buttons[j]->str);
+			if (mydata->wins[i]->buttons[j]->str != NULL)
+				draw_text(mydata->wins[i], &rect, mydata->wins[i]->buttons[j]->str);
 		}
 		SDL_RenderPresent( mydata->wins[i]->ren );
 	}

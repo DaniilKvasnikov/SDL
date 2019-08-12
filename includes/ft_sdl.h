@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/11 18:58:21 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/12 09:02:42 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ void			ft_button_press(void *mydata, void *win, SDL_Event *ev);
 void			add_texture_to_win(t_win *win, char *path);
 t_texture		*get_texture_to_win(t_win *win, char *path);
 
+t_button		*init_button(t_rect rect, char *path_tex, t_win *win, char *str,
+					int (*button_pressed)(void *win, void *but, SDL_Event *ev));
+void			add_image_to_win(t_rect rect, char *path_tex, t_win *win);
 
 void			win_press_button(t_win *win, SDL_Event *ev, int x, int y);
 int				button_pressed(void *win, void *but, SDL_Event *ev);
