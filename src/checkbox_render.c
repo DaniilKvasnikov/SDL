@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_wins.c                                      :+:      :+:    :+:   */
+/*   checkbox_render.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/06 19:10:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/12 19:10:24 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/12 20:17:54 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/12 20:20:46 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-void
-	render_wins(t_mydata *mydata)
+int
+	checkbox_render(void *win, void *elem)
 {
-	int			i;
-	int			j;
-	SDL_Rect	rect;
-	
-	i = -1;
-	while (++i < mydata->win_count)
-	{
-		SDL_RenderClear( mydata->wins[i]->ren );
-		j = -1;
-		while (++j < mydata->wins[i]->element_count)
-			if (mydata->wins[i]->elements[j]->draw != NULL)
-				mydata->wins[i]->elements[j]->draw(mydata->wins[i], mydata->wins[i]->elements[j]);
-		SDL_RenderPresent( mydata->wins[i]->ren );
-	}
+	t_win		*ptr_win;
+	t_element	*ptr_elem;
+
+	ptr_win = (t_win *)win;
+	ptr_elem = (t_element *)elem;
+	if (ptr_elem->int_par == 0)
+		texture_render(ptr_win, ptr_elem, ptr_elem->texture1);
+	else if (ptr_elem->int_par == 1)
+		texture_render(ptr_win, ptr_elem, ptr_elem->texture2);
+	if (ptr_elem->str != NULL)
+		render_text(ptr_win, ptr_elem, ptr_elem->str);
+	return (0);
 }

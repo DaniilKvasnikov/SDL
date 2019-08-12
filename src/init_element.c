@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:59:08 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/12 17:14:34 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/12 20:22:02 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_element
 	*init_element(t_rect rect, char *path_tex1, char *path_tex2, t_win *win, char *str,
 					int (*element_touch)(void *win, void *but, SDL_Event *ev),
-					int (*element_pressed)(void *win, void *but, SDL_Event *ev),
+					int (*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 					int (*draw)(void *win, void *elem))
 {
 	t_element	*button;
@@ -42,10 +42,11 @@ t_element
 	}
 	else
 		button->texture2 = NULL;
-	button->num_tex = 0;
 	button->element_touch = element_touch;
 	button->element_pressed = element_pressed;
 	button->str = str;
 	button->draw = draw;
+	button->int_par = 0;
+	button->float_par = 0;
 	return (button);
 }

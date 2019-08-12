@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 09:51:39 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/12 15:28:11 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/12 20:21:35 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@ int
 	t_element	*elem;
 
 	elem = (t_element *)but;
-	if (elem->num_tex == 0)
-		elem->num_tex = 1;
-	else if (elem->num_tex == 1)
-		elem->num_tex = 0;
-	ft_putendl("Checkbox presed");
+	if (elem->int_par == 0)
+		elem->int_par = 1;
+	else if (elem->int_par == 1)
+		elem->int_par = 0;
 }

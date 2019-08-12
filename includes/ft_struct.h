@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/12 17:13:45 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/12 20:20:20 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ typedef struct	s_point
 	float		y;
 }				t_point;
 
+typedef struct	s_point_int
+{
+	int			x;
+	int			y;
+}				t_point_int;
+
 typedef struct	s_rect
 {
 	int			x;
@@ -29,12 +35,6 @@ typedef struct	s_rect
 	int			w;
 	int			h;
 }				t_rect;
-
-typedef struct	s_point_int
-{
-	int			x;
-	int			y;
-}				t_point_int;
 
 typedef struct	s_texture
 {
@@ -48,11 +48,12 @@ typedef struct	s_element
 	t_point		size;
 	SDL_Texture	*texture1;
 	SDL_Texture	*texture2;
-	int			num_tex;
+	int			int_par;
+	float		float_par;
 	char		*str;
 	int			(*draw)(void *win, void *elem);
 	int			(*element_touch)(void *win, void *but, SDL_Event *ev);
-	int			(*element_pressed)(void *win, void *but, SDL_Event *ev);
+	int			(*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
 }				t_element;
 
 typedef struct	s_win

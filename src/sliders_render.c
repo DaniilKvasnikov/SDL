@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_wins.c                                      :+:      :+:    :+:   */
+/*   sliders_render.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/06 19:10:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/12 19:10:24 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/12 19:37:43 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/12 20:13:20 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-void
-	render_wins(t_mydata *mydata)
+int
+	sliders_render(void *win, void *elem)
 {
-	int			i;
-	int			j;
+	t_win		*ptr_win;
+	t_element	*ptr_elem;
 	SDL_Rect	rect;
-	
-	i = -1;
-	while (++i < mydata->win_count)
-	{
-		SDL_RenderClear( mydata->wins[i]->ren );
-		j = -1;
-		while (++j < mydata->wins[i]->element_count)
-			if (mydata->wins[i]->elements[j]->draw != NULL)
-				mydata->wins[i]->elements[j]->draw(mydata->wins[i], mydata->wins[i]->elements[j]);
-		SDL_RenderPresent( mydata->wins[i]->ren );
-	}
+
+	ptr_win = (t_win *)win;
+	ptr_elem = (t_element *)elem;
+	texture_render(ptr_win, ptr_elem, ptr_elem->texture1);
+	rect = (SDL_Rect){.x = ptr_elem->pos.x - ptr_elem->size.y / 4 + ptr_elem->size.x * ptr_elem->float_par, .y = ptr_elem->pos.y, .w = ptr_elem->size.y / 2, .h = ptr_elem->size.y};
+	texture_render_rect(win, elem, ptr_elem->texture2, &rect);
+	return (0);
 }

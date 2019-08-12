@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   button_render.c                                    :+:      :+:    :+:   */
+/*   sliders_pressed.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/12 17:20:00 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/12 20:19:31 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/12 19:54:07 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/12 20:26:19 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 int
-	button_render(void *win, void *elem)
+	sliders_pressed(void *win, void *but, SDL_Event *ev, t_point_int *mouse)
 {
+	t_element	*elem;
+	t_point_int	delta;
 	t_win		*ptr_win;
-	t_element	*ptr_elem;
-	
+
 	ptr_win = (t_win *)win;
-	ptr_elem = (t_element *)elem;
-	texture_render(ptr_win, ptr_elem, ptr_elem->texture1);
-	if (ptr_elem->str != NULL)
-		render_text(ptr_win, ptr_elem, ptr_elem->str);
+	elem = (t_element *)but;
+	delta.x = mouse->x - elem->pos.x;
+	delta.y = mouse->y - elem->pos.y;
+	if (delta.x >= 0 && delta.x < elem->size.x
+		&& delta.y >= 0 && delta.y < elem->size.y)
+	{
+		elem->float_par = delta.x / (float)elem->size.x;
+	}
+	else
+		ptr_win->active_element = NULL;
 	return (0);
 }
