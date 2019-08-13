@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 15:20:16 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/12 14:57:08 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/13 09:27:24 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void
 	t_point	*size;
 
 	i = win->element_count;
+	win->active_element = NULL;
 	while (--i >= 0)
 	{
 		pos = &win->elements[i]->pos;
