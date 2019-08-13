@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 16:11:35 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/13 14:31:47 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/13 10:31:44 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,14 @@ int
 	if (ft_strlen(str) == 0)
 		return(0);
 	mydata = (t_mydata *)win->mydata;
-	SDL_Surface* message = TTF_RenderText_Solid(mydata->font, str, textColor);
+	SDL_Surface* message = TTF_RenderText_Blended(mydata->font, str, textColor);
 	if( message == NULL )
     {
 		printf("TTF_RenderText_Solid: %s\n", TTF_GetError());
 		exit(1);
     }
 	SDL_Texture* MessageTex = SDL_CreateTextureFromSurface(win->ren, message);
+	SDL_FreeSurface(message);
 	int w, h;
 	SDL_QueryTexture(MessageTex, NULL, NULL, &w, &h);
 	Message_rect = (SDL_Rect){

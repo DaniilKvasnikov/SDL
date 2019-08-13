@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/13 09:05:24 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/13 10:43:33 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_mydata		*init_mydata(void);
 SDL_Window		*ft_createwin(char *name, t_rect rect, Uint32 flags);
 SDL_Renderer	*ft_create_rend(SDL_Window *win);
 t_win			*ft_init_win(t_mydata *mydata, char *name, t_rect rect, Uint32 flags);
-void			ft_add_win(t_mydata *mydata, t_win *new_win);
+t_win			*ft_add_win(t_mydata *mydata, t_win *new_win);
 void			ft_update_win_surface(t_mydata *mydata);
 
 void			ft_delete_win(t_mydata *mydata, int id);

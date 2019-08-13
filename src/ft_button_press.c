@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 17:01:14 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/13 09:07:11 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/13 10:57:01 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void
 {
 	if (((t_win *)win)->active_element != NULL && ((t_win *)win)->active_element->keyboard_press != NULL)
 		((t_win *)win)->active_element->keyboard_press(win, ((t_win *)win)->active_element, ev);
-	if(((t_mydata *)mydata)->keyboardState[SDL_SCANCODE_ESCAPE])
+	if(((t_mydata *)mydata)->keyboardState[SDL_SCANCODE_ESCAPE] ||
+		(ev->type == SDL_WINDOWEVENT && ev->window.event == SDL_WINDOWEVENT_CLOSE))
 	{
 		while (((t_mydata *)mydata)->keyboardState[SDL_SCANCODE_ESCAPE])
 			SDL_PumpEvents();

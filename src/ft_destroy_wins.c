@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_destroy_wins.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 13:10:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 17:39:16 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/08/13 10:45:10 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void
 	SDL_DestroyRenderer(win->ren);
 	SDL_DestroyWindow(win->win);
 	free(win);
+	win = NULL;
 }
 
 void

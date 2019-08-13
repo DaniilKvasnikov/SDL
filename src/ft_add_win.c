@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add_win.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:58:47 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/19 13:05:07 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/08/13 10:43:23 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-void
-	ft_add_win(t_mydata *mydata, t_win *new_win)
+t_win
+	*ft_add_win(t_mydata *mydata, t_win *new_win)
 {
 	int		index;
 	t_win	**new_wins;
