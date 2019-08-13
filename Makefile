@@ -22,27 +22,28 @@ LIBFT_PATH = libft/
 
 FLAGS = #-Wall -Werror -Wextra
 
-
 INC = -I ./includes/ -I ./$(LIBFT_PATH)includes/
 
 SRCS_NAME = $(shell find src/  | grep -E ".+\.c" | cut -c5-)
+
 FOLDERS_SRCS = $(addprefix $(OBJ_PATH), $(shell find src/ -type d | cut -c5-))
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
+
 OBJ = $(addprefix $(OBJ_PATH), $(SRCS_NAME:.c=.o))
 
 UNAME_S := $(shell uname -s)
+
 ifeq ($(UNAME_S),Linux)
-	CCFLAGS = LINUX
 	INC = -lSDL2 -lSDL2_ttf -I ./includes/ -I ./$(LIBFT_PATH)includes/
 endif
 ifeq ($(UNAME_S),Darwin)
-	CCFLAGS = OSX
 	SDL =  -F ./includes/frameworks/ -framework SDL2 \
 									-framework SDL2_image \
 									-framework SDL2_ttf \
 									-framework SDL2_mixer
-	INCLUDES = -I includes -I libft -I kiss_sdl -I includes/frameworks/SDL2.framework/Headers \
+	INCLUDES =	-I includes -I libft -I kiss_sdl \
+				-I includes/frameworks/SDL2.framework/Headers \
 				-I includes/frameworks/SDL2_image.framework/Versions/A/Headers \
 				-I includes/frameworks/SDL2_ttf.framework/Versions/A/Headers \
 				-I includes/frameworks/SDL2_mixer.framework/Versions/A/Headers
@@ -50,7 +51,6 @@ ifeq ($(UNAME_S),Darwin)
 endif
 
 all: $(NAME)
-	@echo "Hello, it's $(CCFLAGS)"
 
 $(NAME): $(OBJ)
 	@make -w -C $(LIBFT_PATH)
@@ -78,10 +78,14 @@ delete:
 	@/bin/rm -rf $(OBJ_PATH)
 
 install_ubuntu:
+	sudo apt-get install gcc -y
 	sudo apt-get install libsdl2-ttf-dev -y
 	sudo apt-get install libsdl2-dev -y
 	sudo apt-get install libsdl2-2.0 -y
 
+pull: fclean
+	git pull
+
 rl: delete all
 
-.PHONY: all, clean, fclean, re, rl, delete, install_ubuntu
+.PHONY: all, clean, fclean, re, rl, delete, install_ubuntu, pull
