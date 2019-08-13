@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 19:30:02 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/12 20:02:04 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/13 08:48:09 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,5 @@ t_element
 		int (*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 		int (*draw)(void *win, void *elem))
 {
-	return (add_element_to_win(win, init_element(rect, path_tex1, path_tex2, win, NULL, element_touch, element_pressed, draw)));
+	return (add_element_to_win(win, init_element(rect, path_tex1, path_tex2, win, NULL, element_touch, element_pressed, NULL, draw)));
 }
-

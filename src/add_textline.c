@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture_render.c                                   :+:      :+:    :+:   */
+/*   add_textline.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/12 16:05:43 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/13 08:06:17 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/13 08:48:00 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/13 08:51:25 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-int
-	texture_render(t_win *win, t_element *elem, SDL_Texture *texture)
+t_element
+	*add_textline(t_rect rect, char *path_tex1, t_win *win,
+		int (*element_touch)(void *win, void *but, SDL_Event *ev),
+		int (*keyboard_press)(void *win, void *but, SDL_Event *ev),
+		int (*draw)(void *win, void *elem))
 {
-	SDL_Rect	rect;
-
-	if (texture != NULL)
-	{
-		rect = (SDL_Rect){elem->pos.x, elem->pos.y, elem->size.x, elem->size.y};
-		texture_render_rect(win, elem, texture, NULL, &rect);
-	}
-	return (0);
+	return (add_element_to_win(win, init_element(rect, path_tex1, NULL, win, NULL, element_touch, NULL, keyboard_press, draw)));
 }

@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture_render.c                                   :+:      :+:    :+:   */
+/*   add_progressbar.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/12 16:05:43 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/13 08:06:17 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/13 07:58:47 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/13 08:46:04 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-int
-	texture_render(t_win *win, t_element *elem, SDL_Texture *texture)
+t_element
+	*add_progressbar(t_rect rect, char *path_tex1, char *path_tex2, t_win *win,
+		int (*draw)(void *win, void *elem))
 {
-	SDL_Rect	rect;
-
-	if (texture != NULL)
-	{
-		rect = (SDL_Rect){elem->pos.x, elem->pos.y, elem->size.x, elem->size.y};
-		texture_render_rect(win, elem, texture, NULL, &rect);
-	}
-	return (0);
+	return (add_element_to_win(win, init_element(rect, path_tex1, path_tex2, win, NULL, NULL, NULL, NULL, draw)));
 }

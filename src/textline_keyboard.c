@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture_render.c                                   :+:      :+:    :+:   */
+/*   textline_keyboard.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/12 16:05:43 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/13 08:06:17 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/13 08:54:25 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/13 09:05:06 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 int
-	texture_render(t_win *win, t_element *elem, SDL_Texture *texture)
+	textline_keyboard(void *win_ptr, void *but_ptr, SDL_Event *ev)
 {
-	SDL_Rect	rect;
+	t_win		*win;
+	t_element	*but;
 
-	if (texture != NULL)
+	win = (t_win *)win_ptr;
+	but = (t_element *)but_ptr;
+	if(ev->type == SDL_TEXTINPUT)
 	{
-		rect = (SDL_Rect){elem->pos.x, elem->pos.y, elem->size.x, elem->size.y};
-		texture_render_rect(win, elem, texture, NULL, &rect);
+		ft_printf("input : %c\n", ev->text.text);
 	}
-	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_button_press.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gamerd <gamerd@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 17:01:14 by gamerd            #+#    #+#             */
-/*   Updated: 2019/07/20 13:34:09 by gamerd           ###   ########.fr       */
+/*   Updated: 2019/08/13 09:07:11 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void
 	ft_button_press(void *mydata, void *win, SDL_Event *ev)
 {
+	if (((t_win *)win)->active_element != NULL && ((t_win *)win)->active_element->keyboard_press != NULL)
+		((t_win *)win)->active_element->keyboard_press(win, ((t_win *)win)->active_element, ev);
 	if(((t_mydata *)mydata)->keyboardState[SDL_SCANCODE_ESCAPE])
 	{
 		while (((t_mydata *)mydata)->keyboardState[SDL_SCANCODE_ESCAPE])
