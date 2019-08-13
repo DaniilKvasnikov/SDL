@@ -25,7 +25,8 @@ FLAGS = #-Wall -Werror -Wextra
 
 INC = -I ./includes/ -I ./$(LIBFT_PATH)includes/
 
-SRCS_NAME = $(shell ls src | grep -E ".+\.c")
+SRCS_NAME = $(shell find src/  | grep -E ".+\.c" | cut -c5-)
+FOLDERS_SRCS = $(addprefix $(OBJ_PATH), $(shell find src/ -type d | cut -c5-))
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 OBJ = $(addprefix $(OBJ_PATH), $(SRCS_NAME:.c=.o))
@@ -58,7 +59,7 @@ $(NAME): $(OBJ)
 	@echo "\033[35m$(NAME)\033[0m created."
 
 $(OBJ_PATH)%.o: $(SRCS_PATH)%.c
-	@mkdir -p obj
+	@mkdir -p $(FOLDERS_SRCS)
 	@gcc -c -g $(FLAGS) $(INC) $< -o $@ $(FRAMEWORKS)
 	@echo "\033[33m$<\033[0m compiled."
 	
