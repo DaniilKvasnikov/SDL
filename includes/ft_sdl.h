@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/14 09:05:07 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/14 11:25:47 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int				element_pressed(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
 int				sliders_pressed(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
 int				element_touch(void *win, void *but, SDL_Event *ev);
 int				checkbox_touch(void *win, void *but, SDL_Event *ev);
+int				radiobutton_touch(void *win, void *but, SDL_Event *ev);
 
 int				gr_cheacker(struct s_group_e *group, t_element *elem);
 
