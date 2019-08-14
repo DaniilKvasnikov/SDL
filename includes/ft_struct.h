@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/14 12:02:02 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/14 12:35:45 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,13 @@ typedef struct	s_texture
 	char		*name;
 }				t_texture;
 
+typedef struct	s_group_e
+{
+	void		**elements;
+	int			count;
+	int			(*gr_cheacker)(struct s_group_e *group, void *elem);
+}				t_group_e;
+
 typedef struct	s_element
 {
 	t_point		pos;
@@ -51,18 +58,12 @@ typedef struct	s_element
 	int			int_par;
 	float		float_par;
 	char		*str;
+	t_group_e	*sub_group;
 	int			(*draw)(void *win, void *elem);
 	int			(*element_touch)(void *win, void *but, SDL_Event *ev);
 	int			(*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
 	int			(*keyboard_press)(void *win, void *but, SDL_Event *ev);
 }				t_element;
-
-typedef struct	s_group_e
-{
-	t_element	**elements;
-	int			count;
-	int			(*gr_cheacker)(struct s_group_e *group, t_element *elem);
-}				t_group_e;
 
 typedef struct	s_win
 {

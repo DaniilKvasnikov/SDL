@@ -6,14 +6,14 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:59:08 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/14 12:07:28 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/14 12:39:53 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 t_element
-	*init_element(t_rect rect, char *path_tex1, char *path_tex2, t_win *win, char *str,
+	*init_element(t_rect rect, char *path_tex1, char *path_tex2, t_win *win, char *str, t_group_e *group,
 					int (*element_touch)(void *win, void *but, SDL_Event *ev),
 					int (*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 					int (*keyboard_press)(void *win, void *but, SDL_Event *ev),
@@ -47,5 +47,6 @@ t_element
 	element->draw = draw;
 	element->int_par = 0;
 	element->float_par = 0;
+	element->sub_group = group;
 	return (element);
 }
