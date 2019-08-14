@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/14 11:25:47 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/14 11:48:51 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ t_element		*add_textline(t_rect rect, char *path_tex1, t_win *win,
 
 t_group_e		*add_group_e(t_group_e *group, t_element *elem,
 					int (*gr_cheacker)(struct s_group_e *group, t_element *elem));
+
+t_element		*add_texture_to_elem(t_element *elem, t_texture *texture_new);
 
 void			win_press_button(t_win *win, SDL_Event *ev, int x, int y);
 int				element_pressed(void *win, void *but, SDL_Event *ev, t_point_int *mouse);

@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:59:08 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/13 08:44:18 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/14 12:07:28 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,36 +19,33 @@ t_element
 					int (*keyboard_press)(void *win, void *but, SDL_Event *ev),
 					int (*draw)(void *win, void *elem))
 {
-	t_element	*button;
+	t_element	*element;
 	t_texture	*texture1;
 	t_texture	*texture2;
 
-	if ((button = (t_element *)malloc(sizeof(t_element))) == NULL)
+	if ((element = (t_element *)malloc(sizeof(t_element))) == NULL)
 		return NULL;
-	button->pos = (t_point){rect.x, rect.y};
-	button->size = (t_point){rect.w, rect.h};
+	element->pos = (t_point){rect.x, rect.y};
+	element->size = (t_point){rect.w, rect.h};
+	element->textures_count = 0;
 	if (path_tex1 != NULL)
 	{
 		if ((texture1 = get_texture_to_win(win, path_tex1)) == NULL)
 			exit(1);
-		button->texture1 = texture1->tex;
+		element = add_texture_to_elem(element, texture1);
 	}
-	else
-		button->texture1 = NULL;
 	if (path_tex2 != NULL)
 	{
 		if ((texture2 = get_texture_to_win(win, path_tex2)) == NULL)
 			exit(1);
-		button->texture2 = texture2->tex;
+		element = add_texture_to_elem(element, texture2);
 	}
-	else
-		button->texture2 = NULL;
-	button->element_touch = element_touch;
-	button->element_pressed = element_pressed;
-	button->keyboard_press = keyboard_press;
-	button->str = str;
-	button->draw = draw;
-	button->int_par = 0;
-	button->float_par = 0;
-	return (button);
+	element->element_touch = element_touch;
+	element->element_pressed = element_pressed;
+	element->keyboard_press = keyboard_press;
+	element->str = str;
+	element->draw = draw;
+	element->int_par = 0;
+	element->float_par = 0;
+	return (element);
 }

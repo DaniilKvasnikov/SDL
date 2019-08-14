@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/14 09:11:48 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/14 12:02:02 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ typedef struct	s_element
 {
 	t_point		pos;
 	t_point		size;
-	SDL_Texture	*texture1;
-	SDL_Texture	*texture2;
+	t_texture	*textures;
+	int			textures_count;
 	int			int_par;
 	float		float_par;
 	char		*str;

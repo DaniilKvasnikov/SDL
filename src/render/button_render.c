@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 17:20:00 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/12 20:19:31 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/14 12:04:01 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int
 	
 	ptr_win = (t_win *)win;
 	ptr_elem = (t_element *)elem;
-	texture_render(ptr_win, ptr_elem, ptr_elem->texture1);
+	if (ptr_elem->textures_count >= 1)
+		texture_render(ptr_win, ptr_elem, ptr_elem->textures[0].tex);
 	if (ptr_elem->str != NULL)
 		render_text(ptr_win, ptr_elem, ptr_elem->str);
 	return (0);
