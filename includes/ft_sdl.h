@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/13 10:43:33 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/14 09:05:07 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,13 @@ t_element		*add_sliders_to_win(t_rect rect, char *path_tex1, char *path_tex2, t_
 					int (*draw)(void *win, void *elem));
 t_element		*add_progressbar(t_rect rect, char *path_tex1, char *path_tex2, t_win *win,
 					int (*draw)(void *win, void *elem));
-
 t_element		*add_textline(t_rect rect, char *path_tex1, t_win *win,
 					int (*element_touch)(void *win, void *but, SDL_Event *ev),
 					int (*keyboard_press)(void *win, void *but, SDL_Event *ev),
 					int (*draw)(void *win, void *elem));
+
+t_group_e		*add_group_e(t_group_e *group, t_element *elem,
+					int (*gr_cheacker)(struct s_group_e *group, t_element *elem));
 
 void			win_press_button(t_win *win, SDL_Event *ev, int x, int y);
 int				element_pressed(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
@@ -78,6 +80,7 @@ int				sliders_pressed(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
 int				element_touch(void *win, void *but, SDL_Event *ev);
 int				checkbox_touch(void *win, void *but, SDL_Event *ev);
 
+int				gr_cheacker(struct s_group_e *group, t_element *elem);
 
 int				textline_keyboard(void *win_ptr, void *but_ptr, SDL_Event *ev);
 

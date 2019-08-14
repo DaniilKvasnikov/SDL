@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 08:54:25 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/13 11:23:43 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/14 08:36:43 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 int
 	textline_keyboard(void *win_ptr, void *but_ptr, SDL_Event *ev)
 {
-	t_win		*win;
 	t_element	*but;
 	char		*str;
 
-	win = (t_win *)win_ptr;
 	but = (t_element *)but_ptr;
 	if(ev->type == SDL_TEXTINPUT && ft_strlen(ev->text.text) == 1)
 	{
@@ -59,4 +57,5 @@ int
 			but->str = str;
 		}
 	}
+	return (0);
 }

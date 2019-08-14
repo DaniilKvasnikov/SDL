@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 16:11:35 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/13 10:31:44 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/14 08:37:01 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 int
 	render_text(t_win* win, t_element *elem, char *str)
 {
-	SDL_Texture	*texture1;
-	SDL_Rect	rect1;
 	SDL_Color textColor = { 255, 0, 0 };
 	t_mydata	*mydata;
 	SDL_Rect	Message_rect;

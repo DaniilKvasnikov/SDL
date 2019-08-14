@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 19:10:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/12 19:10:24 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/14 08:34:44 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void
 {
 	int			i;
 	int			j;
-	SDL_Rect	rect;
 	
 	i = -1;
 	while (++i < mydata->win_count)

@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/13 08:43:26 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/14 09:11:48 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,13 @@ typedef struct	s_element
 	int			(*keyboard_press)(void *win, void *but, SDL_Event *ev);
 }				t_element;
 
+typedef struct	s_group_e
+{
+	t_element	**elements;
+	int			count;
+	int			(*gr_cheacker)(struct s_group_e *group, t_element *elem);
+}				t_group_e;
+
 typedef struct	s_win
 {
 	SDL_Window		*win;
@@ -69,6 +76,7 @@ typedef struct	s_win
 	t_texture		*textures;
 	int				textures_count;
 	void			*mydata;
+	t_group_e		*groupe;
 }				t_win;
 
 typedef struct	s_mydata
