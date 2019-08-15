@@ -25,6 +25,7 @@ FLAGS = -Wall -Werror #-Wextra
 INC = -I ./includes/ -I ./$(LIBFT_PATH)includes/
 
 SRCS_NAME = $(shell find src/  | grep -E ".+\.c" | cut -c5-)
+FILE_COUNT = $(shell find src/  | grep -E ".+\.c" | wc -l)
 
 FOLDERS_SRCS = $(addprefix $(OBJ_PATH), $(shell find src/ -type d | cut -c5-))
 
@@ -86,6 +87,9 @@ install_ubuntu:
 pull: fclean
 	git pull
 
+get_count_files:
+	@echo $(FILE_COUNT)
+
 rl: delete all
 
-.PHONY: all, clean, fclean, re, rl, delete, install_ubuntu, pull
+.PHONY: all, clean, fclean, re, rl, delete, install_ubuntu, pull, get_count_files
