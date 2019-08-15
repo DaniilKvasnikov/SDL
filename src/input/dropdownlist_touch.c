@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 09:19:01 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/15 09:23:22 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/15 10:09:23 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int
 	dropdownlist_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse)
 {
+	if (!chech_input_mouse(but, mouse))
+		return (0);
 	ft_putendl("dropdownlist touch");
-	return (0);
+	return (1);
 }

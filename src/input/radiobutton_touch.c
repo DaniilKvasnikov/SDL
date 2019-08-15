@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 11:24:23 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/15 09:23:40 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/15 10:10:00 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ int
 {
 	t_element	*elem;
 
+	if (!chech_input_mouse(but, mouse))
+		return (0);
 	elem = (t_element *)but;
 	if (elem->int_par == 0)
 		elem->int_par = 1;
-	return (0);
+	return (1);
 }

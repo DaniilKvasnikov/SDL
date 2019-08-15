@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   element_touch.c                                    :+:      :+:    :+:   */
+/*   chech_input_mouse.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/12 14:48:53 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/15 10:08:34 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/15 10:03:28 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/15 10:06:48 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 int
-	element_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse)
+	chech_input_mouse(t_element *elem, t_point_int *mouse)
 {
-	if (!chech_input_mouse(but, mouse))
-		return (0);
-	ft_putendl("Button touch");
-	return (1);
+	return (mouse->x >= elem->pos.x && mouse->x <= (elem->pos.x + elem->size.x)
+			&& mouse->y >= elem->pos.y && mouse->y <= (elem->pos.y + elem->size.y));
 }

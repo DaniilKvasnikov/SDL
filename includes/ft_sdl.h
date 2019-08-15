@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/15 09:30:02 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/15 10:07:08 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ t_group_e		*add_group_e(t_group_e *group, t_element *elem,
 
 t_element		*add_texture_to_elem(t_element *elem, t_texture *texture_new);
 
+int				chech_input_mouse(t_element *elem, t_point_int *mouse);
 void			win_press_button(t_win *win, SDL_Event *ev, int x, int y);
 int				element_pressed(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
 int				sliders_pressed(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
