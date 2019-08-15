@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/14 12:49:39 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/15 09:30:02 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,32 +46,32 @@ void			ft_button_press(void *mydata, void *win, SDL_Event *ev);
 void			add_texture_to_win(t_win *win, char *path);
 t_texture		*get_texture_to_win(t_win *win, char *path);
 
-t_element		*init_element(t_rect rect, char *path_tex1, char *path_tex2, t_win *win, char *str, t_group_e *group,
-					int (*element_touch)(void *win, void *but, SDL_Event *ev),
+t_element		*init_element(t_rect rect, char *path_tex1, char *path_tex2, t_win *win, char *str,
+					int (*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 					int (*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 					int (*keyboard_press)(void *win, void *but, SDL_Event *ev),
 					int (*draw)(void *win, void *elem));
 t_element		*add_element_to_win(t_win *win, t_element *element);
 t_element		*add_button_to_win(t_rect rect, char *path_tex, t_win *win, char *str,
-					int (*button_pressed)(void *win, void *but, SDL_Event *ev),
+					int (*button_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 					int (*draw)(void *win, void *elem));
 t_element		*add_image_to_win(t_rect rect, char *path_tex, t_win *win,
 					int (*draw)(void *win, void *elem));
 t_element		*add_checkbox_to_win(t_rect rect, char *path_tex1, char *path_tex2, t_win *win,
-					int (*button_pressed)(void *win, void *but, SDL_Event *ev),
+					int (*button_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 					int (*draw)(void *win, void *elem));
 t_element		*add_sliders_to_win(t_rect rect, char *path_tex1, char *path_tex2, t_win *win,
-					int (*element_touch)(void *win, void *but, SDL_Event *ev),
+					int (*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 					int (*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 					int (*draw)(void *win, void *elem));
 t_element		*add_progressbar(t_rect rect, char *path_tex1, char *path_tex2, t_win *win,
 					int (*draw)(void *win, void *elem));
 t_element		*add_textline(t_rect rect, char *path_tex1, t_win *win,
-					int (*element_touch)(void *win, void *but, SDL_Event *ev),
+					int (*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 					int (*keyboard_press)(void *win, void *but, SDL_Event *ev),
 					int (*draw)(void *win, void *elem));
 t_element		*add_dropdownlist_to_win(t_rect rect, char *path_tex, t_win *win, char *str,
-					int (*button_pressed)(void *win, void *but, SDL_Event *ev),
+					int (*button_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 					int (*draw)(void *win, void *elem));
 
 t_group_e		*add_group_e(t_group_e *group, t_element *elem,
@@ -82,9 +82,10 @@ t_element		*add_texture_to_elem(t_element *elem, t_texture *texture_new);
 void			win_press_button(t_win *win, SDL_Event *ev, int x, int y);
 int				element_pressed(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
 int				sliders_pressed(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
-int				element_touch(void *win, void *but, SDL_Event *ev);
-int				checkbox_touch(void *win, void *but, SDL_Event *ev);
-int				radiobutton_touch(void *win, void *but, SDL_Event *ev);
+int				element_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
+int				checkbox_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
+int				radiobutton_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
+int				dropdownlist_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
 
 int				gr_cheacker(struct s_group_e *group, void *elem);
 
@@ -97,4 +98,5 @@ int				button_render(void *win, void *elem);
 int				checkbox_render(void *win, void *elem);
 int				sliders_render(void *win, void *elem);
 int				progressbar_render(void *win, void *elem);
+int				dropdownlist_render(void *win, void *elem);
 #endif

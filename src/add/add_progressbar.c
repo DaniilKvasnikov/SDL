@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 07:58:47 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/14 12:39:35 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/15 08:45:41 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ t_element
 	*add_progressbar(t_rect rect, char *path_tex1, char *path_tex2, t_win *win,
 		int (*draw)(void *win, void *elem))
 {
-	return (add_element_to_win(win, init_element(rect, path_tex1, path_tex2, win, NULL, NULL, NULL, NULL, NULL, draw)));
+	return (add_element_to_win(win, init_element(rect, path_tex1, path_tex2, win, NULL, NULL, NULL, NULL, draw)));
 }

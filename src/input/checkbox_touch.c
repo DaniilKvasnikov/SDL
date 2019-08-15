@@ -6,14 +6,14 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 09:51:39 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/14 08:36:11 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/15 09:23:17 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 int
-	checkbox_touch(void *win, void *but, SDL_Event *ev)
+	checkbox_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse)
 {
 	t_element	*elem;
 
