@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/15 09:18:43 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/15 12:21:46 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int main(int argc, char **argv)
 	add_image_to_win((t_rect){50, 25, 100, 100}, "./img/cat.bmp", mydata->wins[0], &button_render);
 	add_checkbox_to_win((t_rect){200, 200, 50, 50}, "img/unchecked_checkbox.bmp", "img/checked_checkbox.bmp", mydata->wins[0], &checkbox_touch, &checkbox_render);
 	add_checkbox_to_win((t_rect){200, 250, 50, 50}, "img/unchecked_checkbox.bmp", "img/checked_checkbox.bmp", mydata->wins[0], &checkbox_touch, &checkbox_render);
-
-	add_dropdownlist_to_win((t_rect){0, 100, 100, 50}, "./img/button_1.bmp", mydata->wins[0], "list", &dropdownlist_touch, &dropdownlist_render);
+	char	**strs = ft_strsplit("1 2 3", ' ');
+	add_dropdownlist_to_win((t_rect){0, 100, 100, 50}, "./img/button_1.bmp", mydata->wins[0], strs, &dropdownlist_touch, &dropdownlist_render);
 
 	t_element *radiobutton1 = add_checkbox_to_win((t_rect){250, 200, 50, 50}, "img/unchecked_checkbox.bmp", "img/checked_checkbox.bmp", mydata->wins[0], &radiobutton_touch, &checkbox_render);
 	t_element *radiobutton2 = add_checkbox_to_win((t_rect){250, 250, 50, 50}, "img/unchecked_checkbox.bmp", "img/checked_checkbox.bmp", mydata->wins[0], &radiobutton_touch, &checkbox_render);

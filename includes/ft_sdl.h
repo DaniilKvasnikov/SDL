@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/15 10:07:08 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/15 12:22:04 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_element		*add_textline(t_rect rect, char *path_tex1, t_win *win,
 					int (*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 					int (*keyboard_press)(void *win, void *but, SDL_Event *ev),
 					int (*draw)(void *win, void *elem));
-t_element		*add_dropdownlist_to_win(t_rect rect, char *path_tex, t_win *win, char *str,
+t_element		*add_dropdownlist_to_win(t_rect rect, char *path_tex, t_win *win, char **strs,
 					int (*button_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 					int (*draw)(void *win, void *elem));
 
@@ -87,6 +87,7 @@ int				element_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
 int				checkbox_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
 int				radiobutton_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
 int				dropdownlist_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
+int				push_text_to_parent(void *win, void *but, SDL_Event *ev);
 
 int				gr_cheacker(struct s_group_e *group, void *elem);
 
