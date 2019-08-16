@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:59:08 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/15 09:28:23 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/16 08:44:48 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_element
 	*init_element(t_rect rect, char *path_tex1, char *path_tex2, t_win *win, char *str,
-					int (*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
-					int (*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
+					t_element *(*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
+					t_element *(*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 					int (*keyboard_press)(void *win, void *but, SDL_Event *ev),
 					int (*draw)(void *win, void *elem))
 {

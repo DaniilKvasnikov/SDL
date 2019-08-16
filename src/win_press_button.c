@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 15:20:16 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/15 12:13:12 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/16 08:47:18 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@
 void
 	win_press_button(t_win *win, SDL_Event *ev, int x, int y)
 {
-	int		i;
+	int			i;
+	t_element	*tmp;
 
 	i = win->element_count;
 	while (--i >= 0)
 	{
 		if (win->elements[i]->element_touch != NULL)
 		{
-			if (win->elements[i]->element_touch(win, win->elements[i], ev, &(t_point_int){x, y}) == 1)
+			if ((tmp = win->elements[i]->element_touch(win, win->elements[i], ev, &(t_point_int){x, y})) != NULL)
 			{
-				win->active_element = win->elements[i];
+				win->active_element = tmp;
 				return ;
 			}
 		}

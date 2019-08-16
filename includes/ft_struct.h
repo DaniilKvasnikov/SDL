@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/15 09:29:25 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/16 08:45:07 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,19 @@ typedef struct	s_group_e
 
 typedef struct	s_element
 {
-	t_point		pos;
-	t_point		size;
-	t_texture	*textures;
-	int			textures_count;
-	int			int_par;
-	float		float_par;
-	char		*str;
-	t_group_e	*sub_group;
-	void		*parent;
-	int			(*draw)(void *win, void *elem);
-	int			(*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
-	int			(*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
-	int			(*keyboard_press)(void *win, void *but, SDL_Event *ev);
+	t_point				pos;
+	t_point				size;
+	t_texture			*textures;
+	int					textures_count;
+	int					int_par;
+	float				float_par;
+	char				*str;
+	t_group_e			*sub_group;
+	void				*parent;
+	int					(*draw)(void *win, void *elem);
+	struct s_element	*(*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
+	struct s_element	*(*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
+	int					(*keyboard_press)(void *win, void *but, SDL_Event *ev);
 }				t_element;
 
 typedef struct	s_win

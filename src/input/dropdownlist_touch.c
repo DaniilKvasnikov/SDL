@@ -6,37 +6,26 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 09:19:01 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/15 12:25:47 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/16 09:27:27 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-static int
-	groupe_touch(t_element *elem, void *win, SDL_Event *ev, t_point_int *mouse)
+t_element
+	*dropdownlist_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse)
 {
-	int	i;
+	t_element	*elem;
+	t_win		*ptr_win;
 
-	i = -1;
-	while (++i < elem->sub_group->count)
-		if (chech_input_mouse((t_element *)elem->sub_group->elements[i], mouse))
-		{
-			elem->int_par = i + 1;
-			push_text_to_parent(win, (t_element *)elem->sub_group->elements[i], ev);
-			return (1);
-		}
-	return (0);
-}
-
-int
-	dropdownlist_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse)
-{
+	ptr_win = (t_win *)win;
 	ft_putendl("dropdownlist touch 1");
-	if (((t_element *)but)->sub_group &&
-		groupe_touch(((t_element *)but), win, ev, mouse) == 1)
-		return (0);
+	if (is_parent_active_elem(ptr_win->active_element, (t_element *)but) &&
+		((t_element *)but)->sub_group &&
+		(elem = groupe_touch(((t_element *)but), win, ev, mouse)) != NULL)
+		return (elem);
 	ft_putendl("dropdownlist touch 2");
 	if (!chech_input_mouse(but, mouse))
 		return (0);
-	return (1);
+	return ((t_element *)but);
 }

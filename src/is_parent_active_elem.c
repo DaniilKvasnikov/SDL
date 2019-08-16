@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sliders_pressed.c                                  :+:      :+:    :+:   */
+/*   is_parent_active_elem.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/12 19:54:07 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/16 08:45:51 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/16 08:50:06 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/16 08:51:47 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-t_element
-	*sliders_pressed(void *win, void *but, SDL_Event *ev, t_point_int *mouse)
+int
+	is_parent_active_elem(t_element *elem, t_element *parent)
 {
-	t_element	*elem;
-	t_point_int	delta;
-	t_win		*ptr_win;
+	t_element *tmp;
 
-	ptr_win = (t_win *)win;
-	elem = (t_element *)but;
-	delta.x = mouse->x - elem->pos.x;
-	delta.y = mouse->y - elem->pos.y;
-	if (delta.x >= 0 && delta.x < elem->size.x
-		&& delta.y >= 0 && delta.y < elem->size.y)
+	tmp = elem;
+	while (tmp != NULL)
 	{
-		elem->float_par = delta.x / (float)elem->size.x;
+		if (tmp == parent)
+			return (1);
+		tmp = (t_element *)elem->parent;
 	}
-	else
-		ptr_win->active_element = NULL;
 	return (0);
 }
