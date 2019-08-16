@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 18:31:03 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/14 09:27:24 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/16 09:15:29 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void
 			win_press_button(win, ev, point.x, point.y);
 		if (win->active_element != NULL)
 		{
+			if (win->active_element->str != NULL)
+				ft_printf("active str = %s\n", win->active_element->str);
 			if (win->active_element->element_pressed != NULL)
 				win->active_element->element_pressed(win, win->active_element, ev, &point);
 			if (win->groupe != NULL && win->groupe->gr_cheacker != NULL)

@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_image_to_win.c                                 :+:      :+:    :+:   */
+/*   add_texture_to_elem.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/12 08:59:19 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/15 08:45:36 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/14 11:42:41 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/16 08:35:47 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 t_element
-	*add_image_to_win(t_rect rect, char *path_tex, t_win *win,
-						int (*draw)(void *win, void *elem))
+	*add_texture_to_elem(t_element *elem, t_texture *texture_new)
 {
-	return (add_element_to_win(win, init_element(rect, path_tex, NULL, win, NULL, NULL, NULL, NULL, draw)));
+	t_texture	*textures;
+	int			i;
+
+	if ((textures = (t_texture *)malloc(sizeof(t_texture) * (elem->textures_count + 1))) == NULL)
+		exit(0);
+	i = -1;
+	while (++i < elem->textures_count)
+		textures[i] = elem->textures[i];
+	textures[i] = *texture_new;
+	elem->textures_count++;
+	if (elem->textures_count > 1)
+		free(elem->textures);
+	elem->textures = textures;
+	return (elem);
 }
