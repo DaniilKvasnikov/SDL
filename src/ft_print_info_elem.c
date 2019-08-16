@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_parent_active_elem.c                            :+:      :+:    :+:   */
+/*   ft_print_info_elem.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/16 08:50:06 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/16 10:00:24 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/16 10:04:37 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/16 10:07:47 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-int
-	is_parent_active_elem(t_element *active, t_element *curr)
+void
+	ft_print_info_elem(t_element *elem)
 {
-	t_element *tmp;
-
-	tmp = active;
-	while (tmp != NULL)
-	{
-		if (tmp == curr)
-			return (1);
-		tmp = (t_element *)tmp->parent;
-	}
-	return (0);
+	if (elem->str)
+		ft_printf("str = %s ", elem->str);
+	if (elem->parent && ((t_element *)elem->parent)->str)
+		ft_printf("parent = %s", ((t_element *)elem->parent)->str);
+	ft_putchar('\n');
 }

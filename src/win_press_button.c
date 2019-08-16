@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 15:20:16 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/16 08:47:18 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/16 10:25:36 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ void
 			}
 		}
 	}
+	ft_printf("Not touch\n");
 	win->active_element = NULL;
 }

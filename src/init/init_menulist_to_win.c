@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 08:22:13 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/16 09:06:04 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/16 10:13:09 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_element
 	i = -1;
 	while (strs[++i] != NULL)
 	{
-		button = init_dropdownlist_to_win((t_rect){rect.x, rect.y + rect.h * (i + 1), rect.w, rect.h}, path_tex, win, strs, "sub", button_pressed, draw, draw_elem);
+		button = init_dropdownlist_to_win((t_rect){rect.x + rect.w * i, rect.y + rect.h, rect.w, rect.h}, path_tex, win, strs, strs[i], button_pressed, draw, draw_elem);
 		button->parent = element_new;
 		element_new->sub_group = add_group_e(element_new->sub_group, button, NULL);
 	}

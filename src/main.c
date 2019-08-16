@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/16 09:04:48 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/16 10:23:08 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,6 @@ int main(int argc, char **argv)
 	add_element_to_win(mydata->wins[0], init_checkbox_to_win((t_rect){200, 200, 50, 50}, "img/unchecked_checkbox.bmp", "img/checked_checkbox.bmp", mydata->wins[0], &checkbox_touch, &checkbox_render));
 	add_element_to_win(mydata->wins[0], init_checkbox_to_win((t_rect){200, 250, 50, 50}, "img/unchecked_checkbox.bmp", "img/checked_checkbox.bmp", mydata->wins[0], &checkbox_touch, &checkbox_render));
 
-	char	**strs = ft_strsplit("1 2 3", ' ');
-	add_element_to_win(mydata->wins[0], init_dropdownlist_to_win((t_rect){0, 100, 100, 50}, "./img/button_1.bmp", mydata->wins[0], strs, NULL, &dropdownlist_touch, &dropdownlist_render, &button_render));
-	
-	char	**strs2 = ft_strsplit("a b c", ' ');
-	add_element_to_win(mydata->wins[0], init_menulist_to_win((t_rect){100, 100, 100, 50}, "./img/button_1.bmp", mydata->wins[0], strs2, &dropdownlist_touch, &dropdownlist_render, &button_render));
-
 	t_element *radiobutton1 = add_element_to_win(mydata->wins[0], init_checkbox_to_win((t_rect){250, 200, 50, 50}, "img/unchecked_checkbox.bmp", "img/checked_checkbox.bmp", mydata->wins[0], &radiobutton_touch, &checkbox_render));
 	t_element *radiobutton2 = add_element_to_win(mydata->wins[0], init_checkbox_to_win((t_rect){250, 250, 50, 50}, "img/unchecked_checkbox.bmp", "img/checked_checkbox.bmp", mydata->wins[0], &radiobutton_touch, &checkbox_render));
 
@@ -45,6 +39,12 @@ int main(int argc, char **argv)
 	t_element *sliders = add_element_to_win(mydata->wins[0], init_sliders_to_win((t_rect){100, 300, 100, 50}, "./img/button_1.bmp", "img/unchecked_checkbox.bmp", mydata->wins[0], &element_touch, &sliders_pressed, &sliders_render));
 	t_element *progress_bar = add_element_to_win(mydata->wins[0], init_progressbar((t_rect){200, 0, 200, 100}, "./img/button_1.bmp", "./img/cat.bmp", mydata->wins[0], &progressbar_render));
 	add_element_to_win(mydata->wins[0], init_textline((t_rect){400, 0, 200, 100}, "./img/button_1.bmp", mydata->wins[0], &element_touch, &textline_keyboard, &button_render));
+
+	char	**strs = ft_strsplit("1 2 3", ' ');
+	add_element_to_win(mydata->wins[0], init_dropdownlist_to_win((t_rect){0, 100, 100, 50}, "./img/button_1.bmp", mydata->wins[0], strs, NULL, &dropdownlist_touch, &dropdownlist_render, &button_render));
+	
+	char	**strs2 = ft_strsplit("a b c", ' ');
+	add_element_to_win(mydata->wins[0], init_menulist_to_win((t_rect){100, 100, 100, 50}, "./img/button_1.bmp", mydata->wins[0], strs2, &dropdownlist_touch, &dropdownlist_render, &button_render));
 
 	SDL_Event	ev;
 	int			run;

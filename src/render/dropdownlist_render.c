@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 08:53:13 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/16 09:06:48 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/16 10:21:21 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int
 	ptr_elem = (t_element *)elem;
 	if (ptr_elem->textures_count >= 1)
 		texture_render(ptr_win, ptr_elem, ptr_elem->textures[0].tex);
-	if ((ptr_win->active_element == ptr_elem  || is_parent_active_elem(ptr_win->active_element, ptr_elem))
+	if (is_parent_active_elem(ptr_win->active_element, ptr_elem)
 		&& ptr_elem->sub_group != NULL)
 		groupe_draw(ptr_win, ptr_elem->sub_group);
 	if (ptr_elem->str != NULL)
