@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/17 03:37:18 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/17 04:04:29 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,4 +118,5 @@ int				dropdownlist_render(void *win, void *elem);
 
 int				is_parent_active_elem(t_element *elem, t_element *parent);
 void			ft_print_info_elem(t_element *elem);
+int				save_screenshot_bmp(char *filepath, SDL_Window* SDLWindow, SDL_Renderer* SDLRenderer);
 #endif

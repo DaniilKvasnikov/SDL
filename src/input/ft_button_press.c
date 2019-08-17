@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 17:01:14 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/15 09:29:42 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/17 04:04:34 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void
 	{
 		while (((t_mydata *)mydata)->keyboardState[SDL_SCANCODE_ESCAPE])
 			SDL_PumpEvents();
+		int seve_screen = save_screenshot_bmp("screen.bmp", ((t_win *)win)->win, ((t_win *)win)->ren);
+		ft_printf("seve_screen = %d\n", seve_screen);
 		ft_delete_win((t_mydata *)mydata, ((t_win *)win)->window_id);
 	}
 }
