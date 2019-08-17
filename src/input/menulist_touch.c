@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 10:53:51 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/17 04:26:08 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/17 13:19:32 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_element
 	ptr_win = (t_win *)win;
 	if (is_parent_active_elem(ptr_win->active_element, (t_element *)but) &&
 		((t_element *)but)->sub_group &&
-		(elem = groupe_touch(((t_element *)but), win, ev, mouse)) != NULL)
+		(elem = groupe_touch(((t_element *)but), ptr_win, ev, mouse)) != NULL)
 		return (elem);
 	if (!chech_input_mouse(but, mouse))
 		return (0);
