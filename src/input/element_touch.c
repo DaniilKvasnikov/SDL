@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 14:48:53 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/16 08:36:01 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/17 04:33:05 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ t_element
 {
 	if (!chech_input_mouse(but, mouse))
 		return (0);
-	ft_putendl("Button touch");
+	ft_printf("Element touch %s\n", ((t_element *)but)->str);
 	return ((t_element *)but);
 }
