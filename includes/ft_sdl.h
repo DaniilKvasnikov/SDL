@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/16 10:07:04 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/17 03:21:44 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ t_element		*init_element(t_rect rect, char *path_tex1, char *path_tex2, t_win *w
 t_element		*add_element_to_win(t_win *win, t_element *element);
 t_element		*init_button_to_win(t_rect rect, char *path_tex, t_win *win, char *str,
 					t_element *(*button_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
+					t_element *(*active_elem)(void *ptr_win, void *buf),
 					int (*draw)(void *win, void *elem));
 t_element		*init_image_to_win(t_rect rect, char *path_tex, t_win *win,
 					int (*draw)(void *win, void *elem));
@@ -70,18 +71,23 @@ t_element		*init_progressbar(t_rect rect, char *path_tex1, char *path_tex2, t_wi
 t_element		*init_textline(t_rect rect, char *path_tex1, t_win *win,
 					t_element *(*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 					int (*keyboard_press)(void *win, void *but, SDL_Event *ev),
+					t_element *(*active_elem)(void *ptr_win, void *buf),
 					int (*draw)(void *win, void *elem));
 t_element		*init_dropdownlist_to_win(t_rect rect, char *path_tex, t_win *win, char **strs, char *str,
 					t_element *(*button_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
+					t_element *(*active_elem)(void *ptr_win, void *buf),
 					int (*draw)(void *win, void *elem),
 					int (*draw_elem)(void *win, void *elem));
 t_element		*init_menulist_to_win(t_rect rect, char *path_tex, t_win *win, char **strs,
 					t_element *(*button_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
+					t_element *(*active_elem)(void *ptr_win, void *buf),
 					int (*draw)(void *win, void *elem),
 					int (*draw_elem)(void *win, void *elem));
+
 t_group_e		*add_group_e(t_group_e *group, t_element *elem,
 					int (*gr_cheacker)(struct s_group_e *group, void *elem));
 
+t_element		*active_elem(void *ptr_win, void *buf);
 
 int				chech_input_mouse(t_element *elem, t_point_int *mouse);
 void			win_press_button(t_win *win, SDL_Event *ev, int x, int y);
@@ -91,6 +97,7 @@ t_element		*element_touch(void *win, void *but, SDL_Event *ev, t_point_int *mous
 t_element		*checkbox_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
 t_element		*radiobutton_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
 t_element		*dropdownlist_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
+t_element		*menulist_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
 t_element		*groupe_touch(t_element *elem, void *win, SDL_Event *ev, t_point_int *mouse);
 t_element		*push_text_to_parent(void *win, void *but, SDL_Event *ev);
 

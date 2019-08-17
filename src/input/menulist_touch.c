@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dropdownlist_touch.c                               :+:      :+:    :+:   */
+/*   menulist_touch.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/15 09:19:01 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/16 10:54:22 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/16 10:53:51 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/16 10:54:36 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 t_element
-	*dropdownlist_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse)
+	*menulist_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse)
 {
 	t_element	*elem;
 	t_win		*ptr_win;

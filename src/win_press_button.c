@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 15:20:16 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/16 10:25:36 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/17 03:31:45 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ void
 		{
 			if ((tmp = win->elements[i]->element_touch(win, win->elements[i], ev, &(t_point_int){x, y})) != NULL)
 			{
-				win->active_element = tmp;
+				if (tmp->active_elem != NULL)
+					tmp->active_elem(win, tmp);
+				else
+					win->active_element = NULL;
 				return ;
 			}
 		}

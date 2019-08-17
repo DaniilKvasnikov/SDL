@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 12:20:00 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/16 09:06:21 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/17 03:25:55 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 t_element
 	*init_dropdownlist_to_win(t_rect rect, char *path_tex, t_win *win, char **strs, char *str,
 		t_element *(*button_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
+		t_element *(*active_elem)(void *ptr_win, void *buf),
 		int (*draw)(void *win, void *elem),
 		int (*draw_elem)(void *win, void *elem))
 {
 	int	i;
 	t_element *element_new = init_element(rect, path_tex, NULL, win, str, button_pressed, NULL, NULL, draw);
+	element_new->active_elem = active_elem;
 	t_element *button;
 	i = -1;
 	while (strs[++i] != NULL)
