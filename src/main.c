@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/17 04:36:05 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/17 04:48:22 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
 
 	t_element *sliders = add_element_to_win(mydata->wins[0], init_sliders_to_win((t_rect){0, 300, 200, 50}, "./img/button_1.bmp", "img/unchecked_checkbox.bmp", mydata->wins[0], &element_touch, &sliders_pressed, &active_elem, &sliders_render));
 	t_element *progress_bar = add_element_to_win(mydata->wins[0], init_progressbar((t_rect){200, 0, 200, 100}, "./img/button_1.bmp", "./img/cat.bmp", mydata->wins[0], &progressbar_render));
-	add_element_to_win(mydata->wins[0], init_textline((t_rect){400, 0, 200, 100}, "./img/button_1.bmp", mydata->wins[0], &element_touch, &textline_keyboard, &active_elem, &button_render));
+	add_element_to_win(mydata->wins[0], init_textline((t_rect){400, 0, 200, 100}, "./img/button_1.bmp", mydata->wins[0], ft_strdup("Input:"), &element_touch, &textline_keyboard, &active_elem, &button_render));
 
 	char	**strs = ft_strsplit("1 2 3 4 5", ' ');
 	add_element_to_win(mydata->wins[0], init_dropdownlist_to_win((t_rect){0, 100, 100, 50}, "./img/button_1.bmp", mydata->wins[0], strs, NULL, &dropdownlist_touch, &active_elem, NULL, &dropdownlist_render, &button_render));
