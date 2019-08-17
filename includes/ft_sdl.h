@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/17 04:04:29 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/17 04:06:26 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ t_element		*init_checkbox_to_win(t_rect rect, char *path_tex1, char *path_tex2, 
 t_element		*init_sliders_to_win(t_rect rect, char *path_tex1, char *path_tex2, t_win *win,
 					t_element *(*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 					t_element *(*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
+					t_element *(*active_elem)(void *ptr_win, void *buf),
 					int (*draw)(void *win, void *elem));
 t_element		*init_progressbar(t_rect rect, char *path_tex1, char *path_tex2, t_win *win,
 					int (*draw)(void *win, void *elem));

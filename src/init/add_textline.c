@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 08:48:00 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/17 03:20:38 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/17 04:08:50 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,9 @@ t_element
 		t_element *(*active_elem)(void *ptr_win, void *buf),
 		int (*draw)(void *win, void *elem))
 {
-	return (init_element(rect, path_tex1, NULL, win, NULL, element_touch, NULL, keyboard_press, draw));
+	t_element *elem;
+
+	elem = init_element(rect, path_tex1, NULL, win, NULL, element_touch, NULL, keyboard_press, draw);
+	elem->active_elem = active_elem;
+	return (elem);
 }
