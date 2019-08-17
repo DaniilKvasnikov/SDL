@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/17 04:48:22 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/17 05:56:59 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 //	ft_add_win(mydata, ft_init_win(mydata, "Dop", (t_rect){740, 100, 100, 100},
 //		SDL_WINDOW_SHOWN | SDL_WINDOW_ALWAYS_ON_TOP));
 	add_element_to_win(mydata->wins[0], init_button_to_win((t_rect){0, 0, 100, 50}, "./img/button_1.bmp", mydata->wins[0], "butt1", &element_touch, &active_elem, &button_render));
-	add_element_to_win(mydata->wins[0], init_image_to_win((t_rect){50, 25, 100, 100}, "./img/cat.bmp", mydata->wins[0], &element_touch, &active_elem, &button_render));
+	add_element_to_win(mydata->wins[0], init_image_to_win((t_rect){50, 25, 100, 100}, "./img/cat.bmp", mydata->wins[0], &element_touch, &image_pressed, &active_elem, &button_render));
 	add_element_to_win(mydata->wins[0], init_button_to_win((t_rect){0, 50, 100, 50}, "./img/button_1.bmp", mydata->wins[0], "butt2", &element_touch, &active_elem, &button_render));
 	add_element_to_win(mydata->wins[0], init_checkbox_to_win((t_rect){200, 200, 50, 50}, "img/unchecked_checkbox.bmp", "img/checked_checkbox.bmp", mydata->wins[0], &checkbox_touch, &active_elem, &checkbox_render));
 	add_element_to_win(mydata->wins[0], init_checkbox_to_win((t_rect){200, 250, 50, 50}, "img/unchecked_checkbox.bmp", "img/checked_checkbox.bmp", mydata->wins[0], &checkbox_touch, &active_elem, &checkbox_render));
