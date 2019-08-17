@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/17 03:21:44 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/17 03:37:18 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ t_element		*init_textline(t_rect rect, char *path_tex1, t_win *win,
 t_element		*init_dropdownlist_to_win(t_rect rect, char *path_tex, t_win *win, char **strs, char *str,
 					t_element *(*button_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 					t_element *(*active_elem)(void *ptr_win, void *buf),
+					t_element *(*active_sub_elem)(void *ptr_win, void *buf),
 					int (*draw)(void *win, void *elem),
 					int (*draw_elem)(void *win, void *elem));
 t_element		*init_menulist_to_win(t_rect rect, char *path_tex, t_win *win, char **strs,

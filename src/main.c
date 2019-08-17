@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/17 03:24:20 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/17 03:37:46 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int main(int argc, char **argv)
 	add_element_to_win(mydata->wins[0], init_textline((t_rect){400, 0, 200, 100}, "./img/button_1.bmp", mydata->wins[0], &element_touch, &textline_keyboard, &active_elem, &button_render));
 
 	char	**strs = ft_strsplit("1 2 3 4 5", ' ');
-	add_element_to_win(mydata->wins[0], init_dropdownlist_to_win((t_rect){0, 100, 100, 50}, "./img/button_1.bmp", mydata->wins[0], strs, NULL, &dropdownlist_touch, &active_elem, &dropdownlist_render, &button_render));
+	add_element_to_win(mydata->wins[0], init_dropdownlist_to_win((t_rect){0, 100, 100, 50}, "./img/button_1.bmp", mydata->wins[0], strs, NULL, &dropdownlist_touch, &active_elem, NULL, &dropdownlist_render, &button_render));
 	
 	char	**strs2 = ft_strsplit("a b c d e", ' ');
 	add_element_to_win(mydata->wins[0], init_menulist_to_win((t_rect){100, 100, 100, 50}, "./img/button_1.bmp", mydata->wins[0], strs2, &menulist_touch, &active_elem, &dropdownlist_render, &button_render));
