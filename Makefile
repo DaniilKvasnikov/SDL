@@ -43,11 +43,10 @@ ifeq ($(UNAME_S),Darwin)
 									-framework SDL2_image \
 									-framework SDL2_ttf \
 									-framework SDL2_mixer
-	INCLUDES =	-I includes -I libft -I kiss_sdl \
-				-I includes/frameworks/SDL2.framework/Headers \
-				-I includes/frameworks/SDL2_image.framework/Versions/A/Headers \
-				-I includes/frameworks/SDL2_ttf.framework/Versions/A/Headers \
-				-I includes/frameworks/SDL2_mixer.framework/Versions/A/Headers
+	INCLUDES = -I includes -I libft -I kiss_sdl -I includes/frameworks/SDL2.framework/Headers \
+			-I includes/frameworks/SDL2_image.framework/Versions/A/Headers \
+			-I includes/frameworks/SDL2_ttf.framework/Versions/A/Headers \
+			-I includes/frameworks/SDL2_mixer.framework/Versions/A/Headers
 	FRAMEWORKS = -F includes/frameworks/
 endif
 
@@ -61,7 +60,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_PATH)%.o: $(SRCS_PATH)%.c
 	@mkdir -p $(FOLDERS_SRCS)
-	@gcc -c -g $(FLAGS) $(INC) $< -o $@ $(FRAMEWORKS)
+	@gcc -c -g $(FLAGS) $(INC) $(INCLUDES) $< -o $@ $(FRAMEWORKS)
 	@echo "\033[33m$<\033[0m compiled."
 	
 clean:

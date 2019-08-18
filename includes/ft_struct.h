@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/18 04:06:00 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 15:33:22 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 # define FT_STRUCT_H
 
 # include <SDL2/SDL.h>
+
+#ifdef __APPLE__
+# include <SDL_ttf.h>
+#endif
+#ifdef __linux__
 # include <SDL2/SDL_ttf.h>
+#endif
 
 typedef struct	s_point
 {
