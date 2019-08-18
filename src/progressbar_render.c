@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 08:02:23 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/14 12:03:34 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 01:07:53 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int
 	{
 		SDL_QueryTexture(ptr_elem->textures[1].tex, NULL, NULL, &w, &h);
 		dst = (SDL_Rect){0, 0, w * ptr_elem->float_par, h};
-		texture_render_rect(win, elem, ptr_elem->textures[1].tex, &dst, &src);
+		texture_render_rect(win, elem, &dst, &src);
 	}
 	return (0);
 }

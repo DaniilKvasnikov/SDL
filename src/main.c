@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/17 13:05:50 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 01:31:01 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 
 	if((mydata = init_mydata()) == NULL)
 		exit(1);
-	if (ft_sdl_init(SDL_INIT_EVERYTHING) != 0)
+	if (ft_sdl_init() != 0)
 		exit(1);
 	ft_add_win(mydata, ft_init_win(mydata, "Main", (t_rect){100, 100, 640, 480}, SDL_WINDOW_SHOWN));
 
@@ -42,6 +42,11 @@ int main(int argc, char **argv)
 	t_element *but3 = init_button_to_win((t_rect){winlist_sub->pos.x + winlist_sub->size.x, winlist_sub->pos.y, winlist_sub->size.x, winlist_sub->size.y}, "./img/button_1.bmp", mydata->wins[0], "Button3", &element_touch, NULL, &button_render);
 	winlist_sub->sub_group = add_group_e(winlist_sub->sub_group, but3, NULL);
 	but3->parent = winlist_sub;
+
+	t_rect rect_win = (t_rect){300, 0, 300, 300};
+	draw_text_to_target_tex(mydata->wins[0], get_texture_to_win(mydata->wins[0], "./img/cat.bmp"), &rect_win, NULL);
+	rect_win = (t_rect){200, 0, 100, 100};
+	draw_text_to_target_tex(mydata->wins[0], get_texture_to_win(mydata->wins[0], "./img/cat.bmp"), &rect_win, NULL);
 
 	// add_element_to_win(mydata->wins[0], init_button_to_win((t_rect){0, 0, 100, 50}, "./img/button_1.bmp", mydata->wins[0], "butt1", &element_touch, &active_elem, &button_render));
 	// add_element_to_win(mydata->wins[0], init_button_to_win((t_rect){0, 50, 100, 50}, "./img/button_1.bmp", mydata->wins[0], "butt2", &element_touch, &active_elem, &button_render));

@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:38:48 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/14 09:12:31 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 01:04:24 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,8 @@ t_win
 	win->active_element = NULL;
 	win->mydata = mydata;
 	win->groupe = NULL;
+	win->texTarget = SDL_CreateTexture(win->ren, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, rect.w, rect.h);
+	if (win->texTarget == NULL)
+		exit (0);
 	return (win);
 }

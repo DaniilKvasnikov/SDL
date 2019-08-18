@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/17 11:45:16 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 01:23:48 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void			ft_run_keyboard_fun(t_mydata *mydata, SDL_Event ev);
 void			ft_run_mouse_fun(t_mydata *mydata,SDL_Event *ev);
 
 void			render_wins(t_mydata *mydata);
+void			draw_text_to_target_tex(t_win *win, t_texture *tex, t_rect *rect_win, t_rect *rect_img);
 
 SDL_Texture*	loadTexture(char *path, t_win *win);
 void			ft_init_texture(t_win *win, char *path, t_point_int pos);
@@ -112,7 +113,7 @@ int				gr_cheacker(struct s_group_e *group, void *elem);
 int				textline_keyboard(void *win_ptr, void *but_ptr, SDL_Event *ev);
 
 int				texture_render(t_win *win, t_element *elem, SDL_Texture *texture);
-int				texture_render_rect(t_win *win, t_element *elem, SDL_Texture *texture, SDL_Rect *dust, SDL_Rect *src);
+int				texture_render_rect(t_win *win, SDL_Texture *texture, SDL_Rect *dust, SDL_Rect *src);
 int				render_text(t_win* win, t_element *elem, char *str);
 int				button_render(void *win, void *elem);
 int				checkbox_render(void *win, void *elem);

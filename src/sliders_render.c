@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 19:37:43 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/14 12:04:49 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 01:08:38 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int
 		texture_render(ptr_win, ptr_elem, ptr_elem->textures[0].tex);
 	rect = (SDL_Rect){.x = ptr_elem->pos.x - ptr_elem->size.y / 4 + ptr_elem->size.x * ptr_elem->float_par, .y = ptr_elem->pos.y, .w = ptr_elem->size.y / 2, .h = ptr_elem->size.y};
 	if (ptr_elem->textures_count >= 2)
-		texture_render_rect(win, elem, ptr_elem->textures[1].tex, NULL, &rect);
+		texture_render_rect(win, ptr_elem->textures[1].tex, NULL, &rect);
 	return (0);
 }

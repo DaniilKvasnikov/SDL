@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/17 06:03:26 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 01:01:10 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef struct	s_win
 	int				textures_count;
 	void			*mydata;
 	t_group_e		*groupe;
+	SDL_Texture		*texTarget;
 }				t_win;
 
 typedef struct	s_mydata
