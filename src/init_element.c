@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:59:08 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/17 03:06:23 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 02:00:08 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ t_element
 	element->sub_group = NULL;
 	element->parent = NULL;
 	element->active_elem = NULL;
+	element->deactive_elem = NULL;
 	return (element);
 }

@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/18 01:31:01 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 02:05:07 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 		exit(1);
 	ft_add_win(mydata, ft_init_win(mydata, "Main", (t_rect){100, 100, 640, 480}, SDL_WINDOW_SHOWN));
 
-	add_element_to_win(mydata->wins[0], init_image_to_win((t_rect){50, 25, 100, 100}, "./img/cat.bmp", mydata->wins[0], &element_touch, &image_pressed, &active_elem, &button_render));
+	add_element_to_win(mydata->wins[0], init_image_to_win((t_rect){50, 25, 100, 100}, "./img/cat.bmp", mydata->wins[0], &element_touch, &image_pressed, &active_elem, &img_to_layer, &button_render));
 
 	t_element *menulist = add_element_to_win(mydata->wins[0], init_menulist_to_win((t_rect){0, 0, 100, 50}, "./img/button_1.bmp", mydata->wins[0], "File", &menulist_touch, &active_elem, &dropdownlist_render));
 	
@@ -44,9 +44,9 @@ int main(int argc, char **argv)
 	but3->parent = winlist_sub;
 
 	t_rect rect_win = (t_rect){300, 0, 300, 300};
-	draw_text_to_target_tex(mydata->wins[0], get_texture_to_win(mydata->wins[0], "./img/cat.bmp"), &rect_win, NULL);
+	draw_text_to_target_tex(mydata->wins[0], get_texture_to_win(mydata->wins[0], "./img/cat.bmp"), 0, &rect_win, NULL);
 	rect_win = (t_rect){200, 0, 100, 100};
-	draw_text_to_target_tex(mydata->wins[0], get_texture_to_win(mydata->wins[0], "./img/cat.bmp"), &rect_win, NULL);
+	draw_text_to_target_tex(mydata->wins[0], get_texture_to_win(mydata->wins[0], "./img/cat.bmp"), 0, &rect_win, NULL);
 
 	// add_element_to_win(mydata->wins[0], init_button_to_win((t_rect){0, 0, 100, 50}, "./img/button_1.bmp", mydata->wins[0], "butt1", &element_touch, &active_elem, &button_render));
 	// add_element_to_win(mydata->wins[0], init_button_to_win((t_rect){0, 50, 100, 50}, "./img/button_1.bmp", mydata->wins[0], "butt2", &element_touch, &active_elem, &button_render));

@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/18 01:01:10 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 01:59:55 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,15 @@ typedef struct	s_element
 	struct s_element	*(*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
 	struct s_element	*(*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
 	int					(*keyboard_press)(void *win, void *but, SDL_Event *ev);
-	struct s_element	*(*active_elem)(void *ptr_win, void *buf);
+	struct s_element	*(*deactive_elem)(void *ptr_win, void *but);
+	struct s_element	*(*active_elem)(void *ptr_win, void *but);
 }				t_element;
+
+typedef struct	s_layers
+{
+	SDL_Texture		**textures;
+	int				count;
+}				t_layers;
 
 typedef struct	s_win
 {
@@ -81,7 +88,7 @@ typedef struct	s_win
 	int				textures_count;
 	void			*mydata;
 	t_group_e		*groupe;
-	SDL_Texture		*texTarget;
+	t_layers		layers;
 }				t_win;
 
 typedef struct	s_mydata
