@@ -17,15 +17,15 @@ endif
 
 ### PATH ###
 SRCS_PATH = src/
+LIBUI_PATH = libui/
 OBJ_PATH  = obj/
 LIBFT_PATH = libft/
 
 FLAGS = -Wall #-Werror -Wextra
 
-INC = -I ./includes/ -I ./$(LIBFT_PATH)includes/
+INC = -I ./includes/ -I ./$(LIBFT_PATH)includes/ -I$(LIBUI_PATH)includes/
 
-SRCS_NAME = $(shell find src/  | grep -E ".+\.c" | cut -c5-)
-FILE_COUNT = $(shell find src/  | grep -E ".+\.c" | wc -l)
+SRCS_NAME = $(shell find $(SRCS_PATH) | grep -E ".+\.c" | cut -c5-)
 
 FOLDERS_SRCS = $(addprefix $(OBJ_PATH), $(shell find src/ -type d | cut -c5-))
 
@@ -36,14 +36,14 @@ OBJ = $(addprefix $(OBJ_PATH), $(SRCS_NAME:.c=.o))
 UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
-	INC = -lSDL2 -lSDL2_ttf -I ./includes/ -I ./$(LIBFT_PATH)includes/
+	INC += -lSDL2 -lSDL2_ttf
 endif
 ifeq ($(UNAME_S),Darwin)
 	SDL =  -F ./includes/frameworks/ -framework SDL2 \
 									-framework SDL2_image \
 									-framework SDL2_ttf \
 									-framework SDL2_mixer
-	INCLUDES = -I includes -I libft -I kiss_sdl -I includes/frameworks/SDL2.framework/Headers \
+	INC += -I includes -I libft -I kiss_sdl -I includes/frameworks/SDL2.framework/Headers \
 			-I includes/frameworks/SDL2_image.framework/Versions/A/Headers \
 			-I includes/frameworks/SDL2_ttf.framework/Versions/A/Headers \
 			-I includes/frameworks/SDL2_mixer.framework/Versions/A/Headers
@@ -55,20 +55,24 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@make -w -C $(LIBFT_PATH)
 	@echo "\033[92m$(LIBFT_PATH)\033[0m compiled."
-	@gcc -g $(FLAGS) $(OBJ) $(SDL) $(INCLUDES) $(INC) -L $(LIBFT_PATH) -lft -o $(NAME) $(FRAMEWORKS)
+	@make -w -C $(LIBUI_PATH)
+	@echo "\033[92m$(LIBUI_PATH)\033[0m compiled."
+	@gcc -g $(FLAGS) $(OBJ) libui/libui.a $(SDL) $(INCLUDES) $(INC) -L $(LIBFT_PATH) -lft -o $(NAME) $(FRAMEWORKS)
 	@echo "\033[35m$(NAME)\033[0m created."
 
 $(OBJ_PATH)%.o: $(SRCS_PATH)%.c
 	@mkdir -p $(FOLDERS_SRCS)
 	@gcc -c -g $(FLAGS) $(INC) $(INCLUDES) $< -o $@ $(FRAMEWORKS)
 	@echo "\033[33m$<\033[0m compiled."
-	
+
 clean:
 	@make -w -C $(LIBFT_PATH)/ clean
+	@make -w -C $(LIBUI_PATH)/ clean
 	@/bin/rm -rf $(OBJ_PATH)
 	
 fclean: clean
 	@make -w -C $(LIBFT_PATH)/ fclean
+	@make -w -C $(LIBUI_PATH)/ fclean
 	@/bin/rm -rf $(NAME)
 	
 re: fclean all
@@ -86,9 +90,6 @@ install_ubuntu:
 pull: fclean
 	git pull
 
-get_count_files:
-	@echo $(FILE_COUNT)
-
 rl: delete all
 
-.PHONY: all, clean, fclean, re, rl, delete, install_ubuntu, pull, get_count_files
+.PHONY: all, clean, fclean, re, rl, delete, install_ubuntu, pull

@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/18 04:16:59 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 17:07:44 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ int main(int argc, char **argv)
 
 	t_element *menulist = add_element_to_win(mydata->wins[0], init_menulist_to_win((t_rect){0, 0, 100, 50}, "./img/button_1.bmp", mydata->wins[0], "File", &menulist_touch, &active_elem, &dropdownlist_render));
 	
+	t_element *img = init_image_to_win((t_rect){menulist->pos.x + menulist->size.x / 10, menulist->pos.y + menulist->size.y / 4, menulist->size.x / 5, menulist->size.y / 2}, "./img/cat.bmp", mydata->wins[0], NULL, NULL, NULL, NULL, &button_render);
+	menulist->sub_group = add_group_e(menulist->sub_group, img, NULL);
+	img->parent = menulist;
 	t_element *but1 = init_button_to_win((t_rect){menulist->pos.x, menulist->pos.y + menulist->size.y, menulist->size.x, menulist->size.y}, "./img/button_1.bmp", mydata->wins[0], "Button1", &element_touch, NULL, &button_render);
 	t_element *but2 = init_button_to_win((t_rect){menulist->pos.x, menulist->pos.y + menulist->size.y * 2, menulist->size.x, menulist->size.y}, "./img/button_1.bmp", mydata->wins[0], "Button2", &element_touch, NULL, &button_render);
 	menulist->sub_group = add_group_e(menulist->sub_group, but1, NULL);
@@ -45,7 +48,10 @@ int main(int argc, char **argv)
 	t_element *but3 = init_button_to_win((t_rect){winlist_sub->pos.x + winlist_sub->size.x, winlist_sub->pos.y, winlist_sub->size.x, winlist_sub->size.y}, "./img/button_1.bmp", mydata->wins[0], "Button3", &element_touch, NULL, &button_render);
 	winlist_sub->sub_group = add_group_e(winlist_sub->sub_group, but3, NULL);
 	but3->parent = winlist_sub;
-
+	t_element *img2 = init_image_to_win((t_rect){but3->pos.x + but3->size.x / 10, but3->pos.y + but3->size.y / 4, but3->size.x / 5, but3->size.y / 2}, "./img/cat.bmp", mydata->wins[0], NULL, NULL, NULL, NULL, &button_render);
+	but3->sub_group = add_group_e(but3->sub_group, img2, NULL);
+	img2->parent = but3;
+	
 	t_rect rect_win = (t_rect){300, 0, 300, 300};
 	draw_text_to_target_tex(mydata->wins[0], get_texture_to_win(mydata->wins[0], "./img/cat.bmp"), 0, &rect_win, NULL);
 	rect_win = (t_rect){200, 0, 100, 100};
@@ -68,26 +74,7 @@ int main(int argc, char **argv)
 
 	// char	**strs = ft_strsplit("1 2 3 4 5", ' ');
 	// add_element_to_win(mydata->wins[0], init_dropdownlist_to_win((t_rect){0, 100, 100, 50}, "./img/button_1.bmp", mydata->wins[0], strs, NULL, &dropdownlist_touch, &active_elem, NULL, &dropdownlist_render, &button_render));
-
-	SDL_Event	ev;
-	int			run;
-
-	run = 1;
-	while (run == 1)
-	{
-		render_wins(mydata);
-		while (SDL_PollEvent(&ev) != 0)
-		{
-			SDL_PumpEvents();
-			ft_run_mouse_fun(mydata, &ev);
-			ft_run_keyboard_fun(mydata, ev);
-			if (mydata->win_count == 0 || ev.type == 256)
-				run = 0;
-			// progress_bar->float_par = sliders->float_par;
-		}
-		ft_update_win_surface(mydata);
-	}
-
+	run_main_loop(mydata);
 	ft_destroy_wins(mydata);
 	free(mydata);
 	SDL_Quit();

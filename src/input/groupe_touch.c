@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 09:27:15 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/17 13:25:46 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 16:51:10 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@ t_element
 	if (elem->sub_group != NULL)
 		while (++i < elem->sub_group->count)
 		{
-			tmp = ((t_element *)elem->sub_group->elements[i])->element_touch(win, elem->sub_group->elements[i], ev, mouse);
-			if (tmp != NULL)
+			if (((t_element *)elem->sub_group->elements[i])->element_touch)
 			{
-				elem->int_par = i + 1;
-				return (tmp);
+				tmp = ((t_element *)elem->sub_group->elements[i])->element_touch(win, elem->sub_group->elements[i], ev, mouse);
+				if (tmp != NULL)
+				{
+					elem->int_par = i + 1;
+					return (tmp);
+				}
 			}
 		}
 	return (NULL);

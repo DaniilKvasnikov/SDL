@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/18 04:13:47 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 17:43:46 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "ft_printf.h"
 # include "ft_struct.h"
 int				ft_sdl_init();
-
+void			run_main_loop();
 t_mydata		*init_mydata(void);
 SDL_Window		*ft_createwin(char *name, t_rect rect, Uint32 flags);
 SDL_Renderer	*ft_create_rend(SDL_Window *win);
@@ -115,6 +115,7 @@ int				gr_cheacker(struct s_group_e *group, void *elem);
 
 int				textline_keyboard(void *win_ptr, void *but_ptr, SDL_Event *ev);
 
+void			groupe_draw(t_win *win, t_group_e *group);
 int				texture_render(t_win *win, t_element *elem, SDL_Texture *texture);
 int				texture_render_rect(t_win *win, SDL_Texture *texture, SDL_Rect *dust, SDL_Rect *src);
 int				render_text(t_win* win, t_element *elem, char *str);
@@ -130,6 +131,5 @@ t_element		*img_to_layer(void *ptr_win, void *but);
 void			ctrl_c_win(void *ptr_win, SDL_Event *ev);
 void			ctrl_v_win(void *ptr_win, SDL_Event *ev);
 int				is_parent_active_elem(t_element *elem, t_element *parent);
-void			ft_print_info_elem(t_element *elem);
 int				save_screenshot_bmp(char *filepath, SDL_Window* SDLWindow, SDL_Renderer* SDLRenderer);
 #endif
