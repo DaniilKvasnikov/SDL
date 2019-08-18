@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image_pressed.c                                    :+:      :+:    :+:   */
+/*   ctrl_v_win.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/17 05:52:38 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/18 02:59:41 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/18 04:12:01 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/18 04:18:05 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-t_element
-	*image_pressed(void *ptr_win, void *ptr_elem, SDL_Event *ev, t_point_int *mouse)
+void
+	ctrl_v_win(void *ptr_win, SDL_Event *ev)
 {
-	t_win 		*win;
-	t_element	*elem;
+	t_win		*win;
 
-	win =(t_win *)ptr_win;
-	elem = (t_element *)ptr_elem;
-	if (win->active_element == elem)
-	{
-		elem->pos = (t_point){mouse->x - elem->last_delta.x, mouse->y - elem->last_delta.y};
-	}
-	return (elem);
+	win = (t_win *)ptr_win;
+	if (win->tmp_element == NULL)
+		return ;
+	ft_putstr("ctrl_v_win\n");
+	add_element_to_win(win, win->tmp_element);
 }

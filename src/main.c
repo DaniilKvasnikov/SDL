@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:14:56 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/18 02:05:07 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 04:16:59 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int main(int argc, char **argv)
 		exit(1);
 	if (ft_sdl_init() != 0)
 		exit(1);
-	ft_add_win(mydata, ft_init_win(mydata, "Main", (t_rect){100, 100, 640, 480}, SDL_WINDOW_SHOWN));
+	t_win *main;
+	ft_add_win(mydata, main = ft_init_win(mydata, "Main", (t_rect){100, 100, 640, 480}, SDL_WINDOW_SHOWN));
+	main->ctrl_c = ctrl_c_win;
+	main->ctrl_v = ctrl_v_win;
 
 	add_element_to_win(mydata->wins[0], init_image_to_win((t_rect){50, 25, 100, 100}, "./img/cat.bmp", mydata->wins[0], &element_touch, &image_pressed, &active_elem, &img_to_layer, &button_render));
 

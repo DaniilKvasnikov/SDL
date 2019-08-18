@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/18 01:59:55 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 04:06:00 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,12 @@ typedef struct	s_win
 	SDL_Renderer	*ren;
 	int				window_id;
 	void			(*button_press)(void *mydata, void *win, SDL_Event *ev);
+	void			(*ctrl_c)(void *ptr_win, SDL_Event *ev);
+	void			(*ctrl_v)(void *ptr_win, SDL_Event *ev);
 	t_element		**elements;
 	int				element_count;
 	t_element		*active_element;
+	t_element		*tmp_element;
 	t_texture		*textures;
 	int				textures_count;
 	void			*mydata;
@@ -98,6 +101,8 @@ typedef struct	s_mydata
 	const Uint8		*keyboardState;
 	t_point_int		mouse;
 	TTF_Font		*font;
+	int				ctrl_c;
+	int				ctrl_v;
 }				t_mydata;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/18 02:11:13 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 04:13:47 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ t_element		*init_element(t_rect rect, char *path_tex1, char *path_tex2, t_win *w
 					t_element *(*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 					int (*keyboard_press)(void *win, void *but, SDL_Event *ev),
 					int (*draw)(void *win, void *elem));
+t_element		*init_element_copy(t_element *old_elem);
 t_element		*add_element_to_win(t_win *win, t_element *element);
 t_element		*delete_element_in_win(t_win *win, t_element *element);
 t_element		*init_button_to_win(t_rect rect, char *path_tex, t_win *win, char *str,
@@ -123,8 +124,11 @@ int				sliders_render(void *win, void *elem);
 int				progressbar_render(void *win, void *elem);
 int				dropdownlist_render(void *win, void *elem);
 
+void			ctrl_c_win(void *ptr_win, SDL_Event *ev);
+void			ctrl_v_win(void *ptr_win, SDL_Event *ev);
 t_element		*img_to_layer(void *ptr_win, void *but);
-
+void			ctrl_c_win(void *ptr_win, SDL_Event *ev);
+void			ctrl_v_win(void *ptr_win, SDL_Event *ev);
 int				is_parent_active_elem(t_element *elem, t_element *parent);
 void			ft_print_info_elem(t_element *elem);
 int				save_screenshot_bmp(char *filepath, SDL_Window* SDLWindow, SDL_Renderer* SDLRenderer);
