@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/18 17:43:50 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 21:00:10 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void			run_main_loop();
 t_mydata		*init_mydata(void);
 SDL_Window		*ft_createwin(char *name, t_rect rect, Uint32 flags);
 SDL_Renderer	*ft_create_rend(SDL_Window *win);
-t_win			*ft_init_win(t_mydata *mydata, char *name, t_rect rect, Uint32 flags);
+t_win			*ft_init_win(t_mydata *mydata, char *name, t_rect rect, Uint32 flags,
+					void (*button_press)(void *mydata, void *win, SDL_Event *ev));
 t_win			*ft_add_win(t_mydata *mydata, t_win *new_win);
 void			ft_update_win_surface(t_mydata *mydata);
 
@@ -32,7 +33,7 @@ void			ft_destroy_win(t_win *win);
 void			ft_destroy_wins(t_mydata *mydata);
 
 t_win			*ft_get_win_from_id(t_mydata *mydata, int id);
-void			ft_run_keyboard_fun(t_mydata *mydata, SDL_Event ev);
+void			ft_run_keyboard_fun(t_mydata *mydata, SDL_Event *ev);
 
 void			ft_run_mouse_fun(t_mydata *mydata,SDL_Event *ev);
 
@@ -41,8 +42,6 @@ void			draw_text_to_target_tex(t_win *win, t_texture *tex, int num_layer, t_rect
 
 SDL_Texture*	loadTexture(char *path, t_win *win);
 void			ft_init_texture(t_win *win, char *path, t_point_int pos);
-
-void			ft_button_press(void *mydata, void *win, SDL_Event *ev);
 
 void			add_texture_to_win(t_win *win, char *path);
 t_texture		*get_texture_to_win(t_win *win, char *path);
@@ -96,8 +95,6 @@ t_element		*init_menulist_to_win(t_rect rect, char *path_tex, t_win *win, char *
 t_group_e		*add_group_e(t_group_e *group, t_element *elem,
 					int (*gr_cheacker)(struct s_group_e *group, void *elem));
 
-t_element		*active_elem(void *ptr_win, void *buf);
-
 int				chech_input_mouse(t_element *elem, t_point_int *mouse);
 void			win_press_button(t_win *win, SDL_Event *ev, int x, int y);
 t_element		*element_pressed(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
@@ -110,8 +107,6 @@ t_element		*menulist_touch(void *win, void *but, SDL_Event *ev, t_point_int *mou
 t_element		*groupe_touch(t_element *elem, void *win, SDL_Event *ev, t_point_int *mouse);
 t_element		*push_text_to_parent(void *win, void *but, SDL_Event *ev);
 t_element		*image_pressed(void *ptr_win, void *ptr_elem, SDL_Event *ev, t_point_int *mouse);
-
-int				gr_cheacker(struct s_group_e *group, void *elem);
 
 int				textline_keyboard(void *win_ptr, void *but_ptr, SDL_Event *ev);
 

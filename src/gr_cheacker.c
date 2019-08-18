@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_main_loop.c                                    :+:      :+:    :+:   */
+/*   checkbox_cheacker.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/18 17:06:25 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/18 21:00:06 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/14 09:03:37 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/18 20:10:47 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sdl.h"
+#include "ft_guimp.h"
 
-void
-	run_main_loop(t_mydata *mydata)
-{	
-	SDL_Event	ev;
-	int			run;
+int
+	gr_cheacker(t_group_e *group, void *elem)
+{
+	int	i;
 
-	run = 1;
-	while (run == 1)
-	{
-		render_wins(mydata);
-		while (SDL_PollEvent(&ev) != 0)
-		{
-			SDL_PumpEvents();
-			ft_run_mouse_fun(mydata, &ev);
-			ft_run_keyboard_fun(mydata, &ev);
-			if (mydata->win_count == 0 || ev.type == 256)
-				run = 0;
-		}
-		ft_update_win_surface(mydata);
-	}
+	i = -1;
+	while (++i < group->count)
+		if ((t_element *)group->elements[i] == elem)
+			break ;
+	if (i == group->count)
+		return (1);
+	i = -1;
+	while (++i < group->count)
+		if ((t_element *)group->elements[i] != elem)
+			((t_element *)group->elements[i])->int_par = 0;
+	return (0);
 }

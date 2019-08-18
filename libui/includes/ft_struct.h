@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/18 16:16:07 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 21:15:44 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct	s_win
 	void			(*button_press)(void *mydata, void *win, SDL_Event *ev);
 	void			(*ctrl_c)(void *ptr_win, SDL_Event *ev);
 	void			(*ctrl_v)(void *ptr_win, SDL_Event *ev);
+	void			(*fun_close)(struct	s_win *win);
 	t_element		**elements;
 	int				element_count;
 	t_element		*active_element;

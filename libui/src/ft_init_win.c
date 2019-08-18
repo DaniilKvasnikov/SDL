@@ -6,14 +6,15 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:38:48 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/18 16:16:21 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 21:16:21 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 t_win
-	*ft_init_win(t_mydata *mydata, char *name, t_rect rect, Uint32 flags)
+	*ft_init_win(t_mydata *mydata, char *name, t_rect rect, Uint32 flags,
+		void (*button_press)(void *mydata, void *win, SDL_Event *ev))
 {
 	t_win *win;
 
@@ -23,7 +24,7 @@ t_win
 	if ((win->ren = ft_create_rend(win->win)) == NULL)
 		return (NULL);
 	win->window_id = SDL_GetWindowID(win->win);
-	win->button_press = &ft_button_press;
+	win->button_press = button_press;
 	win->elements = NULL;
 	win->element_count = 0;
 	win->textures_count = 0;
@@ -40,6 +41,7 @@ t_win
 	win->ctrl_c = NULL;
 	win->ctrl_v = NULL;
 	win->tmp_element = NULL;
+	win->fun_close = NULL;
 	win->tex_active_elem = get_texture_to_win(win, "img/unchecked_checkbox.bmp")->tex;
 	if (win->tex_active_elem == NULL)
 		exit (0);

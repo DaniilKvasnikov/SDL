@@ -6,11 +6,11 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 04:04:47 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/18 04:18:15 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 20:10:40 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sdl.h"
+#include "ft_guimp.h"
 
 void
 	ctrl_c_win(void *ptr_win, SDL_Event *ev)

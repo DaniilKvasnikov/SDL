@@ -50,13 +50,15 @@ ifeq ($(UNAME_S),Darwin)
 	FRAMEWORKS = -F includes/frameworks/
 endif
 
-all: $(NAME)
+all: libs $(NAME)
 
-$(NAME): $(OBJ)
+libs:
 	@make -w -C $(LIBFT_PATH)
 	@echo "\033[92m$(LIBFT_PATH)\033[0m compiled."
 	@make -w -C $(LIBUI_PATH)
 	@echo "\033[92m$(LIBUI_PATH)\033[0m compiled."
+
+$(NAME): $(OBJ)
 	@gcc -g $(FLAGS) $(OBJ) libui/libui.a $(SDL) $(INCLUDES) $(INC) -L $(LIBFT_PATH) -lft -o $(NAME) $(FRAMEWORKS)
 	@echo "\033[35m$(NAME)\033[0m created."
 

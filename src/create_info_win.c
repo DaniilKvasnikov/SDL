@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_main_loop.c                                    :+:      :+:    :+:   */
+/*   create_info_win.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/18 17:06:25 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/18 21:00:06 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/18 20:47:36 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/18 21:27:33 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sdl.h"
+#include "ft_guimp.h"
 
-void
-	run_main_loop(t_mydata *mydata)
-{	
-	SDL_Event	ev;
-	int			run;
-
-	run = 1;
-	while (run == 1)
-	{
-		render_wins(mydata);
-		while (SDL_PollEvent(&ev) != 0)
-		{
-			SDL_PumpEvents();
-			ft_run_mouse_fun(mydata, &ev);
-			ft_run_keyboard_fun(mydata, &ev);
-			if (mydata->win_count == 0 || ev.type == 256)
-				run = 0;
-		}
-		ft_update_win_surface(mydata);
-	}
+t_win
+	*create_info_win(t_mydata *mydata, char *name)
+{
+	t_win	*win;
+	ft_add_win(mydata, win = ft_init_win(mydata, name, (t_rect){840, 100, 240, 480}, SDL_WINDOW_SHOWN, NULL));
+	return (win);
 }

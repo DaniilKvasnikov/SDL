@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkbox_cheacker.c                                :+:      :+:    :+:   */
+/*   ft_button_press.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/14 09:03:37 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/14 12:36:51 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/07/19 17:01:14 by gamerd            #+#    #+#             */
+/*   Updated: 2019/08/18 21:06:57 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-int
-	gr_cheacker(t_group_e *group, void *elem)
+void
+	ft_button_press(void *mydata, void *win, SDL_Event *ev)
 {
-	int	i;
-
-	i = -1;
-	while (++i < group->count)
-		if ((t_element *)group->elements[i] == elem)
-			break ;
-	if (i == group->count)
-		return (1);
-	i = -1;
-	while (++i < group->count)
-		if ((t_element *)group->elements[i] != elem)
-			((t_element *)group->elements[i])->int_par = 0;
-	return (0);
+	if (((t_win *)win)->active_element != NULL && ((t_win *)win)->active_element->keyboard_press != NULL)
+		((t_win *)win)->active_element->keyboard_press(win, ((t_win *)win)->active_element, ev);
 }

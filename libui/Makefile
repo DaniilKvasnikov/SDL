@@ -6,7 +6,7 @@
 #    By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/27 14:25:41 by rrhaenys          #+#    #+#              #
-#    Updated: 2019/08/18 17:29:17 by rrhaenys         ###   ########.fr        #
+#    Updated: 2019/08/18 20:22:32 by rrhaenys         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,13 @@ endif
 NAME = libui.a
 FLAGS = #-Wall -Wextra -Werror
 SRC_DIR = src/
-SRC_FIL = $(shell ls src | grep -E ".+\.c")
-SRCS = $(addprefix  $(SRC_DIR), $(SRC_FIL))
+OBJ_DIR = obj/
+SRCS_NAME = $(shell ls src | grep -E ".+\.c")
+SRCS = $(addprefix  $(SRC_DIR), $(SRCS_NAME))
 INCLUDE = -Iincludes -I ../libft/includes/
 COMMAND = gcc
-OBJ	= $(SRCS:.c=.o)
+OBJ = $(addprefix $(OBJ_DIR), $(SRCS_NAME:.c=.o))
+
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
@@ -43,18 +45,18 @@ endif
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
 
-.c.o:
-	$(COMMAND) $(FLAGS) $(INCLUDE) -g -c -o $@ $< $(FRAMEWORKS)
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
+	@$(COMMAND) $(FLAGS) $(INCLUDE) -g -c -o $@ $< $(FRAMEWORKS)
 
 clean:
-	/bin/rm -f $(OBJ)
+	@/bin/rm -rf $(OBJ_DIR)
 
 fclean: clean
-	/bin/rm -f $(NAME)
-	/bin/rm -f test
+	@/bin/rm -f $(NAME)
 
 re: fclean all
 

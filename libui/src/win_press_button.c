@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 15:20:16 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/18 02:06:34 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 20:53:22 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void
 	t_element	*last_active;
 
 	i = win->element_count;
+	last_active = win->active_element;
 	while (--i >= 0)
 	{
-		last_active = win->active_element;
 		if (win->elements[i]->element_touch != NULL)
 		{
 			if ((tmp = win->elements[i]->element_touch(win, win->elements[i], ev, &(t_point_int){x, y})) != NULL)
@@ -41,7 +41,7 @@ void
 			}
 		}
 	}
-	if (last_active && last_active->deactive_elem)
+	if (last_active != NULL && last_active->deactive_elem)
 		last_active->deactive_elem(win, last_active);
 	ft_printf("Not touch\n");
 	win->active_element = NULL;
