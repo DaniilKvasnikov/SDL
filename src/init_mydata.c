@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 16:56:35 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/18 15:30:59 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 16:03:57 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ t_mydata
 		printf("TTF_Init: %s\n", TTF_GetError());
 		exit(1);
 	}
-	mydata->font =
-		TTF_OpenFont("/Users/rrhaenys/SDL/fonts/17710.ttf", 12);
+	mydata->font = TTF_OpenFont("./fonts/17710.ttf", 12);
 	if(mydata->font == NULL)
 	{
 		printf("TTF_OpenFont: %s\n", TTF_GetError());

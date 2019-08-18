@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 04:12:01 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/18 04:18:05 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 16:00:55 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@ void
 	if (win->tmp_element == NULL)
 		return ;
 	ft_putstr("ctrl_v_win\n");
-	add_element_to_win(win, win->tmp_element);
+	if (win->active_element && win->active_element->deactive_elem)
+		win->active_element->deactive_elem(win, win->active_element);
+	win->active_element = add_element_to_win(win, init_element_copy(win->tmp_element));
 }

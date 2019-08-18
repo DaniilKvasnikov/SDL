@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/18 15:33:22 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/18 16:16:07 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ typedef struct	s_win
 	void			*mydata;
 	t_group_e		*groupe;
 	t_layers		layers;
+	SDL_Texture		*tex_active_elem;
 }				t_win;
 
 typedef struct	s_mydata
