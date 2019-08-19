@@ -6,7 +6,7 @@
 #    By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/27 14:25:41 by rrhaenys          #+#    #+#              #
-#    Updated: 2019/08/18 20:22:32 by rrhaenys         ###   ########.fr        #
+#    Updated: 2019/08/19 09:16:34 by rrhaenys         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,13 +42,14 @@ ifeq ($(UNAME_S),Darwin)
 	FRAMEWORKS = -F includes/frameworks/
 endif
 
-all: $(NAME)
+all: $(OBJ) $(SRCS) $(NAME)
 
 $(NAME): $(OBJ)
+	@/bin/rm -f $(NAME)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c includes/ft_sdl.h  includes/ft_struct.h
 	@mkdir -p $(OBJ_DIR)
 	@$(COMMAND) $(FLAGS) $(INCLUDE) -g -c -o $@ $< $(FRAMEWORKS)
 

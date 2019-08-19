@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/18 21:00:10 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/19 09:19:03 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ void			groupe_draw(t_win *win, t_group_e *group);
 int				texture_render(t_win *win, t_element *elem, SDL_Texture *texture);
 int				texture_render_rect(t_win *win, SDL_Texture *texture, SDL_Rect *dust, SDL_Rect *src);
 int				render_text(t_win* win, t_element *elem, char *str);
-int				button_render(void *win, void *elem);
 int				checkbox_render(void *win, void *elem);
 int				sliders_render(void *win, void *elem);
 int				progressbar_render(void *win, void *elem);

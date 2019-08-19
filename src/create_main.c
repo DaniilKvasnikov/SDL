@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 20:02:26 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/18 21:25:53 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/19 09:24:37 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_win
 	main->ctrl_c = ctrl_c_win;
 	main->ctrl_v = ctrl_v_win;
 
-	add_element_to_win(mydata->wins[0], init_image_to_win((t_rect){50, 25, 100, 100}, "./img/cat.bmp", mydata->wins[0], &element_touch, &image_pressed, &active_elem, &img_to_layer, &button_render));
+	add_element_to_win(mydata->wins[0], init_image_to_win((t_rect){50, 25, 100, 100}, "./img/cat.bmp", mydata->wins[0], &element_touch, &image_pressed, &active_elem, &img_to_layer, &image_render));
 
 	t_element *menulist = add_element_to_win(mydata->wins[0], init_menulist_to_win((t_rect){0, 0, 100, 50}, "./img/button_1.bmp", mydata->wins[0], "File", &menulist_touch, &active_elem, &dropdownlist_render));
 	

@@ -58,11 +58,11 @@ libs:
 	@make -w -C $(LIBUI_PATH)
 	@echo "\033[92m$(LIBUI_PATH)\033[0m compiled."
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) libui/libui.a libft/libft.a
 	@gcc -g $(FLAGS) $(OBJ) libui/libui.a $(SDL) $(INCLUDES) $(INC) -L $(LIBFT_PATH) -lft -o $(NAME) $(FRAMEWORKS)
 	@echo "\033[35m$(NAME)\033[0m created."
 
-$(OBJ_PATH)%.o: $(SRCS_PATH)%.c
+$(OBJ_PATH)%.o: $(SRCS_PATH)%.c includes/ft_guimp.h libui/includes/ft_sdl.h libui/includes/ft_struct.h
 	@mkdir -p $(FOLDERS_SRCS)
 	@gcc -c -g $(FLAGS) $(INC) $(INCLUDES) $< -o $@ $(FRAMEWORKS)
 	@echo "\033[33m$<\033[0m compiled."

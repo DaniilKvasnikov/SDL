@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:38:48 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/18 21:16:21 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/19 09:14:08 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,5 @@ t_win
 	win->ctrl_v = NULL;
 	win->tmp_element = NULL;
 	win->fun_close = NULL;
-	win->tex_active_elem = get_texture_to_win(win, "img/unchecked_checkbox.bmp")->tex;
-	if (win->tex_active_elem == NULL)
-		exit (0);
 	return (win);
 }
