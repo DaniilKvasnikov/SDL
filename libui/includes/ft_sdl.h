@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/20 15:04:18 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/20 17:43:08 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdlib.h>
 # include "ft_printf.h"
 # include "ft_struct.h"
+# include <math.h>
+
 int					ft_sdl_init();
 void				run_main_loop();
 t_mydata			*init_mydata(void);

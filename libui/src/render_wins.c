@@ -6,14 +6,14 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 19:10:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/20 17:23:02 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/20 18:01:47 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 static void
-	draw_elipse(SDL_Renderer *ren, t_rect field)
+	draw_elipse_full(SDL_Renderer *ren, t_rect field)
 {
 	int		x;
 	int		y;
@@ -48,6 +48,39 @@ static void
 	}
 }
 
+
+static void
+	draw_elipse_sin(SDL_Renderer *ren, t_rect field)
+{
+	int		w = field.w / 2;
+	int		h = field.h / 2;
+	if (w == 0 || h == 0)
+		return ;
+	int		r = field.w / 2;
+	double	wh = (double)h / (double)w;
+	int		cx = field.x + field.w / 2;
+	int		cy = field.y + field.h / 2;
+	double	len = M_PI * (w + h);
+	double step = 2.0f * M_PI / len;
+	double theta = -step;
+	while ((theta = theta + step) < 2.0f * M_PI)
+	{
+		double x = cx + r * cos(theta);
+		double y = cy - wh * r * sin(theta);
+		SDL_RenderDrawPoint(ren, x, y);
+	}
+}
+
+
+static void
+	draw_elipse(SDL_Renderer *ren, t_rect field, int full)
+{
+	if (full == 1)
+		draw_elipse_full(ren, field);
+	if (full == 0)
+		draw_elipse_sin(ren, field);
+}
+
 void
 	render_wins(t_mydata *mydata)
 {
@@ -76,7 +109,10 @@ void
 		SDL_Rect sdl_rect = t_rect_to_sdl_rect(&rect);
 		SDL_RenderDrawRect(win->ren, &sdl_rect);
 		flip_t_rect(&rect);
-		draw_elipse(win->ren, rect);
+		SDL_SetRenderDrawColor(win->ren, 0, 255, 0, SDL_ALPHA_OPAQUE);
+		draw_elipse(win->ren, rect, 1);
+		SDL_SetRenderDrawColor(win->ren, 0, 0, 255, SDL_ALPHA_OPAQUE);
+		draw_elipse(win->ren, rect, 0);
 		SDL_RenderPresent( win->ren );
 	}
 }
