@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 14:56:04 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/01/30 21:44:34 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/20 14:54:33 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,7 @@ int				*ft_range(int min, int max);
 char			*ft_rebase(unsigned long long n, int base);
 void			ft_toupper_str(char *str);
 char			*ft_stradd_3(char *s1, char *s2, char *s3);
+int				ft_min_int(int a, int b);
+int				ft_max_int(int a, int b);
 
 #endif

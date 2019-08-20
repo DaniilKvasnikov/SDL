@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 20:02:26 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/19 09:24:37 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/20 12:32:41 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ t_win
 	img2->parent = but3;
 	
 	t_rect rect_win = (t_rect){300, 0, 300, 300};
-	draw_text_to_target_tex(mydata->wins[0], get_texture_to_win(mydata->wins[0], "./img/cat.bmp"), 0, &rect_win, NULL);
+	draw_text_to_target_tex(mydata->wins[0], get_texture_to_win(mydata->wins[0], "./img/cat.bmp"), 2, &rect_win, NULL);
 	rect_win = (t_rect){200, 0, 100, 100};
-	draw_text_to_target_tex(mydata->wins[0], get_texture_to_win(mydata->wins[0], "./img/cat.bmp"), 0, &rect_win, NULL);
+	draw_text_to_target_tex(mydata->wins[0], get_texture_to_win(mydata->wins[0], "./img/cat.bmp"), 2, &rect_win, NULL);
 	return (main);
 }

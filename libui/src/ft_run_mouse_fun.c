@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 18:31:03 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/17 06:02:11 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/20 13:04:34 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,14 @@ void
 	win = ft_get_win_from_id(mydata, ev->window.windowID);
 	if (win == NULL)
 		return ;
-	if (SDL_GetMouseState(&point.x, &point.y))
+	if(SDL_GetMouseState(&point.x, &point.y))
 	{
 		if (ev->type == SDL_MOUSEBUTTONDOWN)
+		{
+			win->lst_mouse = point;
 			win_press_button(win, ev, point.x, point.y);
+		}
+		win->cur_mouse = point;
 		if (win->active_element != NULL)
 		{
 			if (win->active_element->element_pressed != NULL)

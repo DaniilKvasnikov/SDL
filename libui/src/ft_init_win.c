@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:38:48 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/19 09:14:08 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/20 12:50:36 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,23 @@ t_win
 	win->active_element = NULL;
 	win->mydata = mydata;
 	win->groupe = NULL;
-	win->layers.count = 1;
-	win->layers.textures = (SDL_Texture **)malloc(sizeof(SDL_Texture *));
+	win->layers.count = 3;
+	win->layers.textures = (SDL_Texture **)malloc(sizeof(SDL_Texture *) * win->layers.count);
 	if (win->layers.textures == NULL)
 		exit (0);
-	win->layers.textures[0] = SDL_CreateTexture(win->ren, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, rect.w, rect.h);
-	if (win->layers.textures[0] == NULL)
-		exit (0);
+	int		i;
+	i = -1;
+	while (++i < win->layers.count)
+	{
+		win->layers.textures[i] = SDL_CreateTexture(win->ren, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, rect.w, rect.h);
+		if (win->layers.textures[i] == NULL)
+			exit (0);
+	}
 	win->ctrl_c = NULL;
 	win->ctrl_v = NULL;
 	win->tmp_element = NULL;
 	win->fun_close = NULL;
+	win->cur_mouse = (t_point_int){0, 0};
+	win->lst_mouse = (t_point_int){0, 0};
 	return (win);
 }

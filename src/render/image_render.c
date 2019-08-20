@@ -6,11 +6,29 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 17:20:00 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/19 09:27:05 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/20 14:47:55 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
+
+static void
+	borders(SDL_Renderer *ren, t_element *elem)
+{
+		int	delta_x;
+		int	delta_y;
+
+		delta_x = 10 * (1 - 2 * (elem->size.x < 0));
+		delta_y = 10 * (1 - 2 * (elem->size.y < 0));
+		SDL_SetRenderDrawColor(ren, 255, 255, 0, SDL_ALPHA_OPAQUE);
+		SDL_Rect sdl_rec = t_rect_to_sdl_rect(&(t_rect){elem->pos.x, elem->pos.y, elem->size.x, elem->size.y});
+		SDL_RenderDrawRect(ren, &sdl_rec);
+		sdl_rec = t_rect_to_sdl_rect(&(t_rect){elem->pos.x, elem->pos.y, delta_x, delta_y});
+		SDL_RenderDrawRect(ren, &sdl_rec);
+		sdl_rec = t_rect_to_sdl_rect(&(t_rect){elem->pos.x + elem->size.x - delta_x, elem->pos.y + elem->size.y - delta_y, delta_x, delta_y});
+		SDL_RenderDrawRect(ren, &sdl_rec);
+		SDL_SetRenderDrawColor(ren, 255, 255, 255, SDL_ALPHA_OPAQUE);
+}
 
 int
 	image_render(void *win, void *elem)
@@ -27,17 +45,6 @@ int
 	if (ptr_elem->str != NULL)
 		render_text(ptr_win, ptr_elem, ptr_elem->str);
 	if (ptr_win->active_element == ptr_elem)
-	{
-		SDL_SetRenderDrawColor(ptr_win->ren, 255, 0, 0, SDL_ALPHA_OPAQUE);
-		SDL_Rect sdl_rec = (SDL_Rect){ptr_elem->pos.x, ptr_elem->pos.y,
-										ptr_elem->size.x, ptr_elem->size.y};
-		SDL_RenderDrawRect(ptr_win->ren, &sdl_rec);
-		sdl_rec = (SDL_Rect){ptr_elem->pos.x, ptr_elem->pos.y,
-										10, 10};
-		SDL_RenderDrawRect(ptr_win->ren, &sdl_rec);
-		sdl_rec = (SDL_Rect){ptr_elem->pos.x + ptr_elem->size.x - 10, ptr_elem->pos.y + ptr_elem->size.y - 10,
-										10, 10};
-		SDL_RenderDrawRect(ptr_win->ren, &sdl_rec);
-	}
+		borders(((t_win *)win)->ren, ptr_elem);
 	return (0);
 }

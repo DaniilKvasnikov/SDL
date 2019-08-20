@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 19:10:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/19 09:21:12 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/20 13:17:27 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,25 @@ void
 	int			i;
 	int			j;
 	SDL_Rect	rect;
+	t_win		*win;
 	
 	i = -1;
 	while (++i < mydata->win_count)
 	{
-		SDL_RenderClear( mydata->wins[i]->ren );
+		win = mydata->wins[i];
+		SDL_RenderClear( win->ren );
 		j = -1;
-		while (++j < mydata->wins[i]->layers.count)
-			texture_render_rect(mydata->wins[i], mydata->wins[i]->layers.textures[j], NULL, NULL);
+		while (++j < win->layers.count)
+			texture_render_rect(win, win->layers.textures[j], NULL, NULL, SDL_FLIP_NONE);
 		j = -1;
-		while (++j < mydata->wins[i]->element_count)
-			if (mydata->wins[i]->elements[j]->draw != NULL)
-				mydata->wins[i]->elements[j]->draw(mydata->wins[i], mydata->wins[i]->elements[j]);
-		SDL_RenderPresent( mydata->wins[i]->ren );
+		while (++j < win->element_count)
+			if (win->elements[j]->draw != NULL)
+				win->elements[j]->draw(win, win->elements[j]);
+		if (win->cur_mouse.x != win->lst_mouse.x ||
+			win->cur_mouse.y != win->lst_mouse.y)
+		SDL_RenderDrawLine(win->ren, win->lst_mouse.x, win->lst_mouse.y, win->cur_mouse.x, win->cur_mouse.y);
+		SDL_Rect sdl_rect = (SDL_Rect){win->lst_mouse.x, win->lst_mouse.y, win->cur_mouse.x - win->lst_mouse.x, win->cur_mouse.y - win->lst_mouse.y};
+		SDL_RenderDrawRect(win->ren, &sdl_rect);
+		SDL_RenderPresent( win->ren );
 	}
 }

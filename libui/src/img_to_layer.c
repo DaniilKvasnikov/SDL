@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 02:03:13 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/18 02:59:32 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/20 12:32:28 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_element
 	win = (t_win *)ptr_win;
 	elem = (t_element *)but;
 	rect_win = (t_rect){elem->pos.x, elem->pos.y, elem->size.x, elem->size.y};
-	draw_text_to_target_tex(win, get_texture_to_win(win, elem->textures->name), 0, &rect_win, NULL);
+	draw_text_to_target_tex(win, get_texture_to_win(win, elem->textures->name), 2, &rect_win, NULL);
 	delete_element_in_win(win, (t_element *)but);
 	return ((t_element *)but);
 }
