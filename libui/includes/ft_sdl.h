@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/20 17:43:08 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/20 18:22:33 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ int					checkbox_render(void *win, void *elem);
 int					sliders_render(void *win, void *elem);
 int					progressbar_render(void *win, void *elem);
 int					dropdownlist_render(void *win, void *elem);
+
+void				draw_elipse(SDL_Renderer *ren, t_rect field, int full);
 
 void				ctrl_c_win(void *ptr_win, SDL_Event *ev);
 void				ctrl_v_win(void *ptr_win, SDL_Event *ev);

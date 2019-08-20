@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:38:48 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/20 12:50:36 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/20 18:12:10 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,11 @@ t_win
 		win->layers.textures[i] = SDL_CreateTexture(win->ren, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, rect.w, rect.h);
 		if (win->layers.textures[i] == NULL)
 			exit (0);
+		SDL_SetRenderTarget(win->ren, win->layers.textures[i]);
+		SDL_SetRenderDrawColor(win->ren, 0, 0, 0, SDL_ALPHA_OPAQUE);
+		SDL_RenderClear( win->ren );
 	}
+	SDL_SetRenderTarget(win->ren, NULL);
 	win->ctrl_c = NULL;
 	win->ctrl_v = NULL;
 	win->tmp_element = NULL;
