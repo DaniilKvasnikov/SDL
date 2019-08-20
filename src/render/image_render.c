@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 17:20:00 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/20 14:47:55 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/20 16:43:30 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static void
 		SDL_RenderDrawRect(ren, &sdl_rec);
 		sdl_rec = t_rect_to_sdl_rect(&(t_rect){elem->pos.x + elem->size.x - delta_x, elem->pos.y + elem->size.y - delta_y, delta_x, delta_y});
 		SDL_RenderDrawRect(ren, &sdl_rec);
-		SDL_SetRenderDrawColor(ren, 255, 255, 255, SDL_ALPHA_OPAQUE);
 }
 
 int
