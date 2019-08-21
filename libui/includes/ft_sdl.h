@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/21 09:10:05 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/21 18:07:11 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ t_element			*init_button_to_win(t_rect rect, char *path_tex, t_win *win, char *s
 						t_element *(*button_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 						t_element *(*active_elem)(void *ptr_win, void *buf),
 						int (*draw)(void *win, void *elem));
+t_element			*init_text_to_win(t_rect rect, t_win *win, char *str,
+						t_element *(*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
+						t_element *(*button_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
+						int (*draw)(void *win, void *elem));
 t_element			*init_image_to_win(t_rect rect, char *path_tex, t_win *win,
 						t_element *(*image_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 						t_element *(*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
@@ -95,6 +99,8 @@ t_element			*init_menulist_to_win(t_rect rect, char *path_tex, t_win *win, char 
 						int (*draw)(void *win, void *elem));
 
 t_group_e			*add_group_e(t_group_e *group, t_element *elem,
+						int (*gr_cheacker)(struct s_group_e *group, void *elem));
+t_group_e			*add_group_to_elem(t_element *parent, t_element *elem,
 						int (*gr_cheacker)(struct s_group_e *group, void *elem));
 
 int					chech_input_mouse(t_element *elem, t_point_int *mouse);

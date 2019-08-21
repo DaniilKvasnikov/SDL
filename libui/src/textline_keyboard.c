@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 08:54:25 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/21 10:12:48 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/21 17:00:18 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int
 	t_element	*but;
 	char		*str;
 
-	ft_putstr("textline_keyboard\n");
 	but = (t_element *)but_ptr;
 	if(ev->type == SDL_TEXTINPUT && ft_strlen(ev->text.text) == 1)
 	{
