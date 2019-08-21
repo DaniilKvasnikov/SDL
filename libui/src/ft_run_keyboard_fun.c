@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:41:40 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/18 21:17:25 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/21 09:59:31 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int
 	int c_status = ((t_mydata *)mydata)->keyboardState[SDL_SCANCODE_C];
 	int v = ev->key.keysym.scancode == SDL_SCANCODE_V;
 	int v_status = ((t_mydata *)mydata)->keyboardState[SDL_SCANCODE_V];
-	if (ev->type == SDL_KEYDOWN && ctrl)
+	if (ev->type == SDL_KEYDOWN && ctrl != 0)
 	{
 		if (c_status && ((t_mydata *)mydata)->ctrl_c == 0)
 		{
@@ -63,5 +63,7 @@ void
 		ft_delete_win(mydata, win->window_id);
 	}
 	if (!ctrl_c_v(mydata, ev, win) && win->button_press != NULL)
+	{
 		win->button_press(mydata, win, ev);
+	}
 }

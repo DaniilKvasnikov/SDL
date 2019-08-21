@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/20 12:48:34 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/21 09:06:35 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef struct	s_element
 	int					(*draw)(void *win, void *elem);
 	struct s_element	*(*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
 	struct s_element	*(*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
-	int					(*keyboard_press)(void *win, void *but, SDL_Event *ev);
+	int					(*keyboard_press)(void *win, void *but, char *char_input);
 	struct s_element	*(*deactive_elem)(void *ptr_win, void *but);
 	struct s_element	*(*active_elem)(void *ptr_win, void *but);
 }				t_element;

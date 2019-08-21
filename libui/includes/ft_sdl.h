@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/20 18:22:33 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/21 09:10:05 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_element			*add_texture_to_elem(t_element *elem, t_texture *texture_new);
 t_element			*init_element(t_rect rect, char *path_tex1, char *path_tex2, t_win *win, char *str,
 						t_element *(*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 						t_element *(*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
-						int (*keyboard_press)(void *win, void *but, SDL_Event *ev),
+						int (*keyboard_press)(void *win, void *but, char *char_input),
 						int (*draw)(void *win, void *elem));
 t_element			*init_element_copy(t_element *old_elem);
 t_element			*add_element_to_win(t_win *win, t_element *element);
@@ -80,7 +80,7 @@ t_element			*init_progressbar(t_rect rect, char *path_tex1, char *path_tex2, t_w
 						int (*draw)(void *win, void *elem));
 t_element			*init_textline(t_rect rect, char *path_tex1, t_win *win, char *str,
 						t_element *(*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
-						int (*keyboard_press)(void *win, void *but, SDL_Event *ev),
+						int (*keyboard_press)(void *win, void *but, char *char_input),
 						t_element *(*active_elem)(void *ptr_win, void *buf),
 						int (*draw)(void *win, void *elem));
 t_element			*init_dropdownlist_to_win(t_rect rect, char *path_tex, t_win *win, char **strs, char *str, t_point_int delta,
@@ -110,7 +110,8 @@ t_element			*groupe_touch(t_element *elem, void *win, SDL_Event *ev, t_point_int
 t_element			*push_text_to_parent(void *win, void *but, SDL_Event *ev);
 t_element			*image_pressed(void *ptr_win, void *ptr_elem, SDL_Event *ev, t_point_int *mouse);
 
-int					textline_keyboard(void *win_ptr, void *but_ptr, SDL_Event *ev);
+int					textline_keyboard(void *win_ptr, void *but_ptr, SDL_Event *ev,
+						int (*keyboard_press)(void *win, void *but, char *char_input));
 
 void				groupe_draw(t_win *win, t_group_e *group);
 int					texture_render(t_win *win, t_element *elem, SDL_Texture *texture);
