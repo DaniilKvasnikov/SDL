@@ -36,7 +36,7 @@ OBJ = $(addprefix $(OBJ_PATH), $(SRCS_NAME:.c=.o))
 UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
-	INC += -lSDL2 -lSDL2_ttf
+	INC += -lSDL2 -lSDL2_ttf -lm
 endif
 ifeq ($(UNAME_S),Darwin)
 	SDL =  -F ./includes/frameworks/ -framework SDL2 \
