@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:59:08 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/21 09:09:19 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 09:19:09 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,8 @@ t_element
 	element->parent = NULL;
 	element->active_elem = NULL;
 	element->deactive_elem = NULL;
+	element->type = 0;
+	element->color = (t_rgba_char){0, 0, 0, 0};
+	element->color_border = (t_rgba_char){0, 0, 0, 0};
 	return (element);
 }

@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/21 09:06:35 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 09:19:18 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ typedef struct	s_point
 	float		x;
 	float		y;
 }				t_point;
+
+typedef struct	s_rgba_char
+{
+	char		r;
+	char		g;
+	char		b;
+	char		a;
+}				t_rgba_char;
 
 typedef struct	s_point_int
 {
@@ -67,6 +75,9 @@ typedef struct	s_element
 	t_group_e			*sub_group;
 	void				*parent;
 	t_point_int			last_delta;
+	int					type;
+	t_rgba_char			color;
+	t_rgba_char			color_border;
 	int					(*draw)(void *win, void *elem);
 	struct s_element	*(*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
 	struct s_element	*(*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
