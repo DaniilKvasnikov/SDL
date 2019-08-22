@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 18:31:03 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/20 18:26:58 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 12:41:07 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void
 	SDL_Rect sdl_rect = t_rect_to_sdl_rect(&rect);
 	SDL_RenderDrawRect(win->ren, &sdl_rect);
 	flip_t_rect(&rect);
-	SDL_SetRenderDrawColor(win->ren, 0, 255, 0, SDL_ALPHA_OPAQUE);
+	SDL_SetRenderDrawColor(win->ren, ((t_mydata *)win->mydata)->color.r, ((t_mydata *)win->mydata)->color.g, ((t_mydata *)win->mydata)->color.b, SDL_ALPHA_OPAQUE);
 	draw_elipse(win->ren, rect, 1);
 	SDL_SetRenderDrawColor(win->ren, 0, 0, 255, SDL_ALPHA_OPAQUE);
 	draw_elipse(win->ren, rect, 0);

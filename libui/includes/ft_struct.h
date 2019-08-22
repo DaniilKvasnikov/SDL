@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 11:07:06 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 12:37:33 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,8 @@ typedef struct	s_mydata
 	TTF_Font		*font;
 	int				ctrl_c;
 	int				ctrl_v;
+	t_rgba_char		color;
+	t_rgba_char		color_border;
 }				t_mydata;
 
 #endif

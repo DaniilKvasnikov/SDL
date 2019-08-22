@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 20:47:36 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 11:40:39 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 12:39:10 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,12 @@ t_win
 	t_element *slider_blue = add_element_to_win(win, init_sliders_to_win((t_rect){0, 150, 240, 50}, "img/button_1.bmp", "img/unchecked_checkbox.bmp", win, &element_touch, &sliders_pressed, &active_elem, &sliders_render));
 	t_element *color = add_element_to_win(win, init_button_to_win((t_rect){0, 200, 240, 50}, NULL, win, NULL, NULL, NULL, &button_render));
 	color->color_border = (t_rgba_char){255, 0, 0, 0};
+	color->color = (t_rgba_char){0, 255, 0, 0};
 	add_pair_int_to_win(win, init_pair_of_int(&slider_red->int_par, &color->color.r, 0));
 	add_pair_int_to_win(win, init_pair_of_int(&slider_green->int_par, &color->color.g, 0));
 	add_pair_int_to_win(win, init_pair_of_int(&slider_blue->int_par, &color->color.b, 0));
-	color->color = (t_rgba_char){0, 255, 0, 0};
+	add_pair_int_to_win(win, init_pair_of_int(&slider_red->int_par, &mydata->color.r, 0));
+	add_pair_int_to_win(win, init_pair_of_int(&slider_green->int_par, &mydata->color.g, 0));
+	add_pair_int_to_win(win, init_pair_of_int(&slider_blue->int_par, &mydata->color.b, 0));
 	return (win);
 }
