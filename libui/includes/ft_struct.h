@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 09:19:18 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 11:07:06 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,21 @@ typedef struct	s_element
 	struct s_element	*(*active_elem)(void *ptr_win, void *but);
 }				t_element;
 
+typedef struct	s_pair_of_int
+{
+	int			*ptr_from;
+	int			old_from;
+	int			*ptr_to;
+	int			old_to;
+	int			one_way;
+}				t_pair_of_int;
+
+typedef struct	s_pairs_int
+{
+	t_pair_of_int	*pairs;
+	int				count;
+}				t_pairs_int;
+
 typedef struct	s_layers
 {
 	SDL_Texture		**textures;
@@ -110,6 +125,7 @@ typedef struct	s_win
 	void			*mydata;
 	t_group_e		*groupe;
 	t_layers		layers;
+	t_pairs_int		pairs_int;
 	t_point_int		lst_mouse;
 	t_point_int		cur_mouse;
 }				t_win;

@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_main_loop.c                                    :+:      :+:    :+:   */
+/*   add_pair_int_to_win.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/18 17:06:25 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 12:21:49 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/22 11:28:36 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/22 12:18:55 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 void
-	run_main_loop(t_mydata *mydata)
-{	
-	SDL_Event	ev;
-	int			run;
+	add_pair_int_to_win(t_win *win, t_pair_of_int pair)
+{
+	t_pair_of_int	*pairs;
+	int				i;
 
-	run = 1;
-	while (run == 1)
-	{
-		render_wins(mydata);
-		while (SDL_PollEvent(&ev) != 0)
-		{
-			SDL_PumpEvents();
-			ft_run_mouse_fun(mydata, &ev);
-			ft_run_keyboard_fun(mydata, &ev);
-			ft_update_pairs(mydata);
-			if (mydata->win_count == 0 || ev.type == SDL_QUIT)
-				run = 0;
-		}
-		ft_update_win_surface(mydata);
-	}
+	pairs= (t_pair_of_int *)malloc(sizeof (t_pair_of_int) * (win->pairs_int.count + 1));
+	i = -1;
+	while (++i < win->pairs_int.count)
+		pairs[i] = win->pairs_int.pairs[i];
+	pairs[i] = pair;
+	if (win->pairs_int.count > 0)
+		free(win->pairs_int.pairs);
+	win->pairs_int.pairs = pairs;
+	win->pairs_int.count++;
 }

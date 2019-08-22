@@ -1,36 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_main_loop.c                                    :+:      :+:    :+:   */
+/*   init_pair_of_int.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/18 17:06:25 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 12:21:49 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/22 10:59:53 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/22 12:20:16 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-void
-	run_main_loop(t_mydata *mydata)
-{	
-	SDL_Event	ev;
-	int			run;
-
-	run = 1;
-	while (run == 1)
-	{
-		render_wins(mydata);
-		while (SDL_PollEvent(&ev) != 0)
-		{
-			SDL_PumpEvents();
-			ft_run_mouse_fun(mydata, &ev);
-			ft_run_keyboard_fun(mydata, &ev);
-			ft_update_pairs(mydata);
-			if (mydata->win_count == 0 || ev.type == SDL_QUIT)
-				run = 0;
-		}
-		ft_update_win_surface(mydata);
-	}
+t_pair_of_int
+	init_pair_of_int(int *from, int *to, int one_way)
+{
+	*to = *from;
+	return ((t_pair_of_int){from, *from, to, *to, one_way});
 }

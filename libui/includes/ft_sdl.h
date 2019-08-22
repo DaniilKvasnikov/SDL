@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/22 09:18:17 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 11:37:22 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,10 @@ void				ctrl_v_win(void *ptr_win, SDL_Event *ev);
 int					is_parent_active_elem(t_element *elem, t_element *parent);
 int					save_screenshot_bmp(char *filepath, SDL_Window* SDLWindow, SDL_Renderer* SDLRenderer);
 
+void				add_pair_int_to_win(t_win *win, t_pair_of_int pair);
+void				ft_update_pair(t_pair_of_int *pair);
+void				ft_update_pairs(t_mydata *mydata);
+t_pair_of_int		init_pair_of_int(int *from, int *to, int one_way);
 
 SDL_RendererFlip	flip_t_rect(t_rect *rect);
 SDL_Rect			t_rect_to_sdl_rect(t_rect *ptr_rect);

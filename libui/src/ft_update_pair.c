@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_main_loop.c                                    :+:      :+:    :+:   */
+/*   ft_update_pair.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/18 17:06:25 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 12:21:49 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/22 11:19:18 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/22 12:22:15 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 void
-	run_main_loop(t_mydata *mydata)
-{	
-	SDL_Event	ev;
-	int			run;
-
-	run = 1;
-	while (run == 1)
+	ft_update_pair(t_pair_of_int *pair)
+{
+	if (pair->old_from != *pair->ptr_from)
 	{
-		render_wins(mydata);
-		while (SDL_PollEvent(&ev) != 0)
-		{
-			SDL_PumpEvents();
-			ft_run_mouse_fun(mydata, &ev);
-			ft_run_keyboard_fun(mydata, &ev);
-			ft_update_pairs(mydata);
-			if (mydata->win_count == 0 || ev.type == SDL_QUIT)
-				run = 0;
-		}
-		ft_update_win_surface(mydata);
+		pair->old_from = *pair->ptr_from;
+		*pair->ptr_to = *pair->ptr_from;
+		pair->old_to = *pair->ptr_from;
+	}
+	if (!pair->one_way && pair->old_to != *pair->ptr_to)
+	{
+		pair->old_from = *pair->ptr_to;
+		*pair->ptr_from = *pair->ptr_to;
+		pair->old_to = *pair->ptr_to;
 	}
 }

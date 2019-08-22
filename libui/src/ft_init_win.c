@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:38:48 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/20 18:12:10 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 11:14:24 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,7 @@ t_win
 	win->fun_close = NULL;
 	win->cur_mouse = (t_point_int){0, 0};
 	win->lst_mouse = (t_point_int){0, 0};
+	win->pairs_int.count = 0;
+	win->pairs_int.pairs = NULL;
 	return (win);
 }
