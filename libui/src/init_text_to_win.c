@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 17:07:26 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/21 17:12:49 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 14:18:53 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ t_element
 {
 	t_element *elem;
 
-	elem = init_element(rect, NULL, NULL, win, str, button_pressed, NULL, NULL, draw);
+	elem = init_element(rect, NULL, NULL, win, str, NULL, NULL, button_pressed, NULL, NULL, draw);
 	return (elem);
 }

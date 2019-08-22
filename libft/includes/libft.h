@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 14:56:04 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 08:54:48 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 15:24:57 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int				ft_tolower(int c);
 char			*ft_str_tolower(char *str);
 void			*ft_memalloc(size_t size);
 void			ft_memdel(void **ap);
+int				*ft_intnew(int num);
+float			*ft_floatnew(float num);
 char			*ft_strnew(size_t size);
 int				*ft_strnew_int(size_t size);
 void			ft_strdel(char **as);

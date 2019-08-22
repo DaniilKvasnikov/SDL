@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   img_to_layer.c                                     :+:      :+:    :+:   */
+/*   ft_rgba_int_new.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/18 02:03:13 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 12:49:36 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/22 15:50:24 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/22 15:52:27 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sdl.h"
+#include "ft_guimp.h"
 
-t_element
-	*img_to_layer(void *ptr_win, void *but)
+t_rgba_int
+	*ft_rgba_int_new(t_rgba_int elem)
 {
-	t_win		*win;
-	t_element	*elem;
-	t_rect		rect_win;
+	t_rgba_int *ptr;
 
-	win = (t_win *)ptr_win;
-	elem = (t_element *)but;
-	rect_win = elem->rect;
-	draw_text_to_target_tex(win, get_texture_to_win(win, elem->textures->name), 2, &rect_win, NULL);
-	delete_element_in_win(win, (t_element *)but);
-	return ((t_element *)but);
+	ptr = (t_rgba_int *)malloc(sizeof(t_rgba_int));
+	if (ptr == NULL)
+		return (ptr);
+	*ptr = elem;
+	return (ptr);
 }

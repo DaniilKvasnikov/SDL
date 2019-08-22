@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 12:20:00 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/17 11:41:38 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 15:17:03 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ t_element
 		int (*draw_elem)(void *win, void *elem))
 {
 	int	i;
-	t_element *element_new = init_element(rect, path_tex, NULL, win, str, button_pressed, NULL, NULL, draw);
+	t_element *element_new = init_element(rect, path_tex, NULL, win, str, ft_intnew(0), NULL, button_pressed, NULL, NULL, draw);
 	element_new->active_elem = active_elem;
 	t_element *button;
 	i = -1;
 	while (strs[++i] != NULL)
 	{
-		button = init_element((t_rect){rect.x + delta.x, rect.y + delta.y + rect.h * i, rect.w, rect.h}, path_tex, NULL, win, strs[i], &element_touch, NULL, NULL, draw_elem);
+		button = init_element((t_rect){rect.x + delta.x, rect.y + delta.y + rect.h * i, rect.w, rect.h}, path_tex, NULL, win, strs[i], ft_intnew(0), NULL, &element_touch, NULL, NULL, draw_elem);
 		button->active_elem = active_sub_elem;
 		button->parent = element_new;
 		element_new->sub_group = add_group_e(element_new->sub_group, button, NULL);

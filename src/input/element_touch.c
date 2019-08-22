@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 14:48:53 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/17 06:06:18 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 13:13:37 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ t_element
 		return (0);
 	((t_element *)but)->last_delta =
 		(t_point_int){
-			mouse->x - ((t_element *)but)->pos.x,
-			mouse->y - ((t_element *)but)->pos.y};
+			mouse->x - ((t_element *)but)->rect.x,
+			mouse->y - ((t_element *)but)->rect.y};
 	ft_printf("Element touch %s\n", ((t_element *)but)->str);
 	return ((t_element *)but);
 }

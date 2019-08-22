@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkbox_cheacker.c                                :+:      :+:    :+:   */
+/*   gr_cheacker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 09:03:37 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/18 20:10:47 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 17:09:37 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int
 	i = -1;
 	while (++i < group->count)
 		if ((t_element *)group->elements[i] != elem)
-			((t_element *)group->elements[i])->int_par = 0;
+			*((t_element *)group->elements[i])->int_par = 0;
 	return (0);
 }

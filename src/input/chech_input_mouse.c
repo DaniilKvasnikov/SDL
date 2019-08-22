@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 10:03:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/20 14:56:05 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 13:15:32 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int
 	int	min_y;
 	int	max_y;
 
-	min_x = ft_min_int(elem->pos.x, elem->pos.x + elem->size.x);
-	max_x = ft_max_int(elem->pos.x, elem->pos.x + elem->size.x);
-	min_y = ft_min_int(elem->pos.y, elem->pos.y + elem->size.y);
-	max_y = ft_max_int(elem->pos.y, elem->pos.y + elem->size.y);
+	min_x = ft_min_int(elem->rect.x, elem->rect.x + elem->rect.w);
+	max_x = ft_max_int(elem->rect.x, elem->rect.x + elem->rect.w);
+	min_y = ft_min_int(elem->rect.y, elem->rect.y + elem->rect.h);
+	max_y = ft_max_int(elem->rect.y, elem->rect.y + elem->rect.h);
 	return (mouse->x >= min_x && mouse->x <= max_x
 			&& mouse->y >= min_y && mouse->y <= max_y);
 }

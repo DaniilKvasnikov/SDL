@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 12:37:33 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 17:14:37 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ typedef struct	s_point
 	float		y;
 }				t_point;
 
-typedef struct	s_rgba_char
+typedef struct	s_rgba_int
 {
-	char		r;
-	char		g;
-	char		b;
-	char		a;
-}				t_rgba_char;
+	int			r;
+	int			g;
+	int			b;
+	int			a;
+}				t_rgba_int;
 
 typedef struct	s_point_int
 {
@@ -65,19 +65,18 @@ typedef struct	s_group_e
 
 typedef struct	s_element
 {
-	t_point				pos;
-	t_point				size;
+	t_rect				rect;
 	t_texture			*textures;
 	int					textures_count;
-	int					int_par;
-	float				float_par;
+	int					*int_par;
+	float				*float_par;
 	char				*str;
 	t_group_e			*sub_group;
 	void				*parent;
 	t_point_int			last_delta;
 	int					type;
-	t_rgba_char			color;
-	t_rgba_char			color_border;
+	t_rgba_int			*color;
+	t_rgba_int			*color_border;
 	int					(*draw)(void *win, void *elem);
 	struct s_element	*(*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
 	struct s_element	*(*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
@@ -139,8 +138,9 @@ typedef struct	s_mydata
 	TTF_Font		*font;
 	int				ctrl_c;
 	int				ctrl_v;
-	t_rgba_char		color;
-	t_rgba_char		color_border;
+	t_rgba_int		color;
+	t_rgba_int		color_border;
+	t_rgba_int		*curr_color;
 }				t_mydata;
 
 #endif

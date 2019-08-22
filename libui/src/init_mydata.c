@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 16:56:35 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 12:38:17 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 17:15:50 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ t_mydata
 	}
 	mydata->ctrl_c = 0;
 	mydata->ctrl_v = 0;
-	mydata->color = (t_rgba_char){0, 0, 0, 0};
-	mydata->color_border = (t_rgba_char){0, 0, 0, 0};
+	mydata->color = (t_rgba_int){255, 255, 255, 255};
+	mydata->color_border = (t_rgba_int){255, 255, 255, 255};
+	mydata->curr_color = &mydata->color;
 	return (mydata);
 }

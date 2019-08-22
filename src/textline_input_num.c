@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 17:01:32 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 09:00:03 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 14:12:18 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int
 	new_int = ft_atol(but->str);
 	if (new_int >= 0 && new_int <= INT_MAX)
 	{
-		but->int_par = new_int;
+		*but->int_par = new_int;
 		free(old_str);
 	}
 	else

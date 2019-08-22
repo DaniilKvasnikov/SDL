@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 16:05:43 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/20 15:06:01 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 13:29:13 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int
 
 	if (texture != NULL)
 	{
-		rect = (t_rect){elem->pos.x, elem->pos.y, elem->size.x, elem->size.y};
+		rect = elem->rect;
 		flip = flip_t_rect(&rect);
 		sdl_rect = t_rect_to_sdl_rect(&rect);
 		texture_render_rect(win, texture, NULL, &sdl_rect, flip);

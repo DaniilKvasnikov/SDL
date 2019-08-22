@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 08:59:19 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/18 02:04:04 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 15:17:51 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_element
 {
 	t_element *elem;
 
-	elem = init_element(rect, path_tex, NULL, win, NULL, image_touch, element_pressed, NULL, draw);
+	elem = init_element(rect, path_tex, NULL, win, NULL, NULL, NULL, image_touch, element_pressed, NULL, draw);
 	elem->active_elem = active_elem;
 	elem->deactive_elem = deactive_elem;
 	return (elem);

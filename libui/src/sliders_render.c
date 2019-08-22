@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 19:37:43 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/20 13:17:40 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 15:43:55 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,18 @@ int
 
 	ptr_win = (t_win *)win;
 	ptr_elem = (t_element *)elem;
-	if (ptr_elem->textures_count >= 1)
+	if (ptr_elem->textures_count >= 2)
 		texture_render(ptr_win, ptr_elem, ptr_elem->textures[0].tex);
-	rect = (SDL_Rect){.x = ptr_elem->pos.x - ptr_elem->size.y / 4 + ptr_elem->size.x * ptr_elem->float_par, .y = ptr_elem->pos.y, .w = ptr_elem->size.y / 2, .h = ptr_elem->size.y};
+	else if (ptr_elem->color)
+	{
+		SDL_Rect sdl_rect = t_rect_to_sdl_rect(&ptr_elem->rect);
+		SDL_SetRenderDrawColor(ptr_win->ren, ptr_elem->color->r, ptr_elem->color->g, ptr_elem->color->b, SDL_ALPHA_OPAQUE);
+		SDL_RenderFillRect(ptr_win->ren, &sdl_rect);
+	}
+	rect = (SDL_Rect){ptr_elem->rect.x - ptr_elem->rect.h / 4 + ptr_elem->rect.w * (*ptr_elem->float_par), ptr_elem->rect.y, ptr_elem->rect.h / 2, ptr_elem->rect.h};
 	if (ptr_elem->textures_count >= 2)
 		texture_render_rect(win, ptr_elem->textures[1].tex, NULL, &rect, SDL_FLIP_NONE);
+	else if (ptr_elem->textures_count >= 1)
+		texture_render_rect(win, ptr_elem->textures[0].tex, NULL, &rect, SDL_FLIP_NONE);
 	return (0);
 }

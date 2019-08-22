@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/22 11:37:22 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 15:52:48 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void				add_texture_to_win(t_win *win, char *path);
 t_texture			*get_texture_to_win(t_win *win, char *path);
 t_element			*add_texture_to_elem(t_element *elem, t_texture *texture_new);
 
-t_element			*init_element(t_rect rect, char *path_tex1, char *path_tex2, t_win *win, char *str,
+t_element			*init_element(t_rect rect, char *path_tex1, char *path_tex2, t_win *win, char *str, int *int_par, float *float_par,
 						t_element *(*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 						t_element *(*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 						int (*keyboard_press)(void *win, void *but, char *char_input),
@@ -71,16 +71,16 @@ t_element			*init_image_to_win(t_rect rect, char *path_tex, t_win *win,
 						t_element *(*active_elem)(void *ptr_win, void *buf),
 						t_element *(*deactive_elem)(void *ptr_win, void *buf),
 						int (*draw)(void *win, void *elem));
-t_element			*init_checkbox_to_win(t_rect rect, char *path_tex1, char *path_tex2, t_win *win,
+t_element			*init_checkbox_to_win(t_rect rect, char *path_tex1, char *path_tex2, t_win *win, int *int_par, float *float_par,
 						t_element *(*button_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 						t_element *(*active_elem)(void *ptr_win, void *buf),
 						int (*draw)(void *win, void *elem));
-t_element			*init_sliders_to_win(t_rect rect, char *path_tex1, char *path_tex2, t_win *win,
+t_element			*init_sliders_to_win(t_rect rect, char *path_tex1, char *path_tex2, t_win *win, int *int_par, float *float_par,
 						t_element *(*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 						t_element *(*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 						t_element *(*active_elem)(void *ptr_win, void *buf),
 						int (*draw)(void *win, void *elem));
-t_element			*init_progressbar(t_rect rect, char *path_tex1, char *path_tex2, t_win *win,
+t_element			*init_progressbar(t_rect rect, char *path_tex1, char *path_tex2, t_win *win, int *int_par, float *float_par,
 						int (*draw)(void *win, void *elem));
 t_element			*init_textline(t_rect rect, char *path_tex1, t_win *win, char *str,
 						t_element *(*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
@@ -143,6 +143,7 @@ void				ft_update_pair(t_pair_of_int *pair);
 void				ft_update_pairs(t_mydata *mydata);
 t_pair_of_int		init_pair_of_int(int *from, int *to, int one_way);
 
+t_rgba_int			*ft_rgba_int_new(t_rgba_int elem);
 SDL_RendererFlip	flip_t_rect(t_rect *rect);
 SDL_Rect			t_rect_to_sdl_rect(t_rect *ptr_rect);
 #endif

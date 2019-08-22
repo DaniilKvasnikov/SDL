@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 17:20:00 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/20 16:43:30 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 13:22:33 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ static void
 		int	delta_x;
 		int	delta_y;
 
-		delta_x = 10 * (1 - 2 * (elem->size.x < 0));
-		delta_y = 10 * (1 - 2 * (elem->size.y < 0));
+		delta_x = 10 * (1 - 2 * (elem->rect.w < 0));
+		delta_y = 10 * (1 - 2 * (elem->rect.h < 0));
 		SDL_SetRenderDrawColor(ren, 255, 255, 0, SDL_ALPHA_OPAQUE);
-		SDL_Rect sdl_rec = t_rect_to_sdl_rect(&(t_rect){elem->pos.x, elem->pos.y, elem->size.x, elem->size.y});
+		SDL_Rect sdl_rec = t_rect_to_sdl_rect(&elem->rect);
 		SDL_RenderDrawRect(ren, &sdl_rec);
-		sdl_rec = t_rect_to_sdl_rect(&(t_rect){elem->pos.x, elem->pos.y, delta_x, delta_y});
+		sdl_rec = t_rect_to_sdl_rect(&(t_rect){elem->rect.x, elem->rect.y, delta_x, delta_y});
 		SDL_RenderDrawRect(ren, &sdl_rec);
-		sdl_rec = t_rect_to_sdl_rect(&(t_rect){elem->pos.x + elem->size.x - delta_x, elem->pos.y + elem->size.y - delta_y, delta_x, delta_y});
+		sdl_rec = t_rect_to_sdl_rect(&(t_rect){elem->rect.x + elem->rect.w - delta_x, elem->rect.y + elem->rect.h - delta_y, delta_x, delta_y});
 		SDL_RenderDrawRect(ren, &sdl_rec);
 }
 

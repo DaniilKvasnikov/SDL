@@ -6,14 +6,15 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:59:08 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 09:19:09 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 15:43:10 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 t_element
-	*init_element(t_rect rect, char *path_tex1, char *path_tex2, t_win *win, char *str,
+	*init_element(t_rect rect, char *path_tex1, char *path_tex2, t_win *win,
+					char *str, int *int_par, float *float_par,
 					t_element *(*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 					t_element *(*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
 					int (*keyboard_press)(void *win, void *but, char *char_input),
@@ -25,8 +26,7 @@ t_element
 
 	if ((element = (t_element *)malloc(sizeof(t_element))) == NULL)
 		return NULL;
-	element->pos = (t_point){rect.x, rect.y};
-	element->size = (t_point){rect.w, rect.h};
+	element->rect = rect;
 	element->textures_count = 0;
 	if (path_tex1 != NULL)
 	{
@@ -45,14 +45,14 @@ t_element
 	element->keyboard_press = keyboard_press;
 	element->str = str;
 	element->draw = draw;
-	element->int_par = 0;
-	element->float_par = 0;
+	element->int_par = int_par;
+	element->float_par = float_par;
 	element->sub_group = NULL;
 	element->parent = NULL;
 	element->active_elem = NULL;
 	element->deactive_elem = NULL;
 	element->type = 0;
-	element->color = (t_rgba_char){0, 0, 0, 0};
-	element->color_border = (t_rgba_char){0, 0, 0, 0};
+	element->color = NULL;
+	element->color_border = NULL;
 	return (element);
 }

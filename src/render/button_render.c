@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 17:20:00 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 09:23:12 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 15:45:26 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,17 @@ int
 		texture_render(ptr_win, ptr_elem, ptr_elem->textures[0].tex);
 	else
 	{
-		t_rect rect = (t_rect){ptr_elem->pos.x, ptr_elem->pos.y, ptr_elem->size.x, ptr_elem->size.y};
-		SDL_Rect sdl_rect = t_rect_to_sdl_rect(&rect);
-		SDL_SetRenderDrawColor(ptr_win->ren, ptr_elem->color.r, ptr_elem->color.g, ptr_elem->color.b, SDL_ALPHA_OPAQUE);
+		SDL_Rect sdl_rect = t_rect_to_sdl_rect(&ptr_elem->rect);
+		 if (ptr_elem->color)
+		{
+			SDL_SetRenderDrawColor(ptr_win->ren, ptr_elem->color->r, ptr_elem->color->g, ptr_elem->color->b, SDL_ALPHA_OPAQUE);
 		SDL_RenderFillRect(ptr_win->ren, &sdl_rect);
-		SDL_SetRenderDrawColor(ptr_win->ren, ptr_elem->color_border.r, ptr_elem->color_border.g, ptr_elem->color_border.b, SDL_ALPHA_OPAQUE);
-		SDL_RenderDrawRect(ptr_win->ren, &sdl_rect);
+		}
+		if (ptr_elem->color_border)
+		{
+			SDL_SetRenderDrawColor(ptr_win->ren, ptr_elem->color_border->r, ptr_elem->color_border->g, ptr_elem->color_border->b, SDL_ALPHA_OPAQUE);
+			SDL_RenderDrawRect(ptr_win->ren, &sdl_rect);
+		}
 	}
 	if (ptr_elem->sub_group != NULL)
 		groupe_draw(ptr_win, ptr_elem->sub_group);

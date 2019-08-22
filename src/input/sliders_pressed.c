@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 19:54:07 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 12:36:03 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/22 14:11:52 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,10 @@ t_element
 
 	ptr_win = (t_win *)win;
 	elem = (t_element *)but;
-	delta.x = mouse->x - elem->pos.x;
-	delta.y = mouse->y - elem->pos.y;
-	if (delta.x >= 0 && delta.x < elem->size.x
-		&& delta.y >= 0 && delta.y < elem->size.y)
-	{
-		elem->float_par = delta.x / (float)elem->size.x;
-	}
-	elem->int_par = 255 * elem->float_par;
+	delta.x = mouse->x - elem->rect.x;
+	delta.y = mouse->y - elem->rect.y;
+	if (delta.x >= 0 && delta.x < elem->rect.w && delta.y >= 0 && delta.y < elem->rect.h)
+		*elem->float_par = delta.x / (float)elem->rect.w;
+	*elem->int_par = 255 * (*elem->float_par);
 	return (0);
 }

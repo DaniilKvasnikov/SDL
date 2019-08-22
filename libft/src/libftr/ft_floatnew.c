@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   img_to_layer.c                                     :+:      :+:    :+:   */
+/*   ft_floatnew.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/18 02:03:13 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 12:49:36 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/22 15:23:26 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/22 15:24:12 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sdl.h"
+#include "libft.h"
 
-t_element
-	*img_to_layer(void *ptr_win, void *but)
+float		*ft_floatnew(float num)
 {
-	t_win		*win;
-	t_element	*elem;
-	t_rect		rect_win;
+	float	*res;
 
-	win = (t_win *)ptr_win;
-	elem = (t_element *)but;
-	rect_win = elem->rect;
-	draw_text_to_target_tex(win, get_texture_to_win(win, elem->textures->name), 2, &rect_win, NULL);
-	delete_element_in_win(win, (t_element *)but);
-	return ((t_element *)but);
+	if ((res = (float *)malloc(sizeof(float))) == NULL)
+		return (NULL);
+	*res = num;
+	return (res);
 }
