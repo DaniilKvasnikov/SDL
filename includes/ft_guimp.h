@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 20:09:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/21 17:14:51 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 16:03:34 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ int				text_render(void *win, void *elem);
 int				image_render(void *win, void *elem);
 int				textline_input(void *win, void *but, char *char_input);
 int				textline_input_num(void *win, void *but, char *char_input);
+t_element		*void_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
 
 #endif
