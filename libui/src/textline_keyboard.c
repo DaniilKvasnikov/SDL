@@ -6,15 +6,15 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 08:54:25 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/23 19:23:53 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 20:33:00 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 int
-	textline_keyboard(void *win_ptr, t_element *elem, SDL_Event *ev,
-					int (*keyboard_press)(void *win, t_element *elem, char *char_input))
+	textline_keyboard(t_win *win_ptr, t_element *elem, SDL_Event *ev,
+					int (*keyboard_press)(t_win *win, t_element *elem, char *char_input))
 {
 	char		*str;
 

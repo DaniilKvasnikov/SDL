@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:38:48 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/23 19:38:34 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 20:38:48 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_win
 	*ft_init_win(t_mydata *mydata, char *name, t_rect rect, Uint32 flags,
-		void (*button_press)(void *mydata, t_win *win, SDL_Event *ev))
+		void (*button_press)(t_mydata *mydata, t_win *win, SDL_Event *ev))
 {
 	t_win *win;
 

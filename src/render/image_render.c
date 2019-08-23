@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 17:20:00 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 13:22:33 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 20:33:00 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void
 }
 
 int
-	image_render(void *win, void *elem)
+	image_render(t_win *win, void *elem)
 {
 	t_win		*ptr_win;
 	t_element	*ptr_elem;

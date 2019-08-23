@@ -6,14 +6,14 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 09:08:02 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/23 19:21:36 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 20:33:00 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_guimp.h"
 
 int
-	textline_input(void *win, t_element *elem, char *char_input)
+	textline_input(t_win *win, t_element *elem, char *char_input)
 {
 	char		*str;
 

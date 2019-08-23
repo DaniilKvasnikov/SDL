@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 08:53:13 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/23 19:17:57 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 20:33:00 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void
 }
 
 int
-	dropdownlist_render(void *win, t_element *elem)
+	dropdownlist_render(t_win *win, t_element *elem)
 {
 	t_win		*ptr_win;
 	

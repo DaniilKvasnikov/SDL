@@ -6,19 +6,17 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 05:52:38 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/23 19:24:39 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 20:30:54 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 t_element
-	*image_pressed(void *ptr_win, t_element *elem, SDL_Event *ev, t_point_int *mouse)
+	*image_pressed(t_win *win, t_element *elem, SDL_Event *ev, t_point_int *mouse)
 {
-	t_win 		*win;
 	t_point		delta_mouse;
 
-	win =(t_win *)ptr_win;
 	if (win->active_element == elem)
 	{
 		delta_mouse = (t_point){elem->last_delta.x - (mouse->x - elem->rect.x),

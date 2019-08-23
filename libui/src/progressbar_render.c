@@ -6,14 +6,14 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 08:02:23 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/23 19:56:49 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 20:33:00 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 int
-	progressbar_render(void *win, t_element *elem)
+	progressbar_render(t_win *win, t_element *elem)
 {
 	t_win		*ptr_win;
 	SDL_Rect	src;

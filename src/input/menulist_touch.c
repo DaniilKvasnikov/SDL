@@ -6,14 +6,14 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 10:53:51 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/23 19:28:47 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 20:33:00 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 t_element
-	*menulist_touch(void *win, t_element *elem, SDL_Event *ev, t_point_int *mouse)
+	*menulist_touch(t_win *win, t_element *elem, SDL_Event *ev, t_point_int *mouse)
 {
 	t_element	*tmp_elem;
 	t_win		*ptr_win;

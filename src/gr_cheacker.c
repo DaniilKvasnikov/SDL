@@ -6,14 +6,14 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 09:03:37 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/23 19:35:24 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 20:34:22 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_guimp.h"
 
 int
-	gr_cheacker(t_group_e *group, void *elem)
+	gr_cheacker(t_group_e *group, t_element *elem)
 {
 	int	i;
 

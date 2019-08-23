@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 08:43:30 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/23 19:36:35 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 20:34:17 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_group_e
 	*add_group_e(t_group_e *group, t_element *elem,
-				int (*gr_cheacker)(struct s_group_e *group, void *elem))
+				int (*gr_cheacker)(t_group_e *group, t_element *elem))
 {
 	int			i;
 	t_element	**group_e;
@@ -35,7 +35,7 @@ t_group_e
 	group->count++;
 	if (group->count > 1)
 		free(group->elements);
-	group->elements = (void **)group_e;
+	group->elements = group_e;
 	if (gr_cheacker != NULL)
 		group->gr_cheacker = gr_cheacker;
 	return (group);

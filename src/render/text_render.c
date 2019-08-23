@@ -6,14 +6,14 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 17:13:58 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/21 17:14:33 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 20:33:00 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 int
-	text_render(void *win, void *elem)
+	text_render(t_win *win, void *elem)
 {
 	t_win		*ptr_win;
 	t_element	*ptr_elem;

@@ -6,14 +6,14 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 19:37:43 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/23 19:14:38 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 20:33:00 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 int
-	sliders_render(void *win, t_element *elem)
+	sliders_render(t_win *win, t_element *elem)
 {
 	t_win		*ptr_win;
 	SDL_Rect	rect;

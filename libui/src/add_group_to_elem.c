@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 18:01:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/23 19:36:48 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 20:34:57 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_group_e
 	*add_group_to_elem(t_element *parent, t_element *elem,
-				int (*gr_cheacker)(struct s_group_e *group, void *elem))
+				int (*gr_cheacker)(t_group_e *group, t_element *elem))
 {
 	t_group_e	*groupe;
 
