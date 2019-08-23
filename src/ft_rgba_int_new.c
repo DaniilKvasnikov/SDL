@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rgba_int_new.c                                  :+:      :+:    :+:   */
+/*   ft_rgb_new.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,12 +12,12 @@
 
 #include "ft_guimp.h"
 
-t_rgba_int
-	*ft_rgba_int_new(t_rgba_int elem)
+t_rgb
+	*ft_rgb_new(t_rgb elem)
 {
-	t_rgba_int *ptr;
+	t_rgb *ptr;
 
-	ptr = (t_rgba_int *)malloc(sizeof(t_rgba_int));
+	ptr = (t_rgb *)malloc(sizeof(t_rgb));
 	if (ptr == NULL)
 		return (ptr);
 	*ptr = elem;

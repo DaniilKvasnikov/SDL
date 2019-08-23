@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 12:20:00 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 15:17:03 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 19:02:04 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 t_element
 	*init_dropdownlist_to_win(t_rect rect, char *path_tex, t_win *win, char **strs, char *str, t_point_int delta,
-		t_element *(*button_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
-		t_element *(*active_elem)(void *ptr_win, void *buf),
-		t_element *(*active_sub_elem)(void *ptr_win, void *buf),
-		int (*draw)(void *win, void *elem),
-		int (*draw_elem)(void *win, void *elem))
+		t_element *(*button_pressed)(void *win, struct s_element *elem, SDL_Event *ev, t_point_int *mouse),
+		t_element *(*active_elem)(void *ptr_win, struct s_element *elem),
+		t_element *(*active_sub_elem)(void *ptr_win, struct s_element *elem),
+		int (*draw)(void *win, struct s_element *elem),
+		int (*draw_elem)(void *win, struct s_element *elem))
 {
 	int	i;
 	t_element *element_new = init_element(rect, path_tex, NULL, win, str, ft_intnew(0), NULL, button_pressed, NULL, NULL, draw);

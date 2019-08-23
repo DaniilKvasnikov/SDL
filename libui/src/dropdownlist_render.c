@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 08:53:13 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/18 17:00:15 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 19:17:57 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,19 @@ static void
 }
 
 int
-	dropdownlist_render(void *win, void *elem)
+	dropdownlist_render(void *win, t_element *elem)
 {
 	t_win		*ptr_win;
-	t_element	*ptr_elem;
 	
 	ptr_win = (t_win *)win;
-	ptr_elem = (t_element *)elem;
-	if (ptr_elem->textures_count >= 1)
-		texture_render(ptr_win, ptr_elem, ptr_elem->textures[0].tex);
-	if (is_parent_active_elem(ptr_win->active_element, ptr_elem)
-		&& ptr_elem->sub_group != NULL)
-		groupe_draw(ptr_win, ptr_elem->sub_group);
-	if (ptr_elem->sub_group != NULL)
-		groupe_draw_notouch(ptr_win, ptr_elem->sub_group);
-	if (ptr_elem->str != NULL)
-		render_text(ptr_win, ptr_elem, ptr_elem->str);
+	if (elem->textures_count >= 1)
+		texture_render(ptr_win, elem, elem->textures[0].tex);
+	if (is_parent_active_elem(ptr_win->active_element, elem)
+		&& elem->sub_group != NULL)
+		groupe_draw(ptr_win, elem->sub_group);
+	if (elem->sub_group != NULL)
+		groupe_draw_notouch(ptr_win, elem->sub_group);
+	if (elem->str != NULL)
+		render_text(ptr_win, elem, elem->str);
 	return (0);
 }

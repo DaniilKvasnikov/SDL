@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 17:07:26 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 14:18:53 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 19:10:44 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_element
 	*init_text_to_win(t_rect rect, t_win *win, char *str,
-		t_element *(*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
-		t_element *(*button_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
-		int (*draw)(void *win, void *elem))
+		t_element *(*element_touch)(void *win, struct s_element *elem, SDL_Event *ev, t_point_int *mouse),
+		t_element *(*button_pressed)(void *win, struct s_element *elem, SDL_Event *ev, t_point_int *mouse),
+		int (*draw)(void *win, struct s_element *elem))
 {
 	t_element *elem;
 

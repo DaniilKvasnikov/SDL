@@ -6,23 +6,21 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 02:03:13 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 12:49:36 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 19:53:07 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 t_element
-	*img_to_layer(void *ptr_win, void *but)
+	*img_to_layer(void *ptr_win, t_element *elem)
 {
 	t_win		*win;
-	t_element	*elem;
 	t_rect		rect_win;
 
 	win = (t_win *)ptr_win;
-	elem = (t_element *)but;
 	rect_win = elem->rect;
 	draw_text_to_target_tex(win, get_texture_to_win(win, elem->textures->name), 2, &rect_win, NULL);
-	delete_element_in_win(win, (t_element *)but);
-	return ((t_element *)but);
+	delete_element_in_win(win, elem);
+	return (elem);
 }

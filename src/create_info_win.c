@@ -6,14 +6,14 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 20:47:36 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/23 16:22:22 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 18:46:47 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_guimp.h"
 
 static void
-	connect_color(t_element *red, t_element *green, t_element *blue, t_rgba_int *color)
+	connect_color(t_element *red, t_element *green, t_element *blue, t_rgb *color)
 {
 	red->int_par = &color->r;
 	green->int_par = &color->g;
@@ -44,9 +44,9 @@ t_win
 	t_element *slider_red = init_sliders_to_win((t_rect){0, 90, 240, 30}, NULL, "img/unchecked_checkbox.bmp", win, ft_intnew(255), ft_floatnew(1.0f), &element_touch, &sliders_pressed, &active_elem, &sliders_render);
 	t_element *slider_green = init_sliders_to_win((t_rect){0, 120, 240, 30}, NULL, "img/unchecked_checkbox.bmp", win, ft_intnew(255), ft_floatnew(1.0f), &element_touch, &sliders_pressed, &active_elem, &sliders_render);
 	t_element *slider_blue = init_sliders_to_win((t_rect){0, 150, 240, 30}, NULL, "img/unchecked_checkbox.bmp", win, ft_intnew(255), ft_floatnew(1.0f), &element_touch, &sliders_pressed, &active_elem, &sliders_render);
-	slider_red->color = ft_rgba_int_new((t_rgba_int){255, 0, 0, 0});
-	slider_green->color = ft_rgba_int_new((t_rgba_int){0, 255, 0, 0});
-	slider_blue->color = ft_rgba_int_new((t_rgba_int){0, 0, 255, 0});
+	slider_red->color = ft_rgb_new((t_rgb){255, 0, 0, 0});
+	slider_green->color = ft_rgb_new((t_rgb){0, 255, 0, 0});
+	slider_blue->color = ft_rgb_new((t_rgb){0, 0, 255, 0});
 
 	t_element *color = init_button_to_win((t_rect){0, 180, 240, 30}, NULL, win, NULL, &void_touch, NULL, &button_render);
 	color->color = &mydata->color;
@@ -61,9 +61,9 @@ t_win
 	t_element *slider_border_green = init_sliders_to_win((t_rect){0, 120, 240, 30}, NULL, "img/unchecked_checkbox.bmp", win, ft_intnew(255), ft_floatnew(1.0f), &element_touch, &sliders_pressed, &active_elem, &sliders_render);
 	t_element *slider_border_blue = init_sliders_to_win((t_rect){0, 150, 240, 30}, NULL, "img/unchecked_checkbox.bmp", win, ft_intnew(255), ft_floatnew(1.0f), &element_touch, &sliders_pressed, &active_elem, &sliders_render);
 
-	slider_border_red->color = ft_rgba_int_new((t_rgba_int){255, 0, 0, 0});
-	slider_border_green->color = ft_rgba_int_new((t_rgba_int){0, 255, 0, 0});
-	slider_border_blue->color = ft_rgba_int_new((t_rgba_int){0, 0, 255, 0});
+	slider_border_red->color = ft_rgb_new((t_rgb){255, 0, 0, 0});
+	slider_border_green->color = ft_rgb_new((t_rgb){0, 255, 0, 0});
+	slider_border_blue->color = ft_rgb_new((t_rgb){0, 0, 255, 0});
 
 	t_element *color_border = init_button_to_win((t_rect){0, 180, 240, 30}, NULL, win, NULL, &void_touch, NULL, &button_render);
 	color_border->color = &mydata->color_border;

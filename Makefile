@@ -21,7 +21,7 @@ LIBUI_PATH = libui/
 OBJ_PATH  = obj/
 LIBFT_PATH = libft/
 
-FLAGS = -Wall #-Werror -Wextra
+FLAGS = #-Wall -Werror -Wextra
 
 INC = -I ./includes/ -I ./$(LIBFT_PATH)includes/ -I$(LIBUI_PATH)includes/
 

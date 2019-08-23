@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 17:14:37 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 19:43:08 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ typedef struct	s_point
 	float		y;
 }				t_point;
 
-typedef struct	s_rgba_int
+typedef struct	s_rgb
 {
 	int			r;
 	int			g;
 	int			b;
 	int			a;
-}				t_rgba_int;
+}				t_rgb;
 
 typedef struct	s_point_int
 {
@@ -75,14 +75,14 @@ typedef struct	s_element
 	void				*parent;
 	t_point_int			last_delta;
 	int					type;
-	t_rgba_int			*color;
-	t_rgba_int			*color_border;
-	int					(*draw)(void *win, void *elem);
-	struct s_element	*(*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
-	struct s_element	*(*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
-	int					(*keyboard_press)(void *win, void *but, char *char_input);
-	struct s_element	*(*deactive_elem)(void *ptr_win, void *but);
-	struct s_element	*(*active_elem)(void *ptr_win, void *but);
+	t_rgb			*color;
+	t_rgb			*color_border;
+	int					(*draw)(void *ptr_win, struct s_element *elem);
+	struct s_element	*(*element_touch)(void *ptr_win, struct s_element *elem, SDL_Event *ev, t_point_int *mouse);
+	struct s_element	*(*element_pressed)(void *ptr_win, struct s_element *elem, SDL_Event *ev, t_point_int *mouse);
+	int					(*keyboard_press)(void *ptr_win, struct s_element *elem, char *char_input);
+	struct s_element	*(*deactive_elem)(void *ptr_win, struct s_element *elem);
+	struct s_element	*(*active_elem)(void *ptr_win, struct s_element *elem);
 }				t_element;
 
 typedef struct	s_pair_of_int
@@ -111,10 +111,6 @@ typedef struct	s_win
 	SDL_Window		*win;
 	SDL_Renderer	*ren;
 	int				window_id;
-	void			(*button_press)(void *mydata, void *win, SDL_Event *ev);
-	void			(*ctrl_c)(void *ptr_win, SDL_Event *ev);
-	void			(*ctrl_v)(void *ptr_win, SDL_Event *ev);
-	void			(*fun_close)(struct	s_win *win);
 	t_element		**elements;
 	int				element_count;
 	t_element		*active_element;
@@ -127,6 +123,10 @@ typedef struct	s_win
 	t_pairs_int		pairs_int;
 	t_point_int		lst_mouse;
 	t_point_int		cur_mouse;
+	void			(*button_press)(void *mydata, struct s_win *win, SDL_Event *ev);
+	void			(*ctrl_c)(struct s_win *win, SDL_Event *ev);
+	void			(*ctrl_v)(struct s_win *win, SDL_Event *ev);
+	void			(*fun_close)(struct s_win *win);
 }				t_win;
 
 typedef struct	s_mydata
@@ -138,9 +138,9 @@ typedef struct	s_mydata
 	TTF_Font		*font;
 	int				ctrl_c;
 	int				ctrl_v;
-	t_rgba_int		color;
-	t_rgba_int		color_border;
-	t_rgba_int		*curr_color;
+	t_rgb			color;
+	t_rgb			color_border;
+	t_rgb			*curr_color;
 }				t_mydata;
 
 #endif

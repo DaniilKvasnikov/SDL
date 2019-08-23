@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:41:40 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/21 09:59:31 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 18:55:17 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,5 @@ void
 		ft_delete_win(mydata, win->window_id);
 	}
 	if (!ctrl_c_v(mydata, ev, win) && win->button_press != NULL)
-	{
 		win->button_press(mydata, win, ev);
-	}
 }

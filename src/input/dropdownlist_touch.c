@@ -6,24 +6,24 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 09:19:01 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/18 17:43:55 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 19:27:52 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 t_element
-	*dropdownlist_touch(void *win, void *but, SDL_Event *ev, t_point_int *mouse)
+	*dropdownlist_touch(void *win,t_element *elem, SDL_Event *ev, t_point_int *mouse)
 {
-	t_element	*elem;
+	t_element	*tmp_elem;
 	t_win		*ptr_win;
 
 	ptr_win = (t_win *)win;
-	if (is_parent_active_elem(ptr_win->active_element, (t_element *)but) &&
-		((t_element *)but)->sub_group &&
-		(elem = groupe_touch(((t_element *)but), win, ev, mouse)) != NULL)
-		return (elem);
-	if (!chech_input_mouse(but, mouse))
+	if (is_parent_active_elem(ptr_win->active_element, elem) &&
+		elem->sub_group &&
+		(tmp_elem = groupe_touch(elem, win, ev, mouse)) != NULL)
+		return (tmp_elem);
+	if (!chech_input_mouse(elem, mouse))
 		return (0);
-	return ((t_element *)but);
+	return (elem);
 }

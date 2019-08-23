@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 08:59:19 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 15:17:51 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 19:03:07 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 t_element
 	*init_image_to_win(t_rect rect, char *path_tex, t_win *win,
-						t_element *(*image_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
-						t_element *(*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse),
-						t_element *(*active_elem)(void *ptr_win, void *but),
-						t_element *(*deactive_elem)(void *ptr_win, void *but),
-						int (*draw)(void *win, void *elem))
+						t_element *(*image_touch)(void *win, struct s_element *elem, SDL_Event *ev, t_point_int *mouse),
+						t_element *(*element_pressed)(void *win, struct s_element *elem, SDL_Event *ev, t_point_int *mouse),
+						t_element *(*active_elem)(void *ptr_win, struct s_element *elem),
+						t_element *(*deactive_elem)(void *ptr_win, struct s_element *elem),
+						int (*draw)(void *win, struct s_element *elem))
 {
 	t_element *elem;
 

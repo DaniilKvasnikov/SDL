@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   active_element.c                                   :+:      :+:    :+:   */
+/*   active_elem.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 03:07:16 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/18 20:10:49 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 19:19:10 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_guimp.h"
 
 t_element
-	*active_elem(void *ptr_win, void *buf)
+	*active_elem(void *ptr_win, t_element *elem)
 {
-	((t_win *)ptr_win)->active_element = (t_element *)buf;
-	return ((t_element *)buf);
+	((t_win *)ptr_win)->active_element = elem;
+	return (elem);
 }

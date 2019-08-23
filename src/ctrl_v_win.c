@@ -6,18 +6,15 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 04:12:01 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/18 20:10:38 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 19:43:40 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_guimp.h"
 
 void
-	ctrl_v_win(void *ptr_win, SDL_Event *ev)
+	ctrl_v_win(t_win *win, SDL_Event *ev)
 {
-	t_win		*win;
-
-	win = (t_win *)ptr_win;
 	if (win->tmp_element == NULL)
 		return ;
 	ft_putstr("ctrl_v_win\n");
