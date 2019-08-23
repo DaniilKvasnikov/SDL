@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 20:17:54 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 14:00:18 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 09:58:34 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,7 @@ int
 		texture_render(ptr_win, ptr_elem, ptr_elem->textures[1].tex);
 	if (ptr_elem->str != NULL)
 		render_text(ptr_win, ptr_elem, ptr_elem->str);
+	if (*ptr_elem->int_par == 1 && ptr_elem->sub_group != NULL)
+		groupe_draw(ptr_win, ptr_elem->sub_group);
 	return (0);
 }

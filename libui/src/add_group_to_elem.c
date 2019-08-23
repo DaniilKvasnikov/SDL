@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 18:01:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/21 18:06:48 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 10:03:25 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_group_e
 {
 	t_group_e	*groupe;
 
-	parent->sub_group = add_group_e(parent->sub_group, elem, NULL);
+	parent->sub_group = add_group_e(parent->sub_group, elem, gr_cheacker);
 	elem->parent = parent;
 	return (parent->sub_group);
 }

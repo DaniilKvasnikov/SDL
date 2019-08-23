@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 19:54:07 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 14:11:52 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 10:01:20 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ t_element
 	if (delta.x >= 0 && delta.x < elem->rect.w && delta.y >= 0 && delta.y < elem->rect.h)
 		*elem->float_par = delta.x / (float)elem->rect.w;
 	*elem->int_par = 255 * (*elem->float_par);
-	return (0);
+	return (elem);
 }

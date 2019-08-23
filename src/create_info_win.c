@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 20:47:36 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 17:14:27 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 09:59:53 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,17 @@ t_win
 	win->groupe = add_group_e(win->groupe, checkbox1, &gr_cheacker);
 	win->groupe = add_group_e(win->groupe, checkbox2, NULL);
 
-	
-	t_element *slider_red = add_element_to_win(win, init_sliders_to_win((t_rect){0, 150, 240, 50}, NULL, "img/unchecked_checkbox.bmp", win, ft_intnew(255), ft_floatnew(1.0f), &element_touch, &sliders_pressed, &active_elem, &sliders_render));
-	t_element *slider_green = add_element_to_win(win, init_sliders_to_win((t_rect){0, 200, 240, 50}, NULL, "img/unchecked_checkbox.bmp", win, ft_intnew(255), ft_floatnew(1.0f), &element_touch, &sliders_pressed, &active_elem, &sliders_render));
-	t_element *slider_blue = add_element_to_win(win, init_sliders_to_win((t_rect){0, 250, 240, 50}, NULL, "img/unchecked_checkbox.bmp", win, ft_intnew(255), ft_floatnew(1.0f), &element_touch, &sliders_pressed, &active_elem, &sliders_render));
-	t_element *color = add_element_to_win(win, init_button_to_win((t_rect){0, 300, 240, 50}, NULL, win, NULL, NULL, NULL, &button_render));
-	color->color_border = &mydata->color_border;
+	t_element *slider_red = init_sliders_to_win((t_rect){0, 150, 240, 50}, NULL, "img/unchecked_checkbox.bmp", win, ft_intnew(255), ft_floatnew(1.0f), &element_touch, &sliders_pressed, &active_elem, &sliders_render);
+	t_element *slider_green = init_sliders_to_win((t_rect){0, 200, 240, 50}, NULL, "img/unchecked_checkbox.bmp", win, ft_intnew(255), ft_floatnew(1.0f), &element_touch, &sliders_pressed, &active_elem, &sliders_render);
+	t_element *slider_blue = init_sliders_to_win((t_rect){0, 250, 240, 50}, NULL, "img/unchecked_checkbox.bmp", win, ft_intnew(255), ft_floatnew(1.0f), &element_touch, &sliders_pressed, &active_elem, &sliders_render);
+
+	t_element *color = init_button_to_win((t_rect){0, 300, 240, 50}, NULL, win, NULL, NULL, NULL, &button_render);
 	color->color = &mydata->color;
 	connect_color(slider_red, slider_green, slider_blue, mydata->curr_color);
+
+	checkbox1->sub_group = add_group_to_elem(checkbox1, slider_red, NULL);
+	checkbox1->sub_group = add_group_to_elem(checkbox1, slider_green, NULL);
+	checkbox1->sub_group = add_group_to_elem(checkbox1, slider_blue, NULL);
+	checkbox1->sub_group = add_group_to_elem(checkbox1, color, NULL);
 	return (win);
 }

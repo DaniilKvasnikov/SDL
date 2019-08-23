@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 09:27:15 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 14:10:44 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/23 10:09:20 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ t_element
 				tmp = ((t_element *)elem->sub_group->elements[i])->element_touch(win, elem->sub_group->elements[i], ev, mouse);
 				if (tmp != NULL)
 				{
-					*elem->int_par = i + 1;
 					return (tmp);
 				}
 			}
