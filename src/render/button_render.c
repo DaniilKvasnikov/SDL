@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 17:20:00 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/23 20:33:00 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/24 14:50:10 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int
 		 if (elem->color)
 		{
 			SDL_SetRenderDrawColor(ptr_win->ren, elem->color->r, elem->color->g, elem->color->b, SDL_ALPHA_OPAQUE);
-		SDL_RenderFillRect(ptr_win->ren, &sdl_rect);
+			SDL_RenderFillRect(ptr_win->ren, &sdl_rect);
 		}
 		if (elem->color_border)
 		{

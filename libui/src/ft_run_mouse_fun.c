@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 18:31:03 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/23 16:39:50 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/24 14:24:13 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,21 @@ void
 {
 	ft_putstr("draw_elem_to_tex\n");
 	SDL_SetRenderTarget(win->ren, win->layers.textures[num_layer]);
-	SDL_RenderDrawLine(win->ren, win->lst_mouse.x, win->lst_mouse.y, win->cur_mouse.x, win->cur_mouse.y);
 	t_rect rect = (t_rect){win->lst_mouse.x, win->lst_mouse.y, win->cur_mouse.x - win->lst_mouse.x, win->cur_mouse.y - win->lst_mouse.y};
 	SDL_Rect sdl_rect = t_rect_to_sdl_rect(&rect);
-	SDL_RenderDrawRect(win->ren, &sdl_rect);
 	flip_t_rect(&rect);
 	SDL_SetRenderDrawColor(win->ren, ((t_mydata *)win->mydata)->color.r, ((t_mydata *)win->mydata)->color.g, ((t_mydata *)win->mydata)->color.b, SDL_ALPHA_OPAQUE);
-	draw_elipse(win->ren, rect, 1);
+	if (win->mydata->draw_type == DRAW_ELIPSE_FILLED)
+		draw_elipse(win->ren, rect, 1);
+	if (win->mydata->draw_type == DRAW_RECT_FILLED)
+		SDL_RenderFillRect(win->ren, &sdl_rect);
 	SDL_SetRenderDrawColor(win->ren, ((t_mydata *)win->mydata)->color_border.r, ((t_mydata *)win->mydata)->color_border.g, ((t_mydata *)win->mydata)->color_border.b, SDL_ALPHA_OPAQUE);
-	draw_elipse(win->ren, rect, 0);
+	if (win->mydata->draw_type == DRAW_LINE)
+		SDL_RenderDrawLine(win->ren, win->lst_mouse.x, win->lst_mouse.y, win->cur_mouse.x, win->cur_mouse.y);
+	if (win->mydata->draw_type == DRAW_RECT || win->mydata->draw_type == DRAW_RECT_FILLED)
+		SDL_RenderDrawRect(win->ren, &sdl_rect);
+	if (win->mydata->draw_type == DRAW_ELIPSE || win->mydata->draw_type == DRAW_ELIPSE_FILLED)
+		draw_elipse(win->ren, rect, 0);
 	SDL_SetRenderTarget(win->ren, NULL);
 }
 

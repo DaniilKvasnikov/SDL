@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/23 20:39:27 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/24 14:57:06 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@
 #ifdef __linux__
 # include <SDL2/SDL_ttf.h>
 #endif
+
+# define NO_DRAW 0
+# define DRAW_LINE 1
+# define DRAW_RECT 2
+# define DRAW_RECT_FILLED 3
+# define DRAW_ELIPSE 4
+# define DRAW_ELIPSE_FILLED 5
+# define DRAW_POINT 6
+# define DRAW_ERASER 7
 
 typedef struct	s_element t_element;
 typedef struct	s_win t_win;
@@ -143,9 +152,12 @@ struct	s_mydata
 	TTF_Font		*font;
 	int				ctrl_c;
 	int				ctrl_v;
+	t_rgb			back_color;
 	t_rgb			color;
 	t_rgb			color_border;
+	t_rgb			active_border;
 	t_rgb			*curr_color;
+	int				draw_type;
 };
 
 #endif

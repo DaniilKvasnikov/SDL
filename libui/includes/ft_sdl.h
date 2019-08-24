@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/23 20:38:24 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/24 14:34:35 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ int					progressbar_render(t_win *win, t_element *elem);
 int					dropdownlist_render(t_win *win, t_element *elem);
 
 void				draw_elipse(SDL_Renderer *ren, t_rect field, int full);
+void				draw_elements(t_win *win, int type, int num_layer);
 
 void				ctrl_c_win(t_win *win, SDL_Event *ev);
 void				ctrl_v_win(t_win *win, SDL_Event *ev);
