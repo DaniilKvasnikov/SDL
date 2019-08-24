@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 17:14:37 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/24 23:16:36 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,23 @@
 # include <SDL2/SDL_ttf.h>
 #endif
 
+typedef struct	s_sdl_data	t_sdl_data;
+typedef struct	s_element	t_element;
+typedef struct	s_win		t_win;
+
 typedef struct	s_point
 {
-	float		x;
-	float		y;
+	int			x;
+	int			y;
 }				t_point;
 
-typedef struct	s_rgba_int
+typedef struct	s_color
 {
 	int			r;
 	int			g;
 	int			b;
 	int			a;
-}				t_rgba_int;
-
-typedef struct	s_point_int
-{
-	int			x;
-	int			y;
-}				t_point_int;
+}				t_color;
 
 typedef struct	s_rect
 {
@@ -53,94 +51,79 @@ typedef struct	s_rect
 typedef struct	s_texture
 {
 	SDL_Texture	*tex;
+	char		*path;
 	char		*name;
+	t_rect		rect;
 }				t_texture;
 
-typedef struct	s_group_e
+typedef struct	s_ttf
 {
-	void		**elements;
-	int			count;
-	int			(*gr_cheacker)(struct s_group_e *group, void *elem);
-}				t_group_e;
-
-typedef struct	s_element
-{
-	t_rect				rect;
-	t_texture			*textures;
-	int					textures_count;
-	int					*int_par;
-	float				*float_par;
-	char				*str;
-	t_group_e			*sub_group;
-	void				*parent;
-	t_point_int			last_delta;
-	int					type;
-	t_rgba_int			*color;
-	t_rgba_int			*color_border;
-	int					(*draw)(void *win, void *elem);
-	struct s_element	*(*element_touch)(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
-	struct s_element	*(*element_pressed)(void *win, void *but, SDL_Event *ev, t_point_int *mouse);
-	int					(*keyboard_press)(void *win, void *but, char *char_input);
-	struct s_element	*(*deactive_elem)(void *ptr_win, void *but);
-	struct s_element	*(*active_elem)(void *ptr_win, void *but);
-}				t_element;
-
-typedef struct	s_pair_of_int
-{
-	int			*ptr_from;
-	int			old_from;
-	int			*ptr_to;
-	int			old_to;
-	int			one_way;
-}				t_pair_of_int;
-
-typedef struct	s_pairs_int
-{
-	t_pair_of_int	*pairs;
-	int				count;
-}				t_pairs_int;
+	TTF_Font	*font;
+	char		*path;
+	int			size;
+}				t_ttf;
 
 typedef struct	s_layers
 {
-	SDL_Texture		**textures;
-	int				count;
+	SDL_Texture		*texture;
+	char			*name;
 }				t_layers;
 
-typedef struct	s_win
+typedef struct	s_param
+{
+	void		*par;
+	char		*name;
+}				t_param;
+
+struct	s_element
+{
+	int					active;
+	char				*name;
+	t_rect				rect;
+	t_win				*win;
+	t_point				last_delta_mouse;
+	t_element			**draw_sub_groupe;
+	t_element			**sub_groupe;
+	t_element			*parent;
+	t_color				*color;
+	char				*str;
+	t_ttf				*ttf;
+	t_param				**params;
+	int					(*draw)(t_element *elem, t_win *win);
+	t_element			*(*mouse_down)(t_element *elem, SDL_Event *ev);
+	t_element			*(*mouse_move)(t_element *elem, SDL_Event *ev);
+	t_element			*(*mouse_up)(t_element *elem, SDL_Event *ev);
+	int					(*keyboard_down)(t_element *elem, SDL_Event *ev);
+	t_element			*(*active_other)(t_element *elem);
+};
+
+struct	s_win
 {
 	SDL_Window		*win;
 	SDL_Renderer	*ren;
-	int				window_id;
-	void			(*button_press)(void *mydata, void *win, SDL_Event *ev);
-	void			(*ctrl_c)(void *ptr_win, SDL_Event *ev);
-	void			(*ctrl_v)(void *ptr_win, SDL_Event *ev);
-	void			(*fun_close)(struct	s_win *win);
+	char			*name;
 	t_element		**elements;
-	int				element_count;
-	t_element		*active_element;
-	t_element		*tmp_element;
-	t_texture		*textures;
-	int				textures_count;
-	void			*mydata;
-	t_group_e		*groupe;
-	t_layers		layers;
-	t_pairs_int		pairs_int;
-	t_point_int		lst_mouse;
-	t_point_int		cur_mouse;
-}				t_win;
+	t_element		*active_elem;
+	t_layers		**layers;
+	t_layers		*cur_layer;
+	t_texture		**textures;
+	t_sdl_data		*mydata;
+	t_rect			curr_rect;
+	t_rect			rect;
+	t_point			mouse_down;
+	t_point			mouse_muve;
+};
 
-typedef struct	s_mydata
+struct	s_sdl_data
 {
-	t_win			**wins;
-	int				win_count;
+	t_point			mouse;
 	const Uint8		*keyboardState;
-	t_point_int		mouse;
-	TTF_Font		*font;
-	int				ctrl_c;
-	int				ctrl_v;
-	t_rgba_int		color;
-	t_rgba_int		color_border;
-	t_rgba_int		*curr_color;
-}				t_mydata;
+	t_win			**wins;
+	t_color			color;
+	t_color			color_border;
+	t_color			color_back;
+	t_color			color_active;
+	int				draw_type;
+};
 
 #endif
