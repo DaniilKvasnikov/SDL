@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_guimp.h                                         :+:      :+:    :+:   */
+/*   mousebuttondown_win.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/18 20:09:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 13:00:12 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/25 13:09:06 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/25 13:10:16 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_GUIMP_H
-# define FT_GUIMP_H
+#include "ft_sdl.h"
 
-# include "ft_sdl.h"
-
-void		init_main_win(char *name);
-void		init_info_win(char *name);
-void		main_win_fun(t_win *win, SDL_Event *ev);
-void		info_win_fun(t_win *win, SDL_Event *ev);
-
-#endif
+void
+	mousebuttondown_win(t_win *win, SDL_Event *event)
+{
+	ft_putstr("down\n");
+}

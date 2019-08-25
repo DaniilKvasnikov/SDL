@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_guimp.h                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/18 20:09:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 13:00:12 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/25 10:43:55 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/25 12:58:18 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_GUIMP_H
-# define FT_GUIMP_H
+#include "ft_guimp.h"
 
-# include "ft_sdl.h"
+int
+	main(void)
+{
+	ui_init_sdl_data();
 
-void		init_main_win(char *name);
-void		init_info_win(char *name);
-void		main_win_fun(t_win *win, SDL_Event *ev);
-void		info_win_fun(t_win *win, SDL_Event *ev);
+	init_main_win("Main");
+	init_info_win("Info");
 
-#endif
+	run_loop();
+
+	ui_quite();
+	return (1);
+}

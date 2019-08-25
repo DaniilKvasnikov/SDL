@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_guimp.h                                         :+:      :+:    :+:   */
+/*   ft_create_win.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/18 20:09:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 13:00:12 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/25 11:55:51 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/25 11:57:30 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_GUIMP_H
-# define FT_GUIMP_H
+#include "ft_sdl.h"
 
-# include "ft_sdl.h"
+SDL_Window
+	*ft_create_win(char *name, t_rect rect, Uint32 flags)
+{
+	SDL_Window	*win;
 
-void		init_main_win(char *name);
-void		init_info_win(char *name);
-void		main_win_fun(t_win *win, SDL_Event *ev);
-void		info_win_fun(t_win *win, SDL_Event *ev);
-
-#endif
+	win = SDL_CreateWindow(name, rect.x, rect.y, rect.w, rect.h, flags);
+	if (win == NULL)
+	{
+		ft_printf("SDL_CreateWindow Error: %s\n", SDL_GetError());
+		exit(1);
+	}
+	return (win);
+}

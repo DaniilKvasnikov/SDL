@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_guimp.h                                         :+:      :+:    :+:   */
+/*   ui_fotal_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/18 20:09:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 13:00:12 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/25 11:00:16 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/25 11:37:55 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_GUIMP_H
-# define FT_GUIMP_H
+#include "ft_sdl.h"
 
-# include "ft_sdl.h"
-
-void		init_main_win(char *name);
-void		init_info_win(char *name);
-void		main_win_fun(t_win *win, SDL_Event *ev);
-void		info_win_fun(t_win *win, SDL_Event *ev);
-
-#endif
+void
+	ui_fotal_error(char *str, char *type)
+{
+	ft_putstr(str);
+	ft_putchar(' ');
+	ft_putstr(type);
+	ft_putchar('\n');
+	exit (1);
+}

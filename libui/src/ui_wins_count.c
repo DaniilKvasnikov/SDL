@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_guimp.h                                         :+:      :+:    :+:   */
+/*   ui_wins_count.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/18 20:09:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 13:00:12 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/25 12:17:36 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/25 12:18:35 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_GUIMP_H
-# define FT_GUIMP_H
+#include "ft_sdl.h"
 
-# include "ft_sdl.h"
+int
+	ui_wins_count(void)
+{
+	int	i;
 
-void		init_main_win(char *name);
-void		init_info_win(char *name);
-void		main_win_fun(t_win *win, SDL_Event *ev);
-void		info_win_fun(t_win *win, SDL_Event *ev);
-
-#endif
+	i = -1;
+	while (g_sdl_data->wins[++i] != NULL)
+		;
+	return (i + 1);
+}

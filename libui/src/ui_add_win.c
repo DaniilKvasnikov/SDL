@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_guimp.h                                         :+:      :+:    :+:   */
+/*   ui_add_win.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/18 20:09:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 13:00:12 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/25 12:10:27 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/25 12:14:24 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_GUIMP_H
-# define FT_GUIMP_H
+#include "ft_sdl.h"
 
-# include "ft_sdl.h"
+t_win
+	*ui_add_win(t_win *win)
+{
+	int		count;
+	int		i;
+	t_win	**wins;
 
-void		init_main_win(char *name);
-void		init_info_win(char *name);
-void		main_win_fun(t_win *win, SDL_Event *ev);
-void		info_win_fun(t_win *win, SDL_Event *ev);
-
-#endif
+	count = ui_wins_count();
+	wins = (t_win **)ui_checkmalloc(malloc(sizeof(t_win *) * (count + 1)), "add new win");
+	i = -1;
+	while (g_sdl_data->wins[++i] != NULL)
+		wins[i] = g_sdl_data->wins[i];
+	wins[i] = win;
+	wins[i + 1] = NULL;
+	free(g_sdl_data->wins);
+	g_sdl_data->wins = wins;
+	return (win);
+}
