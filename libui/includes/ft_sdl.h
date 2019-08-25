@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/25 15:04:50 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/25 17:24:05 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,12 @@ SDL_Window			*ft_create_win(char *name, t_rect rect, Uint32 flags);
 SDL_Renderer		*ft_create_rend(SDL_Window *win);
 t_win				*ui_add_win(t_win *win);
 t_element			*add_element_to_win(t_win *win, t_element *elem);
+void				add_ttfs(char *path, char *name, int size);
 int					ui_wins_count(void);
 int					ui_element_count(t_win *win);
 int					ui_textures_count(t_win *win);
+int					ui_ttf_count(void);
+int					ui_element_in_groupe(t_element **groupe);
 void				run_loop(void);
 t_win				*get_active_win(SDL_Event *event);
 int					is_event_close_win(SDL_Event *event);
@@ -44,11 +47,16 @@ int					touch_esc(SDL_Event *event);
 int					fined_win_by_name(char *name);
 int					fined_element_by_name(t_win *win, char *name);
 int					fined_texture_by_name(t_win *win, char *name);
+int					fined_ttf(char *name);
+t_ttf				*get_ttf_by_name(char *name);
+t_element			*get_element_by_name(t_win *win, char *name);
 t_texture			*get_texture_by_name(t_win *win, char *texture_name);
 
 SDL_Texture*		loadTexture(t_win *win, char *path);
 t_texture			*init_texture_to_win(t_win *win, char *path_texture, char *name);
 void				add_texture_to_win(t_win *win, char *path_texture, char *name);
+t_element			*add_element_draw_to_win(t_element *groupe, t_element *elem);
+t_element			*add_element_groupe(t_element *groupe, t_element *elem);
 
 void				mousebuttonmove_win(t_win *win, SDL_Event *event);
 void				mousebuttondown_win(t_win *win, SDL_Event *event);
@@ -66,6 +74,7 @@ t_element			*ui_init_element(int active, char *name, t_rect rect, t_win *win, ch
 
 void				draw_wins(void);
 int					image_draw(t_element *elem, t_win *win);
+int					render_text(t_element *elem, t_win *win);
 int					texture_render(t_win *win, t_element *elem, SDL_Texture *texture);
 int					texture_render_rect(t_win *win, SDL_Texture *texture, SDL_Rect *dust, SDL_Rect *src, SDL_RendererFlip flip);
 void				ft_update_win_surface(void);
@@ -78,5 +87,9 @@ void				destroy_texture(t_texture *texture);
 int					chech_input_mouse(t_element *elem, t_point *mouse);
 SDL_RendererFlip	flip_t_rect(t_rect *rect);
 SDL_Rect			t_rect_to_sdl_rect(t_rect *ptr_rect);
+SDL_Color			t_color_to_sdl_color(t_color *color);
+
+t_ttf				*init_ttf(char *path, char *name, int size);
+t_color				*ft_colornew(t_color tmp);
 
 #endif

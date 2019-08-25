@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_update_win_surface.c                            :+:      :+:    :+:   */
+/*   t_color_to_sdl_color.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 14:40:40 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 15:42:41 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/25 16:55:30 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/25 17:05:17 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-void
-	ft_update_win_surface(void)
+SDL_Color
+	t_color_to_sdl_color(t_color *color)
 {
-	int	i;
+	SDL_Color sdl_color;
 
-	i = -1;
-	while (g_sdl_data->wins[++i])
-	{
-		SDL_RenderPresent(g_sdl_data->wins[i]->ren);
-		SDL_UpdateWindowSurface(g_sdl_data->wins[i]->win);
-	}
+	sdl_color = (SDL_Color){color->r, color->g, color->b, color->a};
+	return (sdl_color);
 }

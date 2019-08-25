@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 14:59:59 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/25 17:14:53 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 # define DRAW_ELIPSE_FILLED 5
 # define DRAW_POINT 6
 # define DRAW_ERASER 7
-# define DRAW_BRUSH 8
 
 typedef struct	s_element t_element;
 typedef struct	s_sdl_data	t_sdl_data;
@@ -71,6 +70,7 @@ typedef struct	s_ttf
 {
 	TTF_Font	*font;
 	char		*path;
+	char		*name;
 	int			size;
 }				t_ttf;
 
@@ -137,6 +137,7 @@ struct	s_sdl_data
 	t_color			color_border;
 	t_color			color_back;
 	t_color			color_active;
+	t_ttf			**ttfs;
 	int				draw_type;
 };
 

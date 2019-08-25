@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_update_win_surface.c                            :+:      :+:    :+:   */
+/*   ui_ttf_count.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 14:40:40 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 15:42:41 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/25 17:19:00 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/25 17:19:35 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-void
-	ft_update_win_surface(void)
+int
+	ui_ttf_count(void)
 {
 	int	i;
 
 	i = -1;
-	while (g_sdl_data->wins[++i])
-	{
-		SDL_RenderPresent(g_sdl_data->wins[i]->ren);
-		SDL_UpdateWindowSurface(g_sdl_data->wins[i]->win);
-	}
+	while (g_sdl_data->ttfs[++i] != NULL)
+		;
+	return (i + 1);
 }

@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_update_win_surface.c                            :+:      :+:    :+:   */
+/*   init_ttf.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 14:40:40 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 15:42:41 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/25 17:10:47 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/25 17:34:46 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-void
-	ft_update_win_surface(void)
+t_ttf
+	*init_ttf(char *path, char *name, int size)
 {
-	int	i;
+	t_ttf	*ttf;
 
-	i = -1;
-	while (g_sdl_data->wins[++i])
+	ttf = (t_ttf *)ui_checkmalloc(malloc(sizeof(t_ttf)), "init ttf");
+	ttf->name = name;
+	ttf->path = path;
+	ttf->size = size;
+	TTF_Init();
+	ttf->font = TTF_OpenFont(path, size);
+	if(ttf->font == NULL)
 	{
-		SDL_RenderPresent(g_sdl_data->wins[i]->ren);
-		SDL_UpdateWindowSurface(g_sdl_data->wins[i]->win);
+		printf("TTF_OpenFont: %s\n", TTF_GetError());
+		exit(1);
 	}
+	return (ttf);
 }

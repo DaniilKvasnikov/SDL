@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_update_win_surface.c                            :+:      :+:    :+:   */
+/*   ft_colornew.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 14:40:40 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 15:42:41 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/25 17:01:50 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/25 17:04:37 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-void
-	ft_update_win_surface(void)
+t_color
+	*ft_colornew(t_color tmp)
 {
-	int	i;
+	t_color	*color;
 
-	i = -1;
-	while (g_sdl_data->wins[++i])
-	{
-		SDL_RenderPresent(g_sdl_data->wins[i]->ren);
-		SDL_UpdateWindowSurface(g_sdl_data->wins[i]->win);
-	}
+	color =(t_color *)ui_checkmalloc(malloc(sizeof(t_color)), "color");
+	*color = tmp;
+	return (color);
 }

@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 13:24:17 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 14:05:37 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/25 16:42:53 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void
 	while (g_sdl_data->wins[++win_i] != NULL)
 	{
 		win = g_sdl_data->wins[win_i];
+		SDL_RenderClear(win->ren);
 		elem_i = -1;
 		while (win->elements[++elem_i] != NULL)
 		{
