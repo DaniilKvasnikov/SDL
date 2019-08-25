@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 12:20:18 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 13:24:12 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/25 14:41:38 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ void
 			else if (ev.type == SDL_MOUSEMOTION)
 				mousebuttonmove_win(active_win, &ev);
 		}
+		ft_update_win_surface();
 	}
 }

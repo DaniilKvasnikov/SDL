@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 12:36:56 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/25 13:55:12 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ struct	s_element
 	char				*str;
 	t_ttf				*ttf;
 	t_param				**params;
+	char				*texture_name;
 	int					(*draw)(t_element *elem, t_win *win);
 	t_element			*(*mouse_down)(t_element *elem, SDL_Event *ev);
 	t_element			*(*mouse_move)(t_element *elem, SDL_Event *ev);

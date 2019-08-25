@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_wins.c                                        :+:      :+:    :+:   */
+/*   texture_render.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 13:24:17 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 14:05:37 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/25 14:07:46 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/25 14:15:11 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-void
-	draw_wins(void)
+int
+	texture_render(t_win *win, t_element *elem, SDL_Texture *texture)
 {
-	int			win_i;
-	t_win		*win;
-	int			elem_i;
-	t_element	*elem;
+	SDL_Rect			sdl_rect;
+	SDL_RendererFlip	flip;
+	t_rect				rect;
 
-	win_i = -1;
-	while (g_sdl_data->wins[++win_i] != NULL)
+	if (texture != NULL)
 	{
-		win = g_sdl_data->wins[win_i];
-		elem_i = -1;
-		while (win->elements[++elem_i] != NULL)
-		{
-			elem = win->elements[elem_i];
-			if (elem->active && elem->draw)
-				elem->draw(elem, win);
-		}
+		rect = elem->rect;
+		flip = flip_t_rect(&rect);
+		sdl_rect = t_rect_to_sdl_rect(&rect);
+		texture_render_rect(win, texture, NULL, &sdl_rect, flip);
+		return (1);
 	}
+	return (0);
 }

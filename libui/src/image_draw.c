@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_wins.c                                        :+:      :+:    :+:   */
+/*   image_draw.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 13:24:17 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 14:05:37 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/25 13:56:43 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/25 14:45:54 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-void
-	draw_wins(void)
+int
+	image_draw(t_element *elem, t_win *win)
 {
-	int			win_i;
-	t_win		*win;
-	int			elem_i;
-	t_element	*elem;
-
-	win_i = -1;
-	while (g_sdl_data->wins[++win_i] != NULL)
-	{
-		win = g_sdl_data->wins[win_i];
-		elem_i = -1;
-		while (win->elements[++elem_i] != NULL)
-		{
-			elem = win->elements[elem_i];
-			if (elem->active && elem->draw)
-				elem->draw(elem, win);
-		}
-	}
+	t_texture	*texture;
+	if (!elem->active)
+		return (0);
+	if ((texture = get_texture_by_name(win, elem->texture_name)) != NULL)
+		texture_render(win, elem, texture->tex);
+	SDL_RenderPresent( win->ren );
+	return (1);
 }

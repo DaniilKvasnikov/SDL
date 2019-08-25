@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_wins.c                                        :+:      :+:    :+:   */
+/*   init_texture_to_win.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 13:24:17 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 14:05:37 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/25 14:21:11 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/25 14:30:02 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-void
-	draw_wins(void)
+t_texture
+	*init_texture_to_win(t_win *win, char *path_texture, char *name)
 {
-	int			win_i;
-	t_win		*win;
-	int			elem_i;
-	t_element	*elem;
+	t_texture	*texture;
 
-	win_i = -1;
-	while (g_sdl_data->wins[++win_i] != NULL)
-	{
-		win = g_sdl_data->wins[win_i];
-		elem_i = -1;
-		while (win->elements[++elem_i] != NULL)
-		{
-			elem = win->elements[elem_i];
-			if (elem->active && elem->draw)
-				elem->draw(elem, win);
-		}
-	}
+	texture = (t_texture *)ui_checkmalloc(malloc(sizeof(t_texture)), "texture");
+	texture->path = path_texture;
+	texture->tex = loadTexture(win, path_texture);
+	texture->rect = (t_rect){0, 0, 0, 0};
+	texture->name = name;
+	SDL_QueryTexture(texture->tex, NULL, NULL, &texture->rect.w, &texture->rect.h);
+	return (texture);
 }

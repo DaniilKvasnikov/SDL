@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_wins.c                                        :+:      :+:    :+:   */
+/*   add_element_to_win.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 13:24:17 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 14:05:37 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/25 13:58:35 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/25 14:02:39 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-void
-	draw_wins(void)
+t_element
+	*add_element_to_win(t_win *win, t_element *elem)
 {
-	int			win_i;
-	t_win		*win;
-	int			elem_i;
-	t_element	*elem;
+	int			count;
+	int			i;
+	t_element	**elems;
 
-	win_i = -1;
-	while (g_sdl_data->wins[++win_i] != NULL)
-	{
-		win = g_sdl_data->wins[win_i];
-		elem_i = -1;
-		while (win->elements[++elem_i] != NULL)
-		{
-			elem = win->elements[elem_i];
-			if (elem->active && elem->draw)
-				elem->draw(elem, win);
-		}
-	}
+	count = ui_element_count(win);
+	elems = (t_element **)ui_checkmalloc(malloc(sizeof(t_element *) * (count + 1)), "add new elem");
+	i = -1;
+	while (win->elements[++i] != NULL)
+		elems[i] = win->elements[i];
+	elems[i] = elem;
+	elems[i + 1] = NULL;
+	free(win->elements);
+	win->elements = elems;
+	return (elem);
 }

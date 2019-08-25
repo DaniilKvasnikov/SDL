@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_wins.c                                        :+:      :+:    :+:   */
+/*   ui_element_count.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 13:24:17 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 14:05:37 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/25 14:00:04 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/25 14:00:26 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-void
-	draw_wins(void)
+int
+	ui_element_count(t_win *win)
 {
-	int			win_i;
-	t_win		*win;
-	int			elem_i;
-	t_element	*elem;
+	int	i;
 
-	win_i = -1;
-	while (g_sdl_data->wins[++win_i] != NULL)
-	{
-		win = g_sdl_data->wins[win_i];
-		elem_i = -1;
-		while (win->elements[++elem_i] != NULL)
-		{
-			elem = win->elements[elem_i];
-			if (elem->active && elem->draw)
-				elem->draw(elem, win);
-		}
-	}
+	i = -1;
+	while (win->elements[++i] != NULL)
+		;
+	return (i + 1);
 }
