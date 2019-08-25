@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 14:21:11 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 14:30:02 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/25 17:56:06 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_texture
 {
 	t_texture	*texture;
 
-	texture = (t_texture *)ui_checkmalloc(malloc(sizeof(t_texture)), "texture");
+	texture = (t_texture *)ui_checkmalloc(malloc(sizeof(t_texture)), "texture", __LINE__, __FILE__);
 	texture->path = path_texture;
 	texture->tex = loadTexture(win, path_texture);
 	texture->rect = (t_rect){0, 0, 0, 0};

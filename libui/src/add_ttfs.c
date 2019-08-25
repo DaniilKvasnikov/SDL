@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 17:09:06 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 17:21:16 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/25 17:56:50 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void
 	t_ttf		**ttfs;
 
 	if (fined_ttf(name))
-		ui_fotal_error(name, "ttf duplicate");
+		ui_fotal_error(name, "ttf duplicate", __LINE__, __FILE__);
 	count = ui_ttf_count();
-	ttfs = (t_ttf **)ui_checkmalloc(malloc(sizeof(t_ttf *) * (count + 1)), "add new ttf");
+	ttfs = (t_ttf **)ui_checkmalloc(malloc(sizeof(t_ttf *) * (count + 1)), "add new ttf", __LINE__, __FILE__);
 	i = -1;
 	while (g_sdl_data->ttfs[++i] != NULL)
 		ttfs[i] = g_sdl_data->ttfs[i];

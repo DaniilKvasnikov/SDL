@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 15:29:39 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 15:45:10 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/25 17:55:42 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_element
 	t_element	**elems;
 
 	count = ui_element_in_groupe(groupe->draw_sub_groupe);
-	elems = (t_element **)ui_checkmalloc(malloc(sizeof(t_element *) * (count + 1)), "add new elem");
+	elems = (t_element **)ui_checkmalloc(malloc(sizeof(t_element *) * (count + 1)), "add new elem", __LINE__, __FILE__);
 	i = -1;
 	while (groupe->draw_sub_groupe[++i] != NULL)
 		elems[i] = groupe->draw_sub_groupe[i];

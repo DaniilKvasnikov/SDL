@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 12:10:27 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 12:14:24 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/25 17:56:12 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_win
 	t_win	**wins;
 
 	count = ui_wins_count();
-	wins = (t_win **)ui_checkmalloc(malloc(sizeof(t_win *) * (count + 1)), "add new win");
+	wins = (t_win **)ui_checkmalloc(malloc(sizeof(t_win *) * (count + 1)), "add new win", __LINE__, __FILE__);
 	i = -1;
 	while (g_sdl_data->wins[++i] != NULL)
 		wins[i] = g_sdl_data->wins[i];

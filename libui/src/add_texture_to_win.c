@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 14:16:47 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 14:30:07 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/25 17:56:38 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void
 	t_texture	**textures;
 
 	if (fined_texture_by_name(win, name))
-		ui_fotal_error(name, "texture duplicate");
+		ui_fotal_error(name, "texture duplicate", __LINE__, __FILE__);
 	count = ui_textures_count(win);
-	textures = (t_texture **)ui_checkmalloc(malloc(sizeof(t_texture *) * (count + 1)), "add new texture");
+	textures = (t_texture **)ui_checkmalloc(malloc(sizeof(t_texture *) * (count + 1)), "add new texture", __LINE__, __FILE__);
 	i = -1;
 	while (win->textures[++i] != NULL)
 		textures[i] = win->textures[i];

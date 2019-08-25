@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 12:58:29 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 17:31:20 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/25 17:47:26 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ void
 	image = ui_init_element(1, "text_rect_image", (t_rect){10, 10, 30, 30}, win, NULL, NULL,
 						ft_colornew((t_color){255, 0, 0, 255}), "rect",
 						NULL, &render_text, NULL, NULL, NULL, NULL, NULL);
-	image->ttf = get_ttf_by_name("standart14");
+	image->ttf = get_ttf_by_name("standart", 14);
 	add_element_draw_to_win(elem, image);
 }

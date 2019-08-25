@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/25 17:24:05 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/25 17:59:30 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void				ui_init_sdl_data(void);
 t_win				*ui_init_win(char *name, t_rect rect, Uint32 flags,
 						void (*win_fun)(t_win *win, SDL_Event *ev));
 void				ui_quite(void);
-void				ui_fotal_error(char *str, char *type);
-void				*ui_checkmalloc(void *ptr, char *err_str);
+void				ui_fotal_error(char *str, char *type, int line_num, char *file_name);
+void				*ui_checkmalloc(void *ptr, char *err_str, int line_num, char *file_name);
 void				free_if_not_null(void *ptr);
 SDL_Window			*ft_create_win(char *name, t_rect rect, Uint32 flags);
 SDL_Renderer		*ft_create_rend(SDL_Window *win);
@@ -48,7 +48,7 @@ int					fined_win_by_name(char *name);
 int					fined_element_by_name(t_win *win, char *name);
 int					fined_texture_by_name(t_win *win, char *name);
 int					fined_ttf(char *name);
-t_ttf				*get_ttf_by_name(char *name);
+t_ttf				*get_ttf_by_name(char *name, int size);
 t_element			*get_element_by_name(t_win *win, char *name);
 t_texture			*get_texture_by_name(t_win *win, char *texture_name);
 

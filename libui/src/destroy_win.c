@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 12:23:29 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 12:57:19 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/25 17:56:00 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void
 	int		j;
 	t_win	**wins;
 
-	wins = (t_win **)ui_checkmalloc(malloc(sizeof(t_win *) * (ui_wins_count() - 1)), "destroy win");
+	wins = (t_win **)ui_checkmalloc(malloc(sizeof(t_win *) * (ui_wins_count() - 1)), "destroy win", __LINE__, __FILE__);
 	i = -1;
 	j = -1;
 	while (g_sdl_data->wins[++i] != NULL)
