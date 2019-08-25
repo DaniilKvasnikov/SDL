@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 12:20:18 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 14:41:38 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/25 15:07:55 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void
 		while (SDL_PollEvent(&ev) != 0)
 		{
 			SDL_PumpEvents();
+			SDL_GetMouseState(&g_sdl_data->mouse.x, &g_sdl_data->mouse.y);
 			active_win = get_active_win(&ev);
 			if (is_event_close_win(&ev))
 				destroy_win(active_win);

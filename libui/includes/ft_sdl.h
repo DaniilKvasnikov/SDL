@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/25 14:41:33 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/25 15:04:50 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void				destroy_element(t_element *elem);
 void				destroy_layer(t_layer *layer);
 void				destroy_texture(t_texture *texture);
 
+int					chech_input_mouse(t_element *elem, t_point *mouse);
 SDL_RendererFlip	flip_t_rect(t_rect *rect);
 SDL_Rect			t_rect_to_sdl_rect(t_rect *ptr_rect);
 

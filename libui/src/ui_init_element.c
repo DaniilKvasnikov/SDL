@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 13:37:26 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 14:37:58 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/25 15:14:16 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_element
 	elem->texture_name = texture_name;
 	elem->draw = draw;
 	elem->mouse_down = mouse_down;
-	elem->mouse_down = mouse_move;
+	elem->mouse_move = mouse_move;
 	elem->mouse_up = mouse_up;
 	elem->keyboard_down = keyboard_down;
 	elem->active_other = active_other;
