@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 17:14:53 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/25 21:55:14 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ struct	s_element
 	t_element			*(*mouse_move)(t_element *elem, SDL_Event *ev);
 	t_element			*(*mouse_up)(t_element *elem, SDL_Event *ev);
 	int					(*keyboard_down)(t_element *elem, SDL_Event *ev);
-	t_element			*(*active_other)(t_element *elem);
+	t_element			*(*active_other)(t_element *elem, t_element *new);
 };
 
 struct	s_win
@@ -138,7 +138,9 @@ struct	s_sdl_data
 	t_color			color_back;
 	t_color			color_active;
 	t_ttf			**ttfs;
+	int				line_width;
 	int				draw_type;
+	int				drawing;
 };
 
 #endif

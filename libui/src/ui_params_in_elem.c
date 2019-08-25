@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_main_win.c                                    :+:      :+:    :+:   */
+/*   ui_params_in_elem.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 11:30:30 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 21:25:41 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/25 18:41:26 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/25 18:41:44 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_guimp.h"
+#include "ft_sdl.h"
 
-void
-	init_main_win(char *name)
+int
+	ui_params_in_elem(t_element *elem)
 {
-	t_win		*win;
-	t_element	*elem;
+	int	i;
 
-	ui_add_win(win = ui_init_win(ft_strdup(name), (t_rect){200, 200, 640, 480},
-		SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE, &main_win_fun));
-	add_layers(win, "main");
+	i = -1;
+	while (elem->params[++i] != NULL)
+		;
+	return (i + 1);
 }

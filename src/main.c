@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 10:43:55 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 12:58:18 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/25 18:57:41 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int
 	ui_init_sdl_data();
 
 	init_main_win("Main");
-	init_info_win("Info");
+	init_info_win("PTool");
 
 	run_loop();
 

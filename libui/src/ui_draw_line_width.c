@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_main_win.c                                    :+:      :+:    :+:   */
+/*   ui_draw_line_width.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 11:30:30 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 21:25:41 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/25 21:13:24 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/25 21:20:40 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_guimp.h"
+#include "ft_sdl.h"
 
 void
-	init_main_win(char *name)
+	ui_draw_line_width(t_win *win, int x1, int y1, int x2, int y2, int width)
 {
-	t_win		*win;
-	t_element	*elem;
-
-	ui_add_win(win = ui_init_win(ft_strdup(name), (t_rect){200, 200, 640, 480},
-		SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE, &main_win_fun));
-	add_layers(win, "main");
+	SDL_RenderDrawLine(win->ren, x1, y1, x2, y2);
 }

@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 12:58:29 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 17:47:26 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/25 20:59:57 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,27 @@ void
 						NULL, &image_draw, NULL, NULL, NULL, NULL, NULL);
 	add_element_draw_to_win(elem, image);
 	elem = ui_init_element(1, "button4", (t_rect){50, 50, 50, 50}, win, "button1", NULL, NULL, NULL,
-						NULL, &image_draw, &set_active_btn_figs, NULL, NULL, NULL, NULL);
+						NULL, &image_draw, &set_active_btn_figs, NULL, NULL, NULL, &unset_drawtype);
 	add_element_to_win(win, elem);
 	image = ui_init_element(1, "figures_image", (t_rect){10, 10, 30, 30}, win, "figures", NULL, NULL, NULL,
 						NULL, &image_draw, NULL, NULL, NULL, NULL, NULL);
 	add_element_draw_to_win(elem, image);
-	elem = ui_init_element(0, "button5", (t_rect){0, 100, 50, 50}, win, "button1", NULL, NULL, NULL,
+	but = ui_init_element(0, "button5", (t_rect){0, 100, 50, 50}, win, "button1", NULL, NULL, NULL,
 						NULL, &image_draw, &set_drawtype_rect, NULL, NULL, NULL, NULL);
-	add_element_to_win(win, elem);
+	add_element_to_win(win, but);
 	image = ui_init_element(1, "text_rect_image", (t_rect){10, 10, 30, 30}, win, NULL, NULL,
 						ft_colornew((t_color){255, 0, 0, 255}), "rect",
 						NULL, &render_text, NULL, NULL, NULL, NULL, NULL);
 	image->ttf = get_ttf_by_name("standart", 14);
-	add_element_draw_to_win(elem, image);
+	add_element_draw_to_win(but, image);
+	add_param_to_elem(elem, "btn1", but);
+	but = ui_init_element(0, "button6", (t_rect){50, 100, 50, 50}, win, "button1", NULL, NULL, NULL,
+						NULL, &image_draw, &set_drawtype_rectfilled, NULL, NULL, NULL, NULL);
+	add_element_to_win(win, but);
+	image = ui_init_element(1, "text_rect_image", (t_rect){10, 10, 30, 30}, win, NULL, NULL,
+						ft_colornew((t_color){255, 0, 0, 255}), "rectfilled",
+						NULL, &render_text, NULL, NULL, NULL, NULL, NULL);
+	image->ttf = get_ttf_by_name("standart", 14);
+	add_element_draw_to_win(but, image);
+	add_param_to_elem(elem, "btn2", but);
 }

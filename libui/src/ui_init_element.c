@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 13:37:26 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 17:57:47 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/25 20:57:19 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_element
 					t_element *(*mouse_move)(t_element *elem, SDL_Event *ev),
 					t_element *(*mouse_up)(t_element *elem, SDL_Event *ev),
 					int (*keyboard_down)(t_element *elem, SDL_Event *ev),
-					t_element *(*active_other)(t_element *elem))
+					t_element *(*active_other)(t_element *elem, t_element *new))
 {
 	t_element	*elem;
 

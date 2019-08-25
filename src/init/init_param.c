@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_main_win.c                                    :+:      :+:    :+:   */
+/*   init_param.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 11:30:30 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 21:25:41 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/25 18:43:55 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/25 18:47:18 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_guimp.h"
+#include "ft_sdl.h"
 
-void
-	init_main_win(char *name)
+t_param
+	*init_param(char *name, void *par)
 {
-	t_win		*win;
-	t_element	*elem;
+	t_param	*param;
 
-	ui_add_win(win = ui_init_win(ft_strdup(name), (t_rect){200, 200, 640, 480},
-		SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE, &main_win_fun));
-	add_layers(win, "main");
+	param = (t_param *)ui_checkmalloc(malloc(sizeof(t_param)), "init param", __LINE__, __FILE__);
+	param->name = name;
+	param->par = par;
+	return (param);
 }

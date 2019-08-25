@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_active_btn_figs.c                              :+:      :+:    :+:   */
+/*   add_layers.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 16:00:30 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 18:54:49 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/25 19:58:45 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/25 20:14:16 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_guimp.h"
+#include "ft_sdl.h"
 
-t_element
-	*set_active_btn_figs(t_element *elem, SDL_Event *ev)
+void
+	add_layers(t_win *win, char *name)
 {
-	t_element	*elem_gr;
+	int			count;
 	int			i;
-	ft_putstr("set_active_btn_figs\n");
+	t_layer		**layers;
+
+	count = get_layers_count(win);
+	layers = (t_layer **)ui_checkmalloc(malloc(sizeof(t_layer *) * (count + 1)), "add layer", __LINE__, __FILE__);
 	i = -1;
-	while (elem->params[++i])
-	{
-		elem_gr = (t_element *)elem->params[i]->par;
-		elem_gr->active = !elem_gr->active;
-	}
-	ft_printf("%d\n", elem_gr->active);
-	return (elem);
+	while (win->layers[++i] != NULL)
+		layers[i] = win->layers[i];
+	layers[i] = init_layer(win, name);
+	layers[i + 1] = NULL;
+	free(win->layers);
+	win->layers = layers;
 }
