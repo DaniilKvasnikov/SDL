@@ -73,7 +73,7 @@ t_element			*ui_init_element(int active, char *name, t_rect rect, t_win *win, ch
 						t_element *parent, t_color *color, char *str, t_ttf *ttf,
 						int (*draw)(t_element *elem, t_win *win),
 						t_element *(*mouse_down)(t_element *elem, SDL_Event *ev),
-					t_element *(*mouse_move)(t_element *elem, SDL_Event *ev),
+						t_element *(*mouse_move)(t_element *elem, SDL_Event *ev),
 						t_element *(*mouse_up)(t_element *elem, SDL_Event *ev),
 						int (*keyboard_down)(t_element *elem, SDL_Event *ev),
 						t_element *(*active_other)(t_element *elem, t_element *new));

@@ -77,6 +77,7 @@ void
 	add_texture_to_win(win, "img/figures.bmp", "figures", BMP);
 	add_texture_to_win(win, "img/cat.bmp", "cat", BMP);
 	add_texture_to_win(win, "img/cat2.png", "cat2", PNG);
+	add_texture_to_win(win, "img/cat3.jpg", "cat3", JPG);
 	elem = ui_init_element(1, "button1", (t_rect){0, 0, 50, 50}, win, "button1", NULL, NULL, NULL,
 						NULL, &image_draw, &set_drawtype_point, NULL, NULL, NULL, NULL);
 	add_element_to_win(win, elem);
@@ -110,6 +111,10 @@ void
 	add_element_to_win(win, elem);
 
 	elem = ui_init_element(1, "button6", (t_rect){50, 100, 50, 50}, win, "cat2", NULL, NULL, NULL,
+						NULL, &image_draw, &set_drawtype_texture, NULL, NULL, NULL, NULL);
+	add_element_to_win(win, elem);
+
+	elem = ui_init_element(1, "button7", (t_rect){0, 150, 50, 50}, win, "cat3", NULL, NULL, NULL,
 						NULL, &image_draw, &set_drawtype_texture, NULL, NULL, NULL, NULL);
 	add_element_to_win(win, elem);
 }

@@ -12,45 +12,6 @@
 
 #include "ft_sdl.h"
 
-SDL_Surface* loadSurface(char *path, t_win *win)
-{
-	//Initialize PNG loading
-	int imgFlags = IMG_INIT_PNG;
-	SDL_Surface	*gScreenSurface;
-	if( !( IMG_Init( imgFlags ) & imgFlags ) )
-	{
-		printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
-		exit(1);
-	}
-	else
-	{
-		gScreenSurface = SDL_GetWindowSurface(win->win);
-	}
-    //The final optimized image
-    SDL_Surface* optimizedSurface = NULL;
-
-    //Load image at specified path
-    SDL_Surface* loadedSurface = IMG_Load(path);
-    if( loadedSurface == NULL )
-    {
-        printf( "Unable to load image %s! SDL_image Error: %s\n", path, IMG_GetError() );
-    }
-    else
-    {
-        //Convert surface to screen format
-        optimizedSurface = SDL_ConvertSurface( loadedSurface, gScreenSurface->format, 0 );
-        if( optimizedSurface == NULL )
-        {
-            printf( "Unable to optimize image %s! SDL Error: %s\n", path, SDL_GetError() );
-        }
-
-        //Get rid of old loaded surface
-        SDL_FreeSurface( loadedSurface );
-    }
-
-    return optimizedSurface;
-}
-
 SDL_Texture*
 	loadTexture(t_win *win, char *path, int type)
 {
@@ -61,6 +22,11 @@ SDL_Texture*
 	else if (type == PNG)
 	{
 		IMG_Init(IMG_INIT_PNG);
+		loadedSurface = IMG_Load(path);
+	}
+	else if (type == JPG)
+	{
+		IMG_Init(IMG_INIT_JPG);
 		loadedSurface = IMG_Load(path);
 	}
 	else
