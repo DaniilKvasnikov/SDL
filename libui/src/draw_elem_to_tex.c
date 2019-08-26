@@ -3,20 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   draw_elem_to_tex.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 19:19:36 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/26 18:22:55 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/26 20:34:36 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
+static t_point
+	recalc(t_point *old, t_rect *rect, float delta)
+{
+	return ((t_point){
+		(old->x - rect->x) / delta,
+		(old->y - rect->y) / delta
+	});
+}
+
 void
 	draw_elem_to_tex(t_win *win, int num_layer)
 {
-	t_point	mouse_down = diff_t_point(win->mouse_down, (t_point){win->win_rect.x, win->win_rect.y});
-	t_point	mouse_muve = diff_t_point(win->mouse_muve, (t_point){win->win_rect.x, win->win_rect.y});
+	t_point	mouse_down = recalc(&win->mouse_down, &win->win_rect, win->scale);
+	t_point	mouse_muve = recalc(&win->mouse_muve, &win->win_rect, win->scale);
 	SDL_RendererFlip flip;
 	ft_putstr("draw_elem_to_tex\n");
 	SDL_SetRenderTarget(win->ren, win->layers[num_layer]->texture);

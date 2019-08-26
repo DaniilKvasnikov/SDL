@@ -6,11 +6,20 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 19:27:40 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/26 11:04:44 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/26 20:45:20 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
+
+static t_point
+	recalc(t_point *old, t_rect *rect, float delta)
+{
+	return ((t_point){
+		(old->x - rect->x) / delta,
+		(old->y - rect->y) / delta
+	});
+}
 
 void
 	draw_elements(t_win *win, int type, int num_layer)
@@ -43,16 +52,18 @@ void
 	}
 	if (type == DRAW_POINT || type == DRAW_ERASER)
 	{
+		t_point	mouse_down = recalc(&win->mouse_down, &win->win_rect, win->scale);
+		t_point	mouse_muve = recalc(&win->mouse_muve, &win->win_rect, win->scale);
 		SDL_SetRenderDrawColor(win->ren, g_sdl_data->color_border.r, g_sdl_data->color_border.g, g_sdl_data->color_border.b, g_sdl_data->color_border.a);
 		if (type == DRAW_ERASER)
 			SDL_SetRenderDrawColor(win->ren, g_sdl_data->color_back.r, g_sdl_data->color_back.g, g_sdl_data->color_back.b, g_sdl_data->color_back.a);
 		SDL_SetRenderTarget(win->ren, win->layers[num_layer]->texture);
-		if (win->mouse_down.x != win->mouse_muve.x ||
-			win->mouse_down.y != win->mouse_muve.y)
-			ui_draw_line_width(win, win->mouse_muve.x, win->mouse_muve.y, win->mouse_down.x, win->mouse_down.y, g_sdl_data->line_width);
+		if (mouse_down.x != mouse_muve.x ||
+			mouse_down.y != mouse_muve.y)
+			ui_draw_line_width(win, mouse_muve.x, mouse_muve.y, mouse_down.x, mouse_down.y, g_sdl_data->line_width);
 		else
-			ui_draw_point_width(win, win->mouse_down.x, win->mouse_down.y, g_sdl_data->line_width);
+			ui_draw_point_width(win, mouse_down.x, mouse_down.y, g_sdl_data->line_width);
 		SDL_SetRenderTarget(win->ren, NULL);
-		win->mouse_down = win->mouse_muve;		
+		win->mouse_down = win->mouse_muve;
 	}
 }
