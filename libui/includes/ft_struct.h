@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/26 13:20:22 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/26 15:16:34 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 # define BMP 1
 # define PNG 2
+# define JPG 3
 
 # define NO_DRAW 0
 # define DRAW_LINE 1

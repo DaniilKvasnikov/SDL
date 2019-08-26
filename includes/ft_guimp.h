@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 20:09:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/26 13:41:27 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/26 14:59:44 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_element		*set_drawtype_rectfilled(t_element *elem, SDL_Event *ev);
 t_element		*set_drawtype_texture(t_element *elem, SDL_Event *ev);
 t_element		*set_drawtype_elipsefilled(t_element *elem, SDL_Event *ev);
 t_element		*clear_cur_layer(t_element *elem, SDL_Event *ev);
+t_element		*btn_save_file(t_element *elem, SDL_Event *ev);
 t_element		*btn_open_file_dialog_img(t_element *elem, SDL_Event *ev);
 t_element		*set_drawtype_elipse(t_element *elem, SDL_Event *ev);
 t_element		*set_active_btn_figs(t_element *elem, SDL_Event *ev);

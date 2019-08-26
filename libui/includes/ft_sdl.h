@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/26 13:47:51 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/26 15:05:12 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,6 @@ void				draw_elements(t_win *win, int type, int num_layer);
 void				draw_elem_to_tex(t_win *win, int num_layer);
 t_element			*add_param_to_elem(t_element *elem, char *name, void *param);
 t_element			*close_cur_win(t_element *elem, SDL_Event *ev);
+void				save_file(t_win *win, int type, int num_layer, char *path);
 
 #endif
