@@ -6,7 +6,7 @@
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/26 17:32:49 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/26 18:15:42 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <math.h>
 
 t_sdl_data	*g_sdl_data;
+
+t_point				summ_t_point(t_point a, t_point b);
 
 void				ui_init_sdl_data(void);
 t_win				*ui_init_win(char *name, t_rect rect, Uint32 flags,
