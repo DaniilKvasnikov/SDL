@@ -90,6 +90,11 @@ install_ubuntu:
 	sudo apt-get install libsdl2-2.0 -y
 	sudo apt-get install libsdl2-image-dev -y
 
+install_mac:
+	brew install sdl_ttf
+	brew install sdl2_image
+	brew install sdl2
+
 pull: fclean
 	git pull
 

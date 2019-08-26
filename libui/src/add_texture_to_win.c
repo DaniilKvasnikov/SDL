@@ -30,4 +30,5 @@ t_texture
 	textures[i + 1] = NULL;
 	free(win->textures);
 	win->textures = textures;
+	return (textures[i]);
 }

@@ -17,9 +17,11 @@
 
 #ifdef __APPLE__
 # include <SDL_ttf.h>
+# include <SDL_image.h>
 #endif
 #ifdef __linux__
 # include <SDL2/SDL_ttf.h>
+# include <SDL2/SDL_image.h>
 #endif
 
 # define BMP 1

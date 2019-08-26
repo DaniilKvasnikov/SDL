@@ -14,7 +14,6 @@
 # define FT_SDL_H
 
 # include <SDL2/SDL.h>
-# include <SDL2/SDL_image.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include "ft_printf.h"
