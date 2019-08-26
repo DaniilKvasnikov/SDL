@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 21:55:14 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/26 13:20:22 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # include <SDL2/SDL_ttf.h>
 #endif
 
+# define BMP 1
+# define PNG 2
+
 # define NO_DRAW 0
 # define DRAW_LINE 1
 # define DRAW_RECT 2
@@ -30,6 +33,7 @@
 # define DRAW_ELIPSE_FILLED 5
 # define DRAW_POINT 6
 # define DRAW_ERASER 7
+# define DRAW_TEXTURE 8
 
 typedef struct	s_element t_element;
 typedef struct	s_sdl_data	t_sdl_data;
@@ -64,6 +68,7 @@ typedef struct	s_texture
 	char		*path;
 	char		*name;
 	t_rect		rect;
+	int			type;
 }				t_texture;
 
 typedef struct	s_ttf

@@ -6,14 +6,14 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 14:16:47 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 17:56:38 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/26 13:19:27 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-void
-	add_texture_to_win(t_win *win, char *path_texture, char *name)
+t_texture
+	*add_texture_to_win(t_win *win, char *path_texture, char *name, int type)
 {
 	int			count;
 	int			i;
@@ -26,7 +26,7 @@ void
 	i = -1;
 	while (win->textures[++i] != NULL)
 		textures[i] = win->textures[i];
-	textures[i] = init_texture_to_win(win, path_texture, name);
+	textures[i] = init_texture_to_win(win, path_texture, name, type);
 	textures[i + 1] = NULL;
 	free(win->textures);
 	win->textures = textures;

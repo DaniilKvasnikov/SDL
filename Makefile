@@ -36,7 +36,7 @@ OBJ = $(addprefix $(OBJ_PATH), $(SRCS_NAME:.c=.o))
 UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
-	INC += -lSDL2 -lSDL2_ttf -lm
+	INC += -lSDL2 -lSDL2_ttf -lSDL2_image -lSDL2_image -lm
 endif
 ifeq ($(UNAME_S),Darwin)
 	SDL =  -F ./includes/frameworks/ -framework SDL2 \
@@ -88,6 +88,7 @@ install_ubuntu:
 	sudo apt-get install libsdl2-ttf-dev -y
 	sudo apt-get install libsdl2-dev -y
 	sudo apt-get install libsdl2-2.0 -y
+	sudo apt-get install libsdl2-image-dev -y
 
 pull: fclean
 	git pull

@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 12:20:18 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 19:36:54 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/26 09:29:47 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void
 				destroy_win(active_win);
 			if (ev.type == SDL_QUIT || ui_wins_count() == 1 || touch_esc(&ev))
 				run = 0;
-			if (ev.type == SDL_MOUSEBUTTONUP)
+			if (active_win == NULL)
+				;
+			else if (ev.type == SDL_MOUSEBUTTONUP)
 				mousebuttonup_win(active_win, &ev);
 			else if (ev.type == SDL_MOUSEBUTTONDOWN)
 				mousebuttondown_win(active_win, &ev);

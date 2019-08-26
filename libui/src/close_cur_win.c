@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   close_cur_win.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 10:43:55 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/26 10:26:16 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/26 09:10:02 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/26 09:14:07 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_guimp.h"
+#include "ft_sdl.h"
 
-int
-	main(void)
+t_element
+	*close_cur_win(t_element *elem, SDL_Event *ev)
 {
-	ui_init_sdl_data();
-
-	init_main_win("Main");
-	init_ptool_win("PTool");
-
-	// open_win_ok("Ok", "this is message!");
-
-	run_loop();
-
-	ui_quite();
-	return (1);
+	destroy_win(elem->win);
+	return (NULL);
 }

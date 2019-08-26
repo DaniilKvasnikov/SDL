@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/25 21:50:55 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/26 13:47:51 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_SDL_H
 
 # include <SDL2/SDL.h>
+# include <SDL2/SDL_image.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include "ft_printf.h"
@@ -56,10 +57,11 @@ int					fined_param_by_name(t_element *elem, char *name);
 t_ttf				*get_ttf_by_name(char *name, int size);
 t_element			*get_element_by_name(t_win *win, char *name);
 t_texture			*get_texture_by_name(t_win *win, char *texture_name);
+t_win				*get_win_by_name(char *name);
 
-SDL_Texture*		loadTexture(t_win *win, char *path);
-t_texture			*init_texture_to_win(t_win *win, char *path_texture, char *name);
-void				add_texture_to_win(t_win *win, char *path_texture, char *name);
+SDL_Texture*		loadTexture(t_win *win, char *path, int type);
+t_texture			*init_texture_to_win(t_win *win, char *path_texture, char *name, int type);
+t_texture			*add_texture_to_win(t_win *win, char *path_texture, char *name, int type);
 t_element			*add_element_draw_to_win(t_element *groupe, t_element *elem);
 t_element			*add_element_groupe(t_element *groupe, t_element *elem);
 
@@ -77,11 +79,15 @@ t_element			*ui_init_element(int active, char *name, t_rect rect, t_win *win, ch
 						int (*keyboard_down)(t_element *elem, SDL_Event *ev),
 						t_element *(*active_other)(t_element *elem, t_element *new));
 
+void				clear_layer(t_win *win, int num_layer);
 void				draw_wins(void);
 int					image_draw(t_element *elem, t_win *win);
 int					render_text(t_element *elem, t_win *win);
 int					texture_render(t_win *win, t_element *elem, SDL_Texture *texture);
 int					texture_render_rect(t_win *win, SDL_Texture *texture, SDL_Rect *dust, SDL_Rect *src, SDL_RendererFlip flip);
+int					open_win_ok(char *name, char *message);
+void				cur_texture_draw(t_win *win, int num_layer);
+
 void				ft_update_win_surface(void);
 
 void				destroy_win(t_win *win);
@@ -105,5 +111,6 @@ void				draw_layers(t_win *win);
 void				draw_elements(t_win *win, int type, int num_layer);
 void				draw_elem_to_tex(t_win *win, int num_layer);
 t_element			*add_param_to_elem(t_element *elem, char *name, void *param);
+t_element			*close_cur_win(t_element *elem, SDL_Event *ev);
 
 #endif

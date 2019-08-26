@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_win_by_name.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 10:43:55 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/26 10:26:16 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/26 12:46:35 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/26 12:47:31 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_guimp.h"
+#include "ft_sdl.h"
 
-int
-	main(void)
+t_win
+	*get_win_by_name(char *name)
 {
-	ui_init_sdl_data();
+	int	i;
 
-	init_main_win("Main");
-	init_ptool_win("PTool");
-
-	// open_win_ok("Ok", "this is message!");
-
-	run_loop();
-
-	ui_quite();
-	return (1);
+	i = -1;
+	while (g_sdl_data->wins[++i] != NULL)
+		if (ft_strcmp(g_sdl_data->wins[i]->name, name) == 0)
+			return (g_sdl_data->wins[i]);
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 #    By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/27 14:25:41 by rrhaenys          #+#    #+#              #
-#    Updated: 2019/08/21 08:24:43 by rrhaenys         ###   ########.fr        #
+#    Updated: 2019/08/26 13:24:15 by rrhaenys         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ OBJ = $(addprefix $(OBJ_DIR), $(SRCS_NAME:.c=.o))
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-	INCLUDE += -lSDL2 -lSDL2_ttf -lm
+	INCLUDE += -lSDL2 -lSDL2_ttf -lSDL2_image -lm
 endif
 ifeq ($(UNAME_S),Darwin)
 	SDL =  -F ./includes/frameworks/ -framework SDL2 \
