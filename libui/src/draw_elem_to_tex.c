@@ -6,7 +6,7 @@
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 19:19:36 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/26 18:15:32 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/26 18:22:55 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void
 	draw_elem_to_tex(t_win *win, int num_layer)
 {
-	t_point	mouse_down = summ_t_point(win->mouse_down, (t_point){win->win_rect.x, win->win_rect.y});
-	t_point	mouse_muve = summ_t_point(win->mouse_muve, (t_point){win->win_rect.x, win->win_rect.y});
+	t_point	mouse_down = diff_t_point(win->mouse_down, (t_point){win->win_rect.x, win->win_rect.y});
+	t_point	mouse_muve = diff_t_point(win->mouse_muve, (t_point){win->win_rect.x, win->win_rect.y});
 	SDL_RendererFlip flip;
 	ft_putstr("draw_elem_to_tex\n");
 	SDL_SetRenderTarget(win->ren, win->layers[num_layer]->texture);
