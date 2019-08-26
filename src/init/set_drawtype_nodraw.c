@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_win_fun.c                                     :+:      :+:    :+:   */
+/*   set_drawtype_nodraw.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 12:05:08 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 12:06:11 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/26 17:53:47 by ilyabaturin       #+#    #+#             */
+/*   Updated: 2019/08/26 17:54:01 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_guimp.h"
 
-void
-	main_win_fun(t_win *win, SDL_Event *ev)
+t_element
+	*set_drawtype_nodraw(t_element *elem, SDL_Event *ev)
 {
-	
+	ft_putstr("set NO_DRAW\n");
+	g_sdl_data->draw_type = NO_DRAW;
+	return (elem);
 }

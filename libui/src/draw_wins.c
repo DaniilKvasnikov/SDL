@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_wins.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 13:24:17 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/26 13:43:23 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/26 18:01:49 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void
 	{
 		win = g_sdl_data->wins[win_i];
 		SDL_SetRenderDrawColor(win->ren, g_sdl_data->color_back.r, g_sdl_data->color_back.g, g_sdl_data->color_back.b, g_sdl_data->color_back.a);
+		SDL_SetRenderDrawColor(win->ren, 255, 0, 0, 255);
 		SDL_RenderClear(win->ren);
 		draw_layers(win);
 		elem_i = -1;

@@ -16,39 +16,39 @@ static int
 	select_file_type(t_win *win)
 {
 	const SDL_MessageBoxButtonData buttons[] = {
-        { 0, PNG, "PNG" },
-        { 0, BMP, "BMP" },
-        { 0, JPG, "JPG" }
-    };
-    const SDL_MessageBoxColorScheme colorScheme = {
-        { /* .colors (.r, .g, .b) */
-            /* [SDL_MESSAGEBOX_COLOR_BACKGROUND] */
-            { g_sdl_data->color_back.r, g_sdl_data->color_back.g, g_sdl_data->color_back.b},
-            /* [SDL_MESSAGEBOX_COLOR_TEXT] */
-            {   255, 0,   0 },
-            /* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER] */
-            { 0, 255,   0 },
-            /* [SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND] */
-            {   0,   0, 255 },
-            /* [SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED] */
-            { 255,   255, 255 }
-        }
-    };
-    const SDL_MessageBoxData messageboxdata = {
-        SDL_MESSAGEBOX_INFORMATION, /* .flags */
-        NULL, /* .window */
-        "Type of file", /* .title */
-        "Select type of file", /* .message */
-        SDL_arraysize(buttons), /* .numbuttons */
-        buttons, /* .buttons */
-        &colorScheme /* .colorScheme */
-    };
-    int buttonid;
-    if (SDL_ShowMessageBox(&messageboxdata, &buttonid) < 0) {
-        SDL_Log("error displaying message box");
-        return 0;
-    }
-    return buttonid;
+		{ 0, PNG, "PNG" },
+		{ 0, BMP, "BMP" },
+		{ 0, JPG, "JPG" }
+	};
+	const SDL_MessageBoxColorScheme colorScheme = {
+		{ /* .colors (.r, .g, .b) */
+			/* [SDL_MESSAGEBOX_COLOR_BACKGROUND] */
+			{ g_sdl_data->color_back.r, g_sdl_data->color_back.g, g_sdl_data->color_back.b},
+			/* [SDL_MESSAGEBOX_COLOR_TEXT] */
+			{ 255, 0, 0},
+			/* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER] */
+			{ 0, 255, 0},
+			/* [SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND] */
+			{ 0, 0, 255 },
+			/* [SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED] */
+			{ 255, 255, 255}
+		}
+	};
+	const SDL_MessageBoxData messageboxdata = {
+		SDL_MESSAGEBOX_INFORMATION, /* .flags */
+		NULL, /* .window */
+		"Type of file", /* .title */
+		"Select type of file", /* .message */
+		SDL_arraysize(buttons), /* .numbuttons */
+		buttons, /* .buttons */
+		&colorScheme /* .colorScheme */
+	};
+	int buttonid;
+	if (SDL_ShowMessageBox(&messageboxdata, &buttonid) < 0) {
+		ft_putstr("error displaying message box\n");
+		return (-1);
+	}
+	return (buttonid);
 }
 
 void
@@ -62,11 +62,11 @@ void
 	SDL_RenderReadPixels(win->ren, NULL, surface->format->format, surface->pixels, surface->pitch);
 	type = select_file_type(win);
 	if (type == PNG)
-	    IMG_SavePNG(surface, path);
+		IMG_SavePNG(surface, path);
 	else if (type == BMP)
 		SDL_SaveBMP(surface, path);
 	else if (type == JPG)
 		IMG_SaveJPG(surface, path, 100);
-    SDL_FreeSurface(surface);
-    SDL_SetRenderTarget(win->ren, target);
+	SDL_FreeSurface(surface);
+	SDL_SetRenderTarget(win->ren, target);
 }

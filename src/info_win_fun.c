@@ -13,7 +13,7 @@
 #include "ft_guimp.h"
 
 void
-	info_win_fun(t_win *win, SDL_Event *ev)
+	info_win_fun(t_win *win, t_point delta_mouse)
 {
 	
 }

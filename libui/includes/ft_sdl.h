@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sdl.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/26 15:05:12 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/26 17:32:49 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ t_sdl_data	*g_sdl_data;
 
 void				ui_init_sdl_data(void);
 t_win				*ui_init_win(char *name, t_rect rect, Uint32 flags,
-						void (*win_fun)(t_win *win, SDL_Event *ev));
+						void (*mouse_muve_left)(t_win *win, t_point delta_mouse),
+						void (*mouse_muve_scrole)(t_win *win, t_point delta_mouse));
 void				ui_quite(void);
 void				ui_fotal_error(char *str, char *type, int line_num, char *file_name);
 void				*ui_checkmalloc(void *ptr, char *err_str, int line_num, char *file_name);

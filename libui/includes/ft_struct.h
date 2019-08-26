@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_struct.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/26 15:16:34 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/26 17:44:33 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,9 @@ struct	s_win
 	SDL_Window		*win;
 	SDL_Renderer	*ren;
 	char			*name;
-	t_rect			rect;
+	t_rect			full;
+	t_rect			win_rect;
+	float			scale;
 	int				id;
 	t_element		**elements;
 	t_element		*active_elem;
@@ -133,7 +135,8 @@ struct	s_win
 	t_rect			curr_rect;
 	t_point			mouse_down;
 	t_point			mouse_muve;
-	void			(*win_fun)(t_win *win, SDL_Event *ev);
+	void			(*mouse_muve_left)(t_win *win, t_point delta_mouse);
+	void			(*mouse_muve_scrole)(t_win *win, t_point delta_mouse);
 };
 
 struct	s_sdl_data

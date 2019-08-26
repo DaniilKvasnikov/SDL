@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_init_win.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 11:31:58 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 20:28:34 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/26 17:56:20 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 t_win
 	*ui_init_win(char *name, t_rect rect, Uint32 flags,
-		void (*win_fun)(t_win *win, SDL_Event *ev))
+		void (*mouse_muve_left)(t_win *win, t_point delta_mouse),
+		void (*mouse_muve_scrole)(t_win *win, t_point delta_mouse))
 {
 	t_win *win;
 
@@ -24,7 +25,9 @@ t_win
 	win->win = ft_create_win(name, rect, flags);
 	win->ren = ft_create_rend(win->win);
 	win->name = name;
-	win->rect = rect;
+	win->full = rect;
+	win->win_rect = (t_rect){0, 0, rect.w, rect.h};
+	win->scale = 1;
 	win->id = SDL_GetWindowID(win->win);
 	win->elements = (t_element **)ui_checkmalloc(malloc(sizeof(t_element *)), "win->elements", __LINE__, __FILE__);
 	win->elements[0] = NULL;
@@ -37,6 +40,7 @@ t_win
 	win->cur_texture = NULL;
 	win->mouse_down = (t_point){0, 0};
 	win->mouse_muve = (t_point){0, 0};
-	win->win_fun = win_fun;
+	win->mouse_muve_left = mouse_muve_left;
+	win->mouse_muve_scrole = mouse_muve_scrole;
 	return (win);
 }

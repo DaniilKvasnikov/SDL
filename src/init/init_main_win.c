@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_main_win.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 11:30:30 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/26 14:59:57 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/26 17:35:42 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void
 	t_element	*text;
 
 	ui_add_win(win = ui_init_win(ft_strdup(name), (t_rect){200, 200, 640, 480},
-		SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE, &main_win_fun));
+		SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE, &main_mouse_muve_left, &mouse_muve_scrole));
 	add_layers(win, "main");
 	add_texture_to_win(win, "img/cat.bmp", "cat", BMP);
 	add_texture_to_win(win, "img/button_1.bmp", "button1", BMP);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_guimp.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 20:09:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/26 14:59:44 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/26 17:54:16 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 
 void			init_main_win(char *name);
 void			init_ptool_win(char *name);
-void			main_win_fun(t_win *win, SDL_Event *ev);
-void			info_win_fun(t_win *win, SDL_Event *ev);
+void			main_mouse_muve_left(t_win *win, t_point delta_mouse);
+void			mouse_muve_scrole(t_win *win, t_point delta_mouse);
+void			info_win_fun(t_win *win, t_point delta_mouse);
 
 t_element		*set_drawtype_point(t_element *elem, SDL_Event *ev);
+t_element		*set_drawtype_nodraw(t_element *elem, SDL_Event *ev);
 t_element		*set_drawtype_eraser(t_element *elem, SDL_Event *ev);
 t_element		*set_drawtype_line(t_element *elem, SDL_Event *ev);
 t_element		*set_drawtype_rect(t_element *elem, SDL_Event *ev);
