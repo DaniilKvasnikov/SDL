@@ -6,7 +6,7 @@
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/26 18:21:48 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/27 10:54:26 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ t_sdl_data	*g_sdl_data;
 t_point				at_rect_to_t_point(t_rect *rect);
 t_point				summ_t_point(t_point a, t_point b);
 t_point				diff_t_point(t_point a, t_point b);
+
+t_element			*empty_down(t_element *elem, SDL_Event *ev);
 
 void				ui_init_sdl_data(void);
 t_win				*ui_init_win(char *name, t_rect rect, Uint32 flags,
@@ -62,6 +64,7 @@ t_ttf				*get_ttf_by_name(char *name, int size);
 t_element			*get_element_by_name(t_win *win, char *name);
 t_texture			*get_texture_by_name(t_win *win, char *texture_name);
 t_win				*get_win_by_name(char *name);
+void				*get_param_by_name(t_param **params, char *str);
 
 SDL_Texture*		loadTexture(t_win *win, char *path, int type);
 t_texture			*init_texture_to_win(t_win *win, char *path_texture, char *name, int type);
@@ -99,6 +102,7 @@ void				destroy_element(t_element *elem);
 void				destroy_layer(t_layer *layer);
 void				destroy_texture(t_texture *texture);
 void				draw_elipse(SDL_Renderer *ren, t_rect field, int full);
+int					scroll_draw(t_element *elem, t_win *win);
 
 int					chech_input_mouse(t_element *elem, t_point *mouse);
 SDL_RendererFlip	flip_t_rect(t_rect *rect);
@@ -109,6 +113,7 @@ t_ttf				*init_ttf(char *path, char *name, int size);
 t_param				*init_param(char *name, void *par);
 t_color				*ft_colornew(t_color tmp);
 
+t_element			*corr_param_scroll(t_element *elem, SDL_Event *ev);
 void				ui_draw_line_width(t_win *win, int x1, int y1, int x2, int y2, int width);
 void				ui_draw_point_width(t_win *win, int x1, int y1, int width);
 void				draw_layers(t_win *win);

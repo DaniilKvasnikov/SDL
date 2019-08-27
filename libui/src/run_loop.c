@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_loop.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 12:20:18 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/26 20:22:16 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/27 10:07:57 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,11 @@ void
 				mousebuttondown_win(active_win, &ev);
 			else if (ev.type == SDL_MOUSEMOTION)
 				mousebuttonmove_win(active_win, &ev);
+			else
+			{
+				if (active_win && active_win->active_elem && active_win->active_elem->keyboard_down)
+					active_win->active_elem->keyboard_down(active_win->active_elem, &ev);
+			}
 		}
 		ft_update_win_surface();
 	}

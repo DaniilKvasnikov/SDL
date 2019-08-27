@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 08:53:33 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 08:53:57 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/27 10:23:14 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long		ft_atol(const char *str)
+long long		ft_atol(const char *str)
 {
 	long long	res;
 	int			par;

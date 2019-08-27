@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_images_win.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 10:43:55 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/27 08:48:19 by ilyabaturin      ###   ########.fr       */
+/*   Created: 2019/08/27 08:46:57 by ilyabaturin       #+#    #+#             */
+/*   Updated: 2019/08/27 08:55:01 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_guimp.h"
 
-int
-	main(void)
+void
+	init_images_win(char *name)
 {
-	ui_init_sdl_data();
+	t_win		*win;
+	t_element	*button;
+	t_element	*elem;
+	t_element	*text;
 
-	init_main_win("Main");
-	init_ptool_win("PTool");
-	init_settings_win("Settings");
-	init_images_win("Images");
-
-	// open_win_ok("Ok", "this is message!");
-
-	run_loop();
-
-	ui_quite();
-	return (1);
+	ui_add_win(win = ui_init_win(ft_strdup(name), (t_rect){100, 700, 1040, 200},
+		SDL_WINDOW_SHOWN, NULL, NULL));
 }

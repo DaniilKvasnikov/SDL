@@ -6,7 +6,7 @@
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 13:09:23 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/26 17:50:46 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/27 10:53:04 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ void
 			win->mouse_muve_left(win,
 			(t_point){last_mouse.x - win->mouse_muve.x,
 						last_mouse.y - win->mouse_muve.y});
+		if (win->active_elem->mouse_move)
+			win->active_elem->mouse_move(win->active_elem, event);
 	}
 }

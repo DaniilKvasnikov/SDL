@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   empty_down.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 10:43:55 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/27 08:48:19 by ilyabaturin      ###   ########.fr       */
+/*   Created: 2019/08/27 09:17:31 by ilyabaturin       #+#    #+#             */
+/*   Updated: 2019/08/27 09:24:51 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_guimp.h"
+#include "ft_sdl.h"
 
-int
-	main(void)
+t_element
+	*empty_down(t_element *elem, SDL_Event *ev)
 {
-	ui_init_sdl_data();
-
-	init_main_win("Main");
-	init_ptool_win("PTool");
-	init_settings_win("Settings");
-	init_images_win("Images");
-
-	// open_win_ok("Ok", "this is message!");
-
-	run_loop();
-
-	ui_quite();
-	return (1);
+	ft_printf("empty_down\n");
+	return (elem);
 }

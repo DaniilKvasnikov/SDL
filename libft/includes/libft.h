@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 14:56:04 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/22 15:24:57 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/27 10:23:22 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char			*ft_strnstr(const char *haystack,
 int				ft_strcmp(const char *s1, const char *s2);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_atoi(const char *str);
-long			ft_atol(const char *str);
+long long		ft_atol(const char *str);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
 int				ft_isalnum(int c);
