@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_current_dir.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 10:43:55 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/27 13:38:59 by ilyabaturin      ###   ########.fr       */
+/*   Created: 2019/08/27 16:48:02 by ilyabaturin       #+#    #+#             */
+/*   Updated: 2019/08/27 16:48:18 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_guimp.h"
+#include "ft_sdl.h"
 
-int
-	main(void)
+char
+	*get_current_dir(void)
 {
-	ui_init_sdl_data();
+	char *cwd;
 
-	init_main_win("Main");
-	init_ptool_win("PTool");
-	init_settings_win("Settings");
-	init_images_win("Images");
-	init_choose_file("Files");
-
-	// open_win_ok("Ok", "this is message!");
-
-	run_loop();
-
-	ui_quite();
-	return (1);
+	cwd = (char *)ui_checkmalloc(malloc(sizeof(char) * (PATH_MAX + 1)), "curr dir", __LINE__, __FILE__);
+	if (getcwd(cwd, PATH_MAX) != NULL)
+		return (cwd);
+	return (NULL);
 }

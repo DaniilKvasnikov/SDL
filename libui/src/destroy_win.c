@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy_win.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 12:23:29 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 17:56:00 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/27 13:44:58 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void
 	int		j;
 	t_win	**wins;
 
+	if (win == NULL)
+		return ;
 	wins = (t_win **)ui_checkmalloc(malloc(sizeof(t_win *) * (ui_wins_count() - 1)), "destroy win", __LINE__, __FILE__);
 	i = -1;
 	j = -1;
@@ -27,8 +29,10 @@ void
 			wins[++j] = g_sdl_data->wins[i];
 	wins[++j] = NULL;
 	g_sdl_data->wins = wins;
-	SDL_DestroyRenderer(win->ren);
-	SDL_DestroyWindow(win->win);
+	if (win->ren)
+		SDL_DestroyRenderer(win->ren);
+	if (win->win)
+		SDL_DestroyWindow(win->win);
 	free_if_not_null(win->name);
 	i = -1;
 	while (win->elements[++i] != NULL)

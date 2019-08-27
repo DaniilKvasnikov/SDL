@@ -6,7 +6,7 @@
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 20:09:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/27 09:26:26 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/27 13:40:16 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void			init_main_win(char *name);
 void			init_ptool_win(char *name);
 void			init_settings_win(char *name);
 void			init_images_win(char *name);
+void			init_choose_file(char *name);
 void			main_mouse_muve_left(t_win *win, t_point delta_mouse);
 void			mouse_muve_scrole(t_win *win, t_point delta_mouse);
 int				input_border_size(t_element *elem, SDL_Event *ev);

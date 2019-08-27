@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   set_param_by_name.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 10:43:55 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/27 13:38:59 by ilyabaturin      ###   ########.fr       */
+/*   Created: 2019/08/27 16:49:38 by ilyabaturin       #+#    #+#             */
+/*   Updated: 2019/08/27 16:50:28 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_guimp.h"
+#include "ft_sdl.h"
 
-int
-	main(void)
+void
+	*set_param_by_name(t_param **params, char *str, void *new_param)
 {
-	ui_init_sdl_data();
+	int	i;
 
-	init_main_win("Main");
-	init_ptool_win("PTool");
-	init_settings_win("Settings");
-	init_images_win("Images");
-	init_choose_file("Files");
-
-	// open_win_ok("Ok", "this is message!");
-
-	run_loop();
-
-	ui_quite();
-	return (1);
+	i = -1;
+	while (params[++i] != NULL)
+		if (ft_strcmp(params[i]->name, str) == 0)
+			return (params[i]->par = new_param);
+	return (NULL);
 }

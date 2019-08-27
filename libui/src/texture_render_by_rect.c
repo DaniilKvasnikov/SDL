@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   texture_render_by_rect.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 10:43:55 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/27 13:38:59 by ilyabaturin      ###   ########.fr       */
+/*   Created: 2019/08/27 13:58:45 by ilyabaturin       #+#    #+#             */
+/*   Updated: 2019/08/27 14:01:16 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_guimp.h"
+#include "ft_sdl.h"
 
 int
-	main(void)
+	texture_render_by_rect(t_win *win, t_rect rect, SDL_Texture *texture)
 {
-	ui_init_sdl_data();
+	SDL_Rect			sdl_rect;
+	SDL_RendererFlip	flip;
 
-	init_main_win("Main");
-	init_ptool_win("PTool");
-	init_settings_win("Settings");
-	init_images_win("Images");
-	init_choose_file("Files");
-
-	// open_win_ok("Ok", "this is message!");
-
-	run_loop();
-
-	ui_quite();
-	return (1);
+	if (texture != NULL)
+	{
+		flip = flip_t_rect(&rect);
+		sdl_rect = t_rect_to_sdl_rect(&rect);
+		texture_render_rect(win, texture, NULL, &sdl_rect, flip);
+		return (1);
+	}
+	return (0);
 }
