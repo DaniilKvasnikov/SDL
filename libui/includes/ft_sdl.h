@@ -6,7 +6,7 @@
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/27 17:05:13 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/28 08:52:40 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int					fined_param_by_name(t_element *elem, char *name);
 t_ttf				*get_ttf_by_name(char *name, int size);
 t_element			*get_element_by_name(t_win *win, char *name);
 t_texture			*get_texture_by_name(t_win *win, char *texture_name);
+t_texture			*get_texture_by_path(t_win *win, char *texture_path);
 t_win				*get_win_by_name(char *name);
 void				*get_param_by_name(t_param **params, char *str);
 void				*set_param_by_name(t_param **params, char *str, void *new_param);

@@ -6,7 +6,7 @@
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 13:39:13 by ilyabaturin       #+#    #+#             */
-/*   Updated: 2019/08/27 17:14:40 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/28 09:12:18 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void
 	add_texture_to_win(win, "img/button_1.bmp", "button1", BMP);
 
 	button = ui_init_element(1, "file", (t_rect){0, 0, win->win_rect.w - 25, win->win_rect.h}, win, "button1", NULL, NULL, NULL,
-						NULL, &files_draw, &files_down, NULL, NULL, NULL, &unset_drawtype);
+						NULL, &files_draw, &files_down, NULL, NULL, NULL, NULL);
 	add_element_to_win(win, button);
 	button->ttf = get_ttf_by_name("standart", 14);
 	char	*path = get_current_dir();

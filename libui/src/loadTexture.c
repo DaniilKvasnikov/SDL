@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loadTexture.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 14:30:42 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/26 13:33:52 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/28 09:22:37 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ SDL_Texture*
 {
 	SDL_Texture* newTexture = NULL;
 	SDL_Surface* loadedSurface;
+	ft_printf("type %d\n", type);
 	if (type == BMP)
 		loadedSurface = SDL_LoadBMP(path);
 	else if (type == PNG)

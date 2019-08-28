@@ -6,7 +6,7 @@
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 12:20:18 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/27 14:58:16 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/28 09:13:34 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void
 			else if(ev.type == SDL_MOUSEWHEEL)
 			{
 				ft_printf("wheel %d %d\n", ev.wheel.x, ev.wheel.y);
-				if (active_win->mouse_muve_scrole && g_sdl_data->draw_type == NO_DRAW)
+				if (active_win->mouse_muve_scrole)
 					active_win->mouse_muve_scrole(active_win, (t_point){ev.wheel.x, ev.wheel.y});
 			}
 			else if (ev.type == SDL_MOUSEBUTTONUP)

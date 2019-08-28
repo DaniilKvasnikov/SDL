@@ -6,7 +6,7 @@
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 13:51:04 by ilyabaturin       #+#    #+#             */
-/*   Updated: 2019/08/27 17:14:28 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/28 08:38:37 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int
 		i = -1;
 		int *ptr_num = (int *)get_param_by_name(elem->params, "num");
 		j = *ptr_num;
-		while (++i < count && strs[j] != NULL)
+		while (++i <= count && strs[j] != NULL)
 		{
 			texture_render_by_rect(win, (t_rect){elem->rect.x, elem->rect.y + size * i, elem->rect.w, size},
 			texture->tex);
