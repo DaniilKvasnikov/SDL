@@ -6,7 +6,7 @@
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 13:51:04 by ilyabaturin       #+#    #+#             */
-/*   Updated: 2019/08/28 08:38:37 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/29 09:21:44 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int
 	int			j;
 	char	**strs = get_param_by_name(elem->params, "strs");
 	int			len_full = ft_strsplit_len(strs);
-	if (elem->active == 0 || strs == NULL)
+	if (*elem->active == 0 || strs == NULL)
 		return (0);
 	if ((texture = get_texture_by_name(win, elem->texture_name)) != NULL)
 	{
@@ -46,7 +46,7 @@ int
 			elem->draw_sub_groupe[i]->draw(elem->draw_sub_groupe[i], win);
 	i = -1;
 	while (elem->sub_groupe[++i])
-		if (elem->sub_groupe[i]->active && elem->sub_groupe[i]->draw)
+		if (*elem->sub_groupe[i]->active && elem->sub_groupe[i]->draw)
 			elem->sub_groupe[i]->draw(elem->sub_groupe[i], win);
 	return (1);
 }

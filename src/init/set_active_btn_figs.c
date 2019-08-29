@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_active_btn_figs.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 16:00:30 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 18:54:49 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/29 09:20:50 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ t_element
 	while (elem->params[++i])
 	{
 		elem_gr = (t_element *)elem->params[i]->par;
-		elem_gr->active = !elem_gr->active;
+		*elem_gr->active = !(*elem_gr->active);
 	}
-	ft_printf("%d\n", elem_gr->active);
+	ft_printf("%d\n", *elem_gr->active);
 	return (elem);
 }

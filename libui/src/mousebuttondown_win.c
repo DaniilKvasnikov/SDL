@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mousebuttondown_win.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 13:09:06 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 21:56:19 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/29 09:21:31 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void
 	while (win->elements[++i])
 	{
 		elem = win->elements[i];
-		if (elem->active && chech_input_mouse(elem, &g_sdl_data->mouse))
+		if (*elem->active && chech_input_mouse(elem, &g_sdl_data->mouse))
 		{
 			if (elem->mouse_down)
 				elem->mouse_down(elem, event);

@@ -6,7 +6,7 @@
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/27 14:09:21 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/29 09:16:30 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ typedef struct	s_param
 
 struct	s_element
 {
-	int					active;
+	int					*active;
 	char				*name;
 	t_rect				rect;
 	t_win				*win;

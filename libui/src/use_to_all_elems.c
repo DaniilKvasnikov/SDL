@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_images_win.c                                  :+:      :+:    :+:   */
+/*   use_to_all_elems.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/27 08:46:57 by ilyabaturin       #+#    #+#             */
-/*   Updated: 2019/08/27 08:55:01 by ilyabaturin      ###   ########.fr       */
+/*   Created: 2019/08/29 09:05:46 by ilyabaturin       #+#    #+#             */
+/*   Updated: 2019/08/29 09:13:02 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_guimp.h"
+#include "ft_sdl.h"
 
 void
-	init_images_win(char *name)
+	use_to_all_elems(t_win *win, void *ptr, void (*fun)(t_element *elem, void *ptr))
 {
-	t_win		*win;
-	t_element	*button;
-	t_element	*elem;
-	t_element	*text;
+	int		i;
 
-	ui_add_win(win = ui_init_win(ft_strdup(name), (t_rect){100, 700, 1040, 200},
-		SDL_WINDOW_SHOWN, NULL, NULL));
+	i = -1;
+	while (win->elements[++i] != NULL)
+		fun(win->elements[i], ptr);
 }

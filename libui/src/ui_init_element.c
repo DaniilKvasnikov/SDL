@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ui_init_element.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 13:37:26 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 20:57:19 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/29 09:16:36 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 t_element
-	*ui_init_element(int active, char *name, t_rect rect, t_win *win, char *texture_name,
+	*ui_init_element(int *active, char *name, t_rect rect, t_win *win, char *texture_name,
 					t_element *parent, t_color *color, char *str, t_ttf *ttf,
 					int (*draw)(t_element *elem, t_win *win),
 					t_element *(*mouse_down)(t_element *elem, SDL_Event *ev),

@@ -6,7 +6,7 @@
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/28 08:52:40 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/29 09:16:56 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_point				summ_t_point(t_point a, t_point b);
 t_point				diff_t_point(t_point a, t_point b);
 
 t_element			*empty_down(t_element *elem, SDL_Event *ev);
+t_element			*radio_buton_down(t_element *elem, SDL_Event *ev);
 
 void				ui_init_sdl_data(void);
 t_win				*ui_init_win(char *name, t_rect rect, Uint32 flags,
@@ -83,7 +84,7 @@ void				mousebuttondown_win(t_win *win, SDL_Event *event);
 void				mousebuttonup_win(t_win *win, SDL_Event *event);
 
 
-t_element			*ui_init_element(int active, char *name, t_rect rect, t_win *win, char *texture_name,
+t_element			*ui_init_element(int *active, char *name, t_rect rect, t_win *win, char *texture_name,
 						t_element *parent, t_color *color, char *str, t_ttf *ttf,
 						int (*draw)(t_element *elem, t_win *win),
 						t_element *(*mouse_down)(t_element *elem, SDL_Event *ev),
@@ -96,6 +97,7 @@ t_element			*files_down(t_element *elem, SDL_Event *ev);
 void				clear_layer(t_win *win, int num_layer);
 void				draw_wins(void);
 int					image_draw(t_element *elem, t_win *win);
+int					radiobut_render(t_element *elem, t_win *win);
 int					render_text(t_element *elem, t_win *win);
 int					text_render_full(t_win *win, t_rect rect, char *str, t_ttf ttf, t_color color);
 int					texture_render(t_win *win, t_element *elem, SDL_Texture *texture);
@@ -135,5 +137,7 @@ void				save_file(t_win *win, int type, int num_layer, char *path);
 
 void				scrole_files(t_win *win, t_point delta_mouse);
 int					ft_strsplit_len(char **strs);
+
+void				use_to_all_elems(t_win *win, void *ptr, void (*fun)(t_element *elem, void *ptr));
 
 #endif

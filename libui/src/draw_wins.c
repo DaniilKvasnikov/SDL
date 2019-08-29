@@ -6,7 +6,7 @@
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 13:24:17 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/26 18:01:49 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/29 09:21:51 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void
 		while (--elem_i >= 0)
 		{
 			elem = win->elements[elem_i];
-			if (elem->active && elem->draw)
+			if (*elem->active && elem->draw)
 				elem->draw(elem, win);
 		}
 		if (g_sdl_data->drawing)

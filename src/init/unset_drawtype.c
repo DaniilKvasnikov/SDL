@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset_drawtype.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 20:58:23 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 21:05:53 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/29 09:20:57 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ t_element
 
 	i = -1;
 	while (elem->params[++i])
-		((t_element *)elem->params[i]->par)->active = 0;
+		*((t_element *)elem->params[i]->par)->active = 0;
 	return (elem);
 }
