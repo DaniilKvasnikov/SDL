@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   files_draw.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 13:51:04 by ilyabaturin       #+#    #+#             */
-/*   Updated: 2019/08/29 09:21:44 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/31 13:20:15 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int
 	t_texture	*texture;
 	int			i;
 	int			j;
-	char	**strs = get_param_by_name(elem->params, "strs");
+	char		**strs = get_param_by_name(elem->params, "strs");
 	int			len_full = ft_strsplit_len(strs);
 	if (*elem->active == 0 || strs == NULL)
 		return (0);
@@ -38,7 +38,7 @@ int
 			strs[j], *elem->ttf, (t_color){0, 0, 255, 255});
 			j++;
 		}
-		texture_render_by_rect(win, (t_rect){elem->rect.x + elem->rect.w, (*ptr_num - 1) / (float)len_full * 50 * count, 25, 50}, texture->tex);
+		texture_render_by_rect(win, (t_rect){elem->rect.x + elem->rect.w, (*ptr_num) / (float)len_full * 50 * count, 25, 50}, texture->tex);
 	}
 	i = -1;
 	while (elem->draw_sub_groupe[++i])

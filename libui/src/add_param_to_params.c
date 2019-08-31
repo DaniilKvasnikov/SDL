@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_param_to_elem.c                                :+:      :+:    :+:   */
+/*   add_param_to_params.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 18:38:45 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/31 12:27:16 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/31 12:18:09 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/31 12:25:19 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-t_element
-	*add_param_to_elem(t_element *elem, char *name, void *param)
+t_param
+	**add_param_to_params(t_param **params, char *name, void *param)
 {
 	int			count;
 	int			i;
 	t_param		**n_params;
 
-	n_params = add_param_to_params(elem->params, name, param);
-	free(elem->params);
-	elem->params = n_params;
-	return (elem);
+	if (fined_param_by_name(params, name))
+		ui_fotal_error(name, "param duplicate", __LINE__, __FILE__);
+	count = ui_params_in_elem(params);
+	n_params = (t_param **)ui_checkmalloc(malloc(sizeof(t_param *) * (count + 1)), "add param", __LINE__, __FILE__);
+	i = -1;
+	while (params[++i] != NULL)
+		n_params[i] = params[i];
+	n_params[i] = init_param(name, param);
+	n_params[i + 1] = NULL;
+	return (n_params);
 }

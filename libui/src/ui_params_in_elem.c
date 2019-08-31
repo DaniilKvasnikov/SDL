@@ -6,19 +6,19 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 18:41:26 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 18:41:44 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/31 12:22:13 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 int
-	ui_params_in_elem(t_element *elem)
+	ui_params_in_elem(t_param **params)
 {
 	int	i;
 
 	i = -1;
-	while (elem->params[++i] != NULL)
+	while (params[++i] != NULL)
 		;
 	return (i + 1);
 }

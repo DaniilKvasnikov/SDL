@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scrole_files.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 17:00:05 by ilyabaturin       #+#    #+#             */
-/*   Updated: 2019/08/27 17:06:15 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/31 13:18:49 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void
 		*ptr += 1;
 	else if (delta_mouse.y < 0 && win->win_rect.w < win->full.w * 4 && win->win_rect.h < win->full.h * 4)
 		*ptr -= 1;
-	if (*ptr < 1)
-		*ptr = 1;
+	if (*ptr < 0)
+		*ptr = 0;
 	if (*ptr > len - 1)
 		*ptr = len - 1;
 }

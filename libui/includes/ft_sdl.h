@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/31 11:40:45 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/31 13:15:20 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int					ui_element_count(t_win *win);
 int					ui_textures_count(t_win *win);
 int					ui_ttf_count(t_sdl_data *data);
 int					get_layers_count(t_win *win);
-int					ui_params_in_elem(t_element *elem);
+int					ui_params_in_elem(t_param **params);
 int					ui_element_in_groupe(t_element **groupe);
 void				run_loop(t_sdl_data *data);
 t_win				*get_active_win(t_sdl_data *data, SDL_Event *event);
@@ -61,7 +61,7 @@ int					fined_win_by_name(t_sdl_data *data, char *name);
 int					fined_element_by_name(t_win *win, char *name);
 int					fined_texture_by_name(t_win *win, char *name);
 int					fined_ttf(t_sdl_data *data, char *name);
-int					fined_param_by_name(t_element *elem, char *name);
+int					fined_param_by_name(t_param **params, char *name);
 t_ttf				*get_ttf_by_name(t_sdl_data *data, char *name, int size);
 t_element			*get_element_by_name(t_win *win, char *name);
 t_texture			*get_texture_by_name(t_win *win, char *texture_name);
@@ -72,6 +72,7 @@ void				*set_param_by_name(t_param **params, char *str, void *new_param);
 char				**get_files(char *path);
 
 SDL_Texture*		loadTexture(t_win *win, char *path, int type);
+int					check_texture(t_win *win, char *path, int type);
 t_texture			*init_texture_to_win(t_win *win, char *path_texture, char *name, int type);
 t_texture			*add_texture_to_win(t_win *win, char *path_texture, char *name, int type);
 t_element			*add_element_draw_to_win(t_element *groupe, t_element *elem);
@@ -95,6 +96,7 @@ t_element			*files_down(t_element *elem, SDL_Event *ev);
 void				clear_layer(t_win *win, int num_layer);
 void				draw_wins(t_sdl_data *data);
 int					image_draw(t_element *elem, t_win *win);
+int					images_groupe_draw(t_element *elem, t_win *win);
 int					radiobut_render(t_element *elem, t_win *win);
 int					render_text(t_element *elem, t_win *win);
 int					text_render_full(t_win *win, t_rect rect, char *str, t_ttf ttf, t_color color);
@@ -130,12 +132,14 @@ void				draw_layers(t_win *win);
 void				draw_elements(t_win *win, int type, int num_layer);
 void				draw_elem_to_tex(t_win *win, int num_layer);
 t_element			*add_param_to_elem(t_element *elem, char *name, void *param);
+t_param				**add_param_to_params(t_param **params, char *name, void *param);
 t_element			*close_cur_win(t_element *elem, SDL_Event *ev);
 void				save_file(t_win *win, int type, int num_layer, char *path);
 
 void				scrole_files(t_win *win, t_point delta_mouse);
-int					ft_strsplit_len(char **strs);
 
 void				use_to_all_elems(t_win *win, void *ptr, void (*fun)(t_element *elem, void *ptr));
 
+int					ft_strsplit_len(char **strs);
+char				**add_str_to_strs(char **strs, char *str);
 #endif

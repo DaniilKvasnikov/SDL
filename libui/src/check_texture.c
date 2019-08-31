@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loadTexture.c                                      :+:      :+:    :+:   */
+/*   check_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/25 14:30:42 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/31 13:14:18 by rrhaenys         ###   ########.fr       */
+/*   Created: 2019/08/31 13:13:40 by rrhaenys          #+#    #+#             */
+/*   Updated: 2019/08/31 13:15:03 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
-SDL_Texture*
-	loadTexture(t_win *win, char *path, int type)
+int
+	check_texture(t_win *win, char *path, int type)
 {
 	SDL_Texture* newTexture = NULL;
 	SDL_Surface* loadedSurface;
@@ -31,24 +31,14 @@ SDL_Texture*
 	}
 	else
 	{
-		ft_printf("%d type dont found\n");
-		exit (0);
+		return (0);
 	}
 	
 	if(loadedSurface == NULL)
 	{
 		ft_printf( "Unable to load image %s! SDL_image Error: %s\n", path, SDL_GetError() );
-		exit (1);
+		return (0);
 	}
-	else
-	{
-		newTexture = SDL_CreateTextureFromSurface(win->ren, loadedSurface);
-		if( newTexture == NULL )
-		{
-			ft_printf( "Unable to create texture from %s! SDL Error: %s\n", path, SDL_GetError());
-			exit (1);
-		}
-		SDL_FreeSurface( loadedSurface );
-	}
-	return newTexture;
+	SDL_FreeSurface( loadedSurface );
+	return (1);
 }

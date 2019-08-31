@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 13:39:13 by ilyabaturin       #+#    #+#             */
-/*   Updated: 2019/08/31 11:36:13 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/31 13:18:39 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ void
 	char	*path = get_current_dir();
 	char	**strs = get_files(path);
 	add_param_to_elem(button, "strs", strs);
-	add_param_to_elem(button, "num", ft_intnew(1));
+	add_param_to_elem(button, "num", ft_intnew(0));
 	free(path);
 }

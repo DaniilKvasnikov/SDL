@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 12:58:29 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/31 11:43:27 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/31 13:04:05 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,15 +114,11 @@ void
 
 	add_buttons_figures(figures, win);
 
-	elem = ui_init_element(ft_intnew(1), "button5", (t_rect){0, 150, 50, 50}, win, "cat", NULL, NULL, NULL,
-						NULL, &image_draw, &set_drawtype_texture, NULL, NULL, NULL, NULL);
+	elem = ui_init_element(ft_intnew(1), "images", (t_rect){0, 150, 50, win->win_rect.h - 150}, win, "cat", NULL, NULL, NULL,
+						NULL, &images_groupe_draw, &set_drawtype_texture, NULL, NULL, NULL, NULL);
 	add_element_to_win(win, elem);
-
-	elem = ui_init_element(ft_intnew(1), "button6", (t_rect){50, 150, 50, 50}, win, "cat2", NULL, NULL, NULL,
-						NULL, &image_draw, &set_drawtype_texture, NULL, NULL, NULL, NULL);
-	add_element_to_win(win, elem);
-
-	elem = ui_init_element(ft_intnew(1), "button7", (t_rect){0, 200, 50, 50}, win, "cat3", NULL, NULL, NULL,
-						NULL, &image_draw, &set_drawtype_texture, NULL, NULL, NULL, NULL);
-	add_element_to_win(win, elem);
+	char	**strs = (char **)ui_checkmalloc(malloc(sizeof(char *)), "strs", __LINE__, __FILE__);
+	strs[0] = NULL;
+	add_param_to_elem(elem, "strs", strs);
+	add_param_to_elem(elem, "num", ft_intnew(0));
 }
