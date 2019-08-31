@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ui_init_win.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 11:31:58 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/26 17:56:20 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/31 11:28:37 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 t_win
-	*ui_init_win(char *name, t_rect rect, Uint32 flags,
+	*ui_init_win(t_sdl_data *data, char *name, t_rect rect, Uint32 flags,
 		void (*mouse_muve_left)(t_win *win, t_point delta_mouse),
 		void (*mouse_muve_scrole)(t_win *win, t_point delta_mouse))
 {
 	t_win *win;
 
-	if (fined_win_by_name(name))
+	if (fined_win_by_name(data, name))
 		ui_fotal_error(name, "win duplicate", __LINE__, __FILE__);
 	win = (t_win *)ui_checkmalloc(malloc(sizeof(t_win)), name, __LINE__, __FILE__);
 	win->win = ft_create_win(name, rect, flags);
@@ -42,5 +42,6 @@ t_win
 	win->mouse_muve = (t_point){0, 0};
 	win->mouse_muve_left = mouse_muve_left;
 	win->mouse_muve_scrole = mouse_muve_scrole;
+	win->sdl_data = data;
 	return (win);
 }

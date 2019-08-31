@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   files_down.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 15:19:07 by ilyabaturin       #+#    #+#             */
-/*   Updated: 2019/08/28 09:23:27 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/31 11:38:34 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_element
 	int	count = elem->rect.h / size;
 	int *ptr_num = (int *)get_param_by_name(elem->params, "num");
 	int num = *ptr_num;
-	int	cur = g_sdl_data->mouse.y / size + num;
+	int	cur = elem->win->sdl_data->mouse.y / size + num;
 	char	**strs = get_param_by_name(elem->params, "strs");
 	int		len_strs = ft_strsplit_len(strs);
 	ft_printf("cur %d\n", cur);
@@ -29,7 +29,7 @@ t_element
 	{
 		char	*old_path = get_current_dir();
 		char	*path_text = ft_stradd_3(old_path, "/", strs[cur]);
-		t_win	*main = get_win_by_name("Main");
+		t_win	*main = get_win_by_name(elem->win->sdl_data, "Main");
 		chdir(strs[cur]);
 		char	*new_path = get_current_dir();
 		char	**n_strs = get_files(new_path);
@@ -52,7 +52,7 @@ t_element
 				texture = add_texture_to_win(main, path_text, path_text, type);
 			}
 			main->cur_texture = texture;
-			g_sdl_data->draw_type = DRAW_TEXTURE;
+			elem->win->sdl_data->draw_type = DRAW_TEXTURE;
 		}
 		free(old_path);
 		free(new_path);

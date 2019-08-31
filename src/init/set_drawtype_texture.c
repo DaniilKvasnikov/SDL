@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 10:53:31 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/26 13:20:39 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/31 11:37:32 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ t_element
 	*set_drawtype_texture(t_element *elem, SDL_Event *ev)
 {
 	ft_putstr("set DRAW_TEXTURE\n");
-	g_sdl_data->draw_type = DRAW_TEXTURE;
+	elem->win->sdl_data->draw_type = DRAW_TEXTURE;
 	t_win		*win;
 	t_texture	*texture;
 	t_texture	*texture_but;
-	win = get_win_by_name("Main");
+	win = get_win_by_name(elem->win->sdl_data, "Main");
 	if (win != NULL)
 	{
 		if ((texture = get_texture_by_name(win, elem->texture_name)) == NULL)

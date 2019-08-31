@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   draw_wins.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 13:24:17 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/29 09:21:51 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/31 11:07:08 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 void
-	draw_wins(void)
+	draw_wins(t_sdl_data *data)
 {
 	int			win_i;
 	t_win		*win;
@@ -21,10 +21,10 @@ void
 	t_element	*elem;
 
 	win_i = -1;
-	while (g_sdl_data->wins[++win_i] != NULL)
+	while (data->wins[++win_i] != NULL)
 	{
-		win = g_sdl_data->wins[win_i];
-		SDL_SetRenderDrawColor(win->ren, g_sdl_data->color_back.r, g_sdl_data->color_back.g, g_sdl_data->color_back.b, g_sdl_data->color_back.a);
+		win = data->wins[win_i];
+		SDL_SetRenderDrawColor(win->ren, data->color_back.r, data->color_back.g, data->color_back.b, data->color_back.a);
 		SDL_SetRenderDrawColor(win->ren, 255, 0, 0, 255);
 		SDL_RenderClear(win->ren);
 		draw_layers(win);
@@ -37,7 +37,7 @@ void
 			if (*elem->active && elem->draw)
 				elem->draw(elem, win);
 		}
-		if (g_sdl_data->drawing)
-			draw_elements(win, g_sdl_data->draw_type, 0);
+		if (data->drawing)
+			draw_elements(win, data->draw_type, 0);
 	}
 }

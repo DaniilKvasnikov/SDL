@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mousebuttondown_win.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 13:09:06 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/29 09:21:31 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/31 11:20:43 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void
 	while (win->elements[++i])
 	{
 		elem = win->elements[i];
-		if (*elem->active && chech_input_mouse(elem, &g_sdl_data->mouse))
+		if (*elem->active && chech_input_mouse(elem, &win->sdl_data->mouse))
 		{
 			if (elem->mouse_down)
 				elem->mouse_down(elem, event);
@@ -35,7 +35,7 @@ void
 	}
 	if (win->active_elem != prev && prev && prev->active_other)
 		prev->active_other(prev, win->active_elem);
-	g_sdl_data->drawing = (win->active_elem == NULL);
-	win->mouse_down = g_sdl_data->mouse;
-	win->mouse_muve = g_sdl_data->mouse;
+	win->sdl_data->drawing = (win->active_elem == NULL);
+	win->mouse_down = win->sdl_data->mouse;
+	win->mouse_muve = win->sdl_data->mouse;
 }

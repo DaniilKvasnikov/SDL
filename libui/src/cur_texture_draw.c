@@ -29,7 +29,7 @@ void
 	int					h;
 	t_point	mouse_down = recalc(&win->mouse_down, &win->win_rect, win->scale);
 	SDL_SetRenderTarget(win->ren, win->layers[num_layer]->texture);
-	if (g_sdl_data->draw_type == DRAW_TEXTURE && win->cur_texture)
+	if (win->sdl_data->draw_type == DRAW_TEXTURE && win->cur_texture)
 	{
 		SDL_QueryTexture(win->cur_texture->tex, NULL, NULL, &w, &h);
 		t_rect rect = (t_rect){mouse_down.x - w / 2, mouse_down.y - h / 2, w, h};

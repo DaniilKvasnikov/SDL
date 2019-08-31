@@ -6,14 +6,14 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 09:00:12 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/26 10:22:07 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/31 11:21:34 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 int
-	open_win_ok(char *name, char *message)
+	open_win_ok(t_sdl_data *data, char *name, char *message)
 {
     const SDL_MessageBoxButtonData buttons[] = {
         { SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT, 1, "ok" }
@@ -21,11 +21,11 @@ int
     const SDL_MessageBoxColorScheme colorScheme = {
         { /* .colors (.r, .g, .b) */
             /* [SDL_MESSAGEBOX_COLOR_BACKGROUND] */
-            {g_sdl_data->color_back.r, g_sdl_data->color_back.g, g_sdl_data->color_back.b},
+            {data->color_back.r, data->color_back.g, data->color_back.b},
             /* [SDL_MESSAGEBOX_COLOR_TEXT] */
             {   0, 255,   0 },
             /* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER] */
-            {g_sdl_data->color_border.r, g_sdl_data->color_border.g, g_sdl_data->color_border.b},
+            {data->color_border.r, data->color_border.g, data->color_border.b},
             /* [SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND] */
             {   0,   0, 255 },
             /* [SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED] */

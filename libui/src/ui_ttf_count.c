@@ -6,19 +6,19 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 17:19:00 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 17:19:35 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/31 11:30:23 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 int
-	ui_ttf_count(void)
+	ui_ttf_count(t_sdl_data *data)
 {
 	int	i;
 
 	i = -1;
-	while (g_sdl_data->ttfs[++i] != NULL)
+	while (data->ttfs[++i] != NULL)
 		;
 	return (i + 1);
 }

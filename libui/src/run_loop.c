@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   run_loop.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 12:20:18 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/28 09:13:34 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/31 11:33:19 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sdl.h"
 
 void
-	run_loop(void)
+	run_loop(t_sdl_data *data)
 {
 	SDL_Event	ev;
 	int			run;
@@ -22,15 +22,15 @@ void
 	run = 1;
 	while (run == 1)
 	{
-		draw_wins();
+		draw_wins(data);
 		while (SDL_PollEvent(&ev) != 0)
 		{
 			SDL_PumpEvents();
-			SDL_GetMouseState(&g_sdl_data->mouse.x, &g_sdl_data->mouse.y);
-			active_win = get_active_win(&ev);
+			SDL_GetMouseState(&data->mouse.x, &data->mouse.y);
+			active_win = get_active_win(data, &ev);
 			if (is_event_close_win(&ev))
 				destroy_win(active_win);
-			if (ev.type == SDL_QUIT || ui_wins_count() == 1 || touch_esc(&ev))
+			if (ev.type == SDL_QUIT || ui_wins_count(data) == 1 || touch_esc(data, &ev))
 				run = 0;
 			if (active_win == NULL)
 				;
@@ -52,6 +52,6 @@ void
 					active_win->active_elem->keyboard_down(active_win->active_elem, &ev);
 			}
 		}
-		ft_update_win_surface();
+		ft_update_win_surface(data);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 15:01:00 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/26 15:16:42 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/31 11:26:11 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int
 	const SDL_MessageBoxColorScheme colorScheme = {
 		{ /* .colors (.r, .g, .b) */
 			/* [SDL_MESSAGEBOX_COLOR_BACKGROUND] */
-			{ g_sdl_data->color_back.r, g_sdl_data->color_back.g, g_sdl_data->color_back.b},
+			{ win->sdl_data->color_back.r, win->sdl_data->color_back.g, win->sdl_data->color_back.b},
 			/* [SDL_MESSAGEBOX_COLOR_TEXT] */
 			{ 255, 0, 0},
 			/* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER] */

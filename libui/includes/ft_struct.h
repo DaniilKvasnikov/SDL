@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_struct.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/29 09:16:30 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/31 10:53:39 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ struct	s_element
 
 struct	s_win
 {
+	t_sdl_data		*sdl_data;
 	SDL_Window		*win;
 	SDL_Renderer	*ren;
 	char			*name;

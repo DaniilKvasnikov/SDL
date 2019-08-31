@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sdl.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/29 09:16:56 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/31 11:40:45 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # include "ft_struct.h"
 # include <math.h>
 
-t_sdl_data	*g_sdl_data;
-
 char				*get_current_dir(void);
 
 t_point				at_rect_to_t_point(t_rect *rect);
@@ -32,11 +30,11 @@ t_point				diff_t_point(t_point a, t_point b);
 t_element			*empty_down(t_element *elem, SDL_Event *ev);
 t_element			*radio_buton_down(t_element *elem, SDL_Event *ev);
 
-void				ui_init_sdl_data(void);
-t_win				*ui_init_win(char *name, t_rect rect, Uint32 flags,
+t_sdl_data			*ui_init_sdl_data(void);
+t_win				*ui_init_win(t_sdl_data *data, char *name, t_rect rect, Uint32 flags,
 						void (*mouse_muve_left)(t_win *win, t_point delta_mouse),
 						void (*mouse_muve_scrole)(t_win *win, t_point delta_mouse));
-void				ui_quite(void);
+void				ui_quite(t_sdl_data *data);
 void				ui_fotal_error(char *str, char *type, int line_num, char *file_name);
 void				*ui_checkmalloc(void *ptr, char *err_str, int line_num, char *file_name);
 void				free_if_not_null(void *ptr);
@@ -44,31 +42,31 @@ SDL_Window			*ft_create_win(char *name, t_rect rect, Uint32 flags);
 SDL_Renderer		*ft_create_rend(SDL_Window *win);
 t_win				*ui_add_win(t_win *win);
 t_element			*add_element_to_win(t_win *win, t_element *elem);
-void				add_ttfs(char *path, char *name, int size);
-int					ui_wins_count(void);
+void				add_ttfs(t_sdl_data *data, char *path, char *name, int size);
+int					ui_wins_count(t_sdl_data *data);
 int					ui_element_count(t_win *win);
 int					ui_textures_count(t_win *win);
-int					ui_ttf_count(void);
+int					ui_ttf_count(t_sdl_data *data);
 int					get_layers_count(t_win *win);
 int					ui_params_in_elem(t_element *elem);
 int					ui_element_in_groupe(t_element **groupe);
-void				run_loop(void);
-t_win				*get_active_win(SDL_Event *event);
+void				run_loop(t_sdl_data *data);
+t_win				*get_active_win(t_sdl_data *data, SDL_Event *event);
 int					is_event_close_win(SDL_Event *event);
-int					touch_esc(SDL_Event *event);
+int					touch_esc(t_sdl_data *data, SDL_Event *event);
 t_layer				*init_layer(t_win *win, char *name);
 void				add_layers(t_win *win, char *name);
 
-int					fined_win_by_name(char *name);
+int					fined_win_by_name(t_sdl_data *data, char *name);
 int					fined_element_by_name(t_win *win, char *name);
 int					fined_texture_by_name(t_win *win, char *name);
-int					fined_ttf(char *name);
+int					fined_ttf(t_sdl_data *data, char *name);
 int					fined_param_by_name(t_element *elem, char *name);
-t_ttf				*get_ttf_by_name(char *name, int size);
+t_ttf				*get_ttf_by_name(t_sdl_data *data, char *name, int size);
 t_element			*get_element_by_name(t_win *win, char *name);
 t_texture			*get_texture_by_name(t_win *win, char *texture_name);
 t_texture			*get_texture_by_path(t_win *win, char *texture_path);
-t_win				*get_win_by_name(char *name);
+t_win				*get_win_by_name(t_sdl_data *data, char *name);
 void				*get_param_by_name(t_param **params, char *str);
 void				*set_param_by_name(t_param **params, char *str, void *new_param);
 char				**get_files(char *path);
@@ -95,7 +93,7 @@ t_element			*ui_init_element(int *active, char *name, t_rect rect, t_win *win, c
 
 t_element			*files_down(t_element *elem, SDL_Event *ev);
 void				clear_layer(t_win *win, int num_layer);
-void				draw_wins(void);
+void				draw_wins(t_sdl_data *data);
 int					image_draw(t_element *elem, t_win *win);
 int					radiobut_render(t_element *elem, t_win *win);
 int					render_text(t_element *elem, t_win *win);
@@ -103,10 +101,10 @@ int					text_render_full(t_win *win, t_rect rect, char *str, t_ttf ttf, t_color 
 int					texture_render(t_win *win, t_element *elem, SDL_Texture *texture);
 int					texture_render_by_rect(t_win *win, t_rect rect, SDL_Texture *texture);
 int					texture_render_rect(t_win *win, SDL_Texture *texture, SDL_Rect *dust, SDL_Rect *src, SDL_RendererFlip flip);
-int					open_win_ok(char *name, char *message);
+int					open_win_ok(t_sdl_data *data, char *name, char *message);
 void				cur_texture_draw(t_win *win, int num_layer);
 
-void				ft_update_win_surface(void);
+void				ft_update_win_surface(t_sdl_data *data);
 
 void				destroy_win(t_win *win);
 void				destroy_element(t_element *elem);

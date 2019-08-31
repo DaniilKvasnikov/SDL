@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_muve_scrole.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 17:29:16 by ilyabaturin       #+#    #+#             */
-/*   Updated: 2019/08/28 09:14:05 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/31 11:43:54 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void
 {
 	float	delta;
 
-	if (g_sdl_data->draw_type != NO_DRAW)
+	if (win->sdl_data->draw_type != NO_DRAW)
 		return ;
 	delta = 1.1f;
 	if (delta_mouse.y > 0 && win->win_rect.w > 1 && win->win_rect.h > 1)

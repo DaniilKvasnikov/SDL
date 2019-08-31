@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_info_win.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 12:58:29 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/29 09:18:15 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/08/31 11:43:27 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void
 	image = ui_init_element(ft_intnew(1), "text_rect_image", (t_rect){10, 10, 30, 30}, win, NULL, NULL,
 						ft_colornew((t_color){255, 0, 0, 255}), "rect",
 						NULL, &render_text, NULL, NULL, NULL, NULL, NULL);
-	image->ttf = get_ttf_by_name("standart", 14);
+	image->ttf = get_ttf_by_name(but->win->sdl_data, "standart", 14);
 	add_element_draw_to_win(but, image);
 	add_param_to_elem(button, "btn1", but);
 
@@ -34,7 +34,7 @@ static void
 	image = ui_init_element(ft_intnew(1), "text_rect_image", (t_rect){10, 10, 30, 30}, win, NULL, NULL,
 						ft_colornew((t_color){255, 0, 0, 255}), "rectfil",
 						NULL, &render_text, NULL, NULL, NULL, NULL, NULL);
-	image->ttf = get_ttf_by_name("standart", 14);
+	image->ttf = get_ttf_by_name(but->win->sdl_data, "standart", 14);
 	add_element_draw_to_win(but, image);
 	add_param_to_elem(button, "btn2", but);
 
@@ -44,7 +44,7 @@ static void
 	image = ui_init_element(ft_intnew(1), "text_sphere_image", (t_rect){10, 10, 30, 30}, win, NULL, NULL,
 						ft_colornew((t_color){255, 0, 0, 255}), "sphere",
 						NULL, &render_text, NULL, NULL, NULL, NULL, NULL);
-	image->ttf = get_ttf_by_name("standart", 14);
+	image->ttf = get_ttf_by_name(but->win->sdl_data, "standart", 14);
 	add_element_draw_to_win(but, image);
 	add_param_to_elem(button, "btn3", but);
 
@@ -54,13 +54,13 @@ static void
 	image = ui_init_element(ft_intnew(1), "text_sphere_fil_image", (t_rect){10, 10, 30, 30}, win, NULL, NULL,
 						ft_colornew((t_color){255, 0, 0, 255}), "spherefil",
 						NULL, &render_text, NULL, NULL, NULL, NULL, NULL);
-	image->ttf = get_ttf_by_name("standart", 14);
+	image->ttf = get_ttf_by_name(but->win->sdl_data, "standart", 14);
 	add_element_draw_to_win(but, image);
 	add_param_to_elem(button, "btn4", but);
 }
 
 void
-	init_ptool_win(char *name)
+	init_ptool_win(t_sdl_data *data, char *name)
 {
 	t_win		*win;
 	t_element	*elem;
@@ -68,7 +68,7 @@ void
 	t_element	*but;
 	t_element	*figures;
 
-	ui_add_win(win = ui_init_win(ft_strdup(name), (t_rect){100, 200, 100, 480},
+	ui_add_win(win = ui_init_win(data, ft_strdup(name), (t_rect){100, 200, 100, 480},
 		SDL_WINDOW_SHOWN, &info_win_fun, NULL));
 	add_texture_to_win(win, "img/button_1.bmp", "button1", BMP);
 	add_texture_to_win(win, "img/brush.bmp", "brush", BMP);
@@ -84,7 +84,7 @@ void
 	image = ui_init_element(ft_intnew(1), "text_nodraw", (t_rect){10, 10, 30, 30}, win, NULL, NULL,
 						ft_colornew((t_color){255, 0, 0, 255}), "hand",
 						NULL, &render_text, NULL, NULL, NULL, NULL, NULL);
-	image->ttf = get_ttf_by_name("standart", 14);
+	image->ttf = get_ttf_by_name(data, "standart", 14);
 	add_element_draw_to_win(elem, image);
 	elem = ui_init_element(ft_intnew(1), "button1", (t_rect){0, 50, 50, 50}, win, "button1", NULL, NULL, NULL,
 						NULL, &image_draw, &set_drawtype_point, NULL, NULL, NULL, NULL);
