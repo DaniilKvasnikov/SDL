@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 13:13:40 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/31 13:15:03 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/31 14:03:44 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int
 	check_texture(t_win *win, char *path, int type)
 {
-	SDL_Texture* newTexture = NULL;
 	SDL_Surface* loadedSurface;
 	if (type == BMP)
 		loadedSurface = SDL_LoadBMP(path);
@@ -30,10 +29,7 @@ int
 		loadedSurface = IMG_Load(path);
 	}
 	else
-	{
 		return (0);
-	}
-	
 	if(loadedSurface == NULL)
 	{
 		ft_printf( "Unable to load image %s! SDL_image Error: %s\n", path, SDL_GetError() );

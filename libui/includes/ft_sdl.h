@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/31 13:15:20 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/31 14:06:51 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ t_element			*close_cur_win(t_element *elem, SDL_Event *ev);
 void				save_file(t_win *win, int type, int num_layer, char *path);
 
 void				scrole_files(t_win *win, t_point delta_mouse);
+void				scrole_images(t_win *win, t_point delta_mouse);
 
 void				use_to_all_elems(t_win *win, void *ptr, void (*fun)(t_element *elem, void *ptr));
 

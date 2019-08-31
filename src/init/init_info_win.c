@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 12:58:29 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/31 13:04:05 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/31 14:07:41 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void
 	t_element	*figures;
 
 	ui_add_win(win = ui_init_win(data, ft_strdup(name), (t_rect){100, 200, 100, 480},
-		SDL_WINDOW_SHOWN, &info_win_fun, NULL));
+		SDL_WINDOW_SHOWN, &info_win_fun, &scrole_images));
 	add_texture_to_win(win, "img/button_1.bmp", "button1", BMP);
 	add_texture_to_win(win, "img/brush.bmp", "brush", BMP);
 	add_texture_to_win(win, "img/eraser.bmp", "eraser", BMP);
