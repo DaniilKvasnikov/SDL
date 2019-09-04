@@ -6,7 +6,7 @@
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/09/04 09:20:06 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/09/04 09:51:46 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ void				use_to_all_elems(t_win *win, void *ptr, void (*fun)(t_element *elem, voi
 
 int					input_border_size(t_element *elem, SDL_Event *ev);
 int					text_input(t_element *elem, SDL_Event *ev);
+t_element			*unset_text_input(t_element *elem, t_element *new);
 
 int					ft_strsplit_len(char **strs);
 char				**add_str_to_strs(char **strs, char *str);

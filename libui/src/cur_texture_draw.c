@@ -46,7 +46,7 @@ void
 		{
 			text = ui_init_element(ft_intnew(1), "text_example", (t_rect){win->mouse_muve.x - 5, win->mouse_muve.y - 5, 10, 10}, win, NULL, NULL,
 								ft_colornew((t_color){255, 0, 0, 255}), ft_strdup("text"),
-								NULL, &render_text, NULL, NULL, NULL, &text_input, NULL);
+								NULL, &render_text, NULL, NULL, NULL, &text_input, &unset_text_input);
 			text->ttf = get_ttf_by_name(win->sdl_data, "standart", 14);
 			add_element_to_win(win, text);
 			add_param_to_elem(text, "text", text);
