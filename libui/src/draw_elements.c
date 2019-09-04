@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_elements.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 19:27:40 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/31 11:06:05 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/09/04 09:04:59 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,7 @@ void
 		if (type == DRAW_ERASER)
 			SDL_SetRenderDrawColor(win->ren, win->sdl_data->color_back.r, win->sdl_data->color_back.g, win->sdl_data->color_back.b, win->sdl_data->color_back.a);
 		SDL_SetRenderTarget(win->ren, win->layers[num_layer]->texture);
-		if (mouse_down.x != mouse_muve.x ||
-			mouse_down.y != mouse_muve.y)
+		if (mouse_down.x != mouse_muve.x || mouse_down.y != mouse_muve.y)
 			ui_draw_line_width(win, mouse_muve.x, mouse_muve.y, mouse_down.x, mouse_down.y, win->sdl_data->line_width);
 		else
 			ui_draw_point_width(win, mouse_down.x, mouse_down.y, win->sdl_data->line_width);

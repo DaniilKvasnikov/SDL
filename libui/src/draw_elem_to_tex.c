@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_elem_to_tex.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 19:19:36 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/31 11:06:22 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/09/04 09:08:37 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

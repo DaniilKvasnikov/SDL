@@ -6,11 +6,11 @@
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 09:23:49 by ilyabaturin       #+#    #+#             */
-/*   Updated: 2019/08/27 10:23:58 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/09/04 09:18:31 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_guimp.h"
+#include "ft_sdl.h"
 
 int
 	input_border_size(t_element *elem, SDL_Event *ev)

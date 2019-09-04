@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_guimp.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 20:09:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/31 15:04:59 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/09/04 09:18:51 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void			init_settings_win(t_sdl_data *data, char *name);
 void			init_choose_file(t_sdl_data *data, char *name);
 void			main_mouse_muve_left(t_win *win, t_point delta_mouse);
 void			mouse_muve_scrole(t_win *win, t_point delta_mouse);
-int				input_border_size(t_element *elem, SDL_Event *ev);
 void			info_win_fun(t_win *win, t_point delta_mouse);
 
 t_element		*set_drawtype_point(t_element *elem, SDL_Event *ev);

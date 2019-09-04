@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sdl.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/08/31 14:06:51 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/09/04 09:20:06 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,9 @@ void				scrole_files(t_win *win, t_point delta_mouse);
 void				scrole_images(t_win *win, t_point delta_mouse);
 
 void				use_to_all_elems(t_win *win, void *ptr, void (*fun)(t_element *elem, void *ptr));
+
+int					input_border_size(t_element *elem, SDL_Event *ev);
+int					text_input(t_element *elem, SDL_Event *ev);
 
 int					ft_strsplit_len(char **strs);
 char				**add_str_to_strs(char **strs, char *str);
