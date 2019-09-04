@@ -6,7 +6,7 @@
 /*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:11:51 by gamerd            #+#    #+#             */
-/*   Updated: 2019/09/04 09:51:46 by ilyabaturin      ###   ########.fr       */
+/*   Updated: 2019/09/04 10:10:34 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ t_win				*get_win_by_name(t_sdl_data *data, char *name);
 void				*get_param_by_name(t_param **params, char *str);
 void				*set_param_by_name(t_param **params, char *str, void *new_param);
 char				**get_files(char *path);
+t_element			*delete_elem_by_name(t_win *win, char *name);
 
 SDL_Texture*		loadTexture(t_win *win, char *path, int type);
 int					check_texture(t_win *win, char *path, int type);
