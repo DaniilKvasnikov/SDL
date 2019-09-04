@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 12:58:29 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/31 14:07:41 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/31 15:14:22 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,16 @@ void
 						NULL, &render_text, NULL, NULL, NULL, NULL, NULL);
 	image->ttf = get_ttf_by_name(data, "standart", 14);
 	add_element_draw_to_win(elem, image);
+
+	elem = ui_init_element(ft_intnew(1), "button_text", (t_rect){50, 0, 50, 50}, win, "button1", NULL, NULL, NULL,
+						NULL, &image_draw, &set_drawtype_text, NULL, NULL, NULL, NULL);
+	add_element_to_win(win, elem);
+	image = ui_init_element(ft_intnew(1), "text_text", (t_rect){10, 10, 30, 30}, win, NULL, NULL,
+						ft_colornew((t_color){255, 0, 0, 255}), "text",
+						NULL, &render_text, NULL, NULL, NULL, NULL, NULL);
+	image->ttf = get_ttf_by_name(data, "standart", 14);
+	add_element_draw_to_win(elem, image);
+
 	elem = ui_init_element(ft_intnew(1), "button1", (t_rect){0, 50, 50, 50}, win, "button1", NULL, NULL, NULL,
 						NULL, &image_draw, &set_drawtype_point, NULL, NULL, NULL, NULL);
 	add_element_to_win(win, elem);

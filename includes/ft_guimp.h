@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 20:09:34 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/31 10:57:31 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/31 15:04:59 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void			info_win_fun(t_win *win, t_point delta_mouse);
 
 t_element		*set_drawtype_point(t_element *elem, SDL_Event *ev);
 t_element		*set_drawtype_nodraw(t_element *elem, SDL_Event *ev);
+t_element		*set_drawtype_text(t_element *elem, SDL_Event *ev);
 t_element		*set_drawtype_eraser(t_element *elem, SDL_Event *ev);
 t_element		*set_drawtype_line(t_element *elem, SDL_Event *ev);
 t_element		*set_drawtype_rect(t_element *elem, SDL_Event *ev);

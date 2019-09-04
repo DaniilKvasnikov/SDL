@@ -6,7 +6,7 @@
 /*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:28 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/31 10:53:39 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/08/31 15:05:24 by rrhaenys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define DRAW_POINT 6
 # define DRAW_ERASER 7
 # define DRAW_TEXTURE 8
+# define DRAW_TEXT 9
 
 typedef struct	s_element t_element;
 typedef struct	s_sdl_data	t_sdl_data;
