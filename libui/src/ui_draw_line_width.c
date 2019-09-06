@@ -19,7 +19,7 @@ void
 	int		dx;
 
 	w = 0;
-	while (w++ < width * 2)
+	while (w++ < width)
     {
         dx = width - w; // horizontal offset
         SDL_RenderDrawLine(win->ren, x1 + dx, y1 + dx, x2 + dx, y2 + dx);

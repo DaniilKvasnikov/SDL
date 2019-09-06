@@ -21,14 +21,14 @@ void
 	int dy;
 
 	w = 0;
-    while (w++ < width * 2)
+    while (w++ < width)
     {
 		h = 0;
-        while (h++ < width * 2)
+        while (h++ < width)
         {
-            dx = width - w;
-            dy = width - h; 
-            if ((dx*dx + dy*dy) <= (width * width))
+            dx = width / 2 - w;
+            dy = width / 2 - h; 
+            if ((dx*dx + dy*dy) <= ((width / 2) * (width / 2)))
             {
                 SDL_RenderDrawPoint(win->ren, x1 + dx, y1 + dy);
             }
