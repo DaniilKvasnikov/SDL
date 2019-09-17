@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   text_render.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrhaenys <rrhaenys@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilyabaturin <ilyabaturin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 16:50:32 by rrhaenys          #+#    #+#             */
-/*   Updated: 2019/08/25 17:04:16 by rrhaenys         ###   ########.fr       */
+/*   Updated: 2019/09/17 09:27:20 by ilyabaturin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ int
 	SDL_FreeSurface(message);
 	int w, h;
 	SDL_QueryTexture(MessageTex, NULL, NULL, &w, &h);
+	float *scale = get_param_by_name(elem->params, "scale");
+	if (scale != NULL)
+	{
+		w /= (*scale);
+		h /= (*scale);
+	}
 	Message_rect = (SDL_Rect){
 		elem->rect.x + elem->rect.w / 2 - w / 2,
 		elem->rect.y + elem->rect.h / 2 - h / 2,

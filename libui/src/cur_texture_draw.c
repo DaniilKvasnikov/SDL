@@ -49,7 +49,7 @@ void
 								NULL, &render_text, NULL, NULL, NULL, &text_input, &unset_text_input);
 			text->ttf = get_ttf_by_name(win->sdl_data, "standart", 14);
 			add_element_to_win(win, text);
-			add_param_to_elem(text, "text", text);
+			add_param_to_elem(text, "scale", &win->scale);
 		}
 		win->active_elem = text;
 	}
